@@ -1,0 +1,1373 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>SINGLE DIMENSION ARRAY</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1:Program to copy all elements of one array into another array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], b[10], n, i;
+
+    clrscr();
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter elements:\n";
+    for(i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    for(i = 0; i < n; i++) {
+        b[i] = a[i];
+    }
+
+    cout << "\nCopied array:\n";
+    for(i = 0; i < n; i++) {
+        cout << b[i] << " ";
+    }
+
+    getch();
+}
+
+</pre><p><b>output:</b>Enter number of elements: 5<br>
+Enter elements:<br>
+1 2 3 4 5<br>
+
+Copied array:<br>
+1 2 3 4 5</p>
+</details><br>
+
+<details>
+<summary>Question 2: Program to find the frequency of each element in the array </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, count;
+
+    clrscr();
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter elements:\n";
+    for(i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    for(i = 0; i < n; i++) {
+        count = 1;
+        for(j = i + 1; j < n; j++) {
+            if(a[i] == a[j]) {
+                count++;
+            }
+        }
+
+        int printed = 0;
+        for(j = 0; j < i; j++) {
+            if(a[i] == a[j]) {
+                printed = 1;
+                break;
+            }
+        }
+
+        if(!printed) {
+            cout << a[i] << " occurs " << count << " times\n";
+        }
+    }
+
+    getch();
+}</pre><p><b>output:</b>Enter number of elements: 5<br>
+Enter elements:<br>
+1 2 2 3 1<br>
+
+1 occurs 2 times<br>
+2 occurs 2 times<br>
+3 occurs 1 times</p>
+</details><br>
+
+
+<details>
+<summary>Question 3:  Program to left rotate the elements of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    int a[10], n, i, first;
+
+    clrscr();
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter elements:\n";
+    for(i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    first = a[0];
+
+    for(i = 0; i < n - 1; i++) {
+        a[i] = a[i + 1];
+    }
+
+    a[n - 1] = first;
+
+    cout << "\nAfter left rotation:\n";
+    for(i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+
+    getch();
+}
+
+</pre><p><b>output:</b>Enter number of elements: 5<br>
+Enter elements:<br>
+1 2 3 4 5<br>
+
+After left rotation:<br>
+2 3 4 5 1</p>
+</details><br>
+
+
+<details>
+<summary>Question 4:Program to print the duplicate elements of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j;
+
+    clrscr();
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter elements:\n";
+    for(i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    cout << "\nDuplicate elements:\n";
+    for(i = 0; i < n; i++) {
+        for(j = i + 1; j < n; j++) {
+            if(a[i] == a[j]) {
+                cout << a[i] << " ";
+                break;
+            }
+        }
+    }
+
+    getch();
+}
+</pre><p><b>output:</b>Enter number of elements: 5<br>
+Enter elements:<br>
+1 2 3 2 1<br>
+
+Duplicate elements:<br>
+1 2</p><br>
+</details><br>
+
+
+
+<details>
+<summary>Question 5: Program to print the elements of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    int a[10], n, i;
+
+    clrscr();
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter elements:\n";
+    for(i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    cout << "\nArray elements:\n";
+    for(i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+
+    getch();
+}
+
+</pre><p><b>output:</b>Enter number of elements: 4<br>
+Enter elements:<br>
+10 20 30 40<br>
+
+Array elements:<br>
+10 20 30 40<br>title case:saLOnI</p>
+</details><br>
+
+
+<details>
+<summary>Question 6: Program to print the elements of an array in reverse order</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Reverse:\n";
+    for(i=n-1;i>=0;i--) cout<<a[i]<<" ";
+
+    getch();
+}</pre><p><b>output:</b>Enter size: 5<br>
+1 2 3 4 5<br>
+Reverse:<br>
+5 4 3 2 1</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 7: Program to print the elements of an array present on even position</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main(){
+    int a[10],n,i;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=1;i<n;i+=2) cout<<a[i]<<" ";
+
+    getch();
+}
+
+
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Output: 2 4</p>
+</details><br>
+
+<details>
+<summary>Question 8: Program to print the elements of an array present on odd position</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Elements at odd positions:\n";
+    for(i=0;i<n;i+=2)
+        cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Enter size: 5<br>
+Enter elements<br>:
+10 20 30 40 50<br>
+
+Elements at odd positions:<br>
+10 30 50</p>
+</details><br>
+
+
+<details>
+<summary>Question 9: Program to print the largest element in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, max;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    max = a[0];
+
+    for(i=1;i<n;i++)
+        if(a[i] > max)
+            max = a[i];
+
+    cout<<"Largest element = "<<max;
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 2 8 1 6 3<br>
+Largest element = 8</p>
+</details><br>
+
+
+<details>
+<summary>Question 10:Program to print the smallest element in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, min;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    min = a[0];
+
+    for(i=1;i<n;i++)
+        if(a[i] < min)
+            min = a[i];
+
+    cout<<"Smallest = "<<min;
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 2 8 1 6 3<br>
+Smallest = 1</p>
+</details><br>
+
+<details>
+<summary>Question 11: Program to print the number of elements present in an array </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int n;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Total elements = "<<n;
+
+    getch();
+}
+</pre><p><b>output:</b>Enter size: 5<br>
+Total elements = 5</p>
+</details><br>
+
+<details>
+<summary>Question 12: Program to print the sum of all the items of the array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, sum=0;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++)
+        sum += a[i];
+
+    cout<<"Sum = "<<sum;
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Sum = 15</p>
+</details><br>
+
+
+<details>
+<summary>Question 13: Program to right rotate the elements of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, last;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    last = a[n-1];
+
+    for(i=n-1;i>0;i--)
+        a[i] = a[i-1];
+
+    a[0] = last;
+
+    cout<<"After rotation:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+After rotation:<br>
+5 1 2 3 4</p>
+</details><br>
+
+<details>
+<summary>Question 14: Program to sort the elements of an array in ascending order</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, t;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++) {
+        for(j=0;j<n-i-1;j++) {
+            if(a[j] > a[j+1]) {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+        }
+    }
+
+    cout<<"Ascending order:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 5 3 1 4 2<br>
+Ascending:<br>
+1 2 3 4 5</p>
+</details><br>
+
+
+<details>
+<summary>Question 15: Program to sort the elements of an array in descending order</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++) {
+        for(j=0;j<n-i-1;j++) {
+            if(a[j] < a[j+1]) {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+
+    cout<<"Descending order:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+
+</pre><p><b>output:</b>Enter size: 5<br>
+Enter elements:<br>
+5 2 8 1 3<br>
+Descending order:<br>
+8 5 3 2 1</p>
+</details><br>
+
+<details>
+<summary>Question 16: Program to Find 3rd Largest Number in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, t;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-i-1;j++)
+            if(a[j] > a[j+1]) {
+                t=a[j]; a[j]=a[j+1]; a[j+1]=t;
+            }
+
+    cout<<"3rd largest = "<<a[n-3];
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 10 20 30 40 50<br>
+3rd largest = 30</p>
+</details><br>
+
+<details>
+<summary>Question 17: Program to Find 2nd Largest Number in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-i-1;j++)
+            if(a[j] > a[j+1]) {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+
+    cout<<"2nd largest = "<<a[n-2];
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 10 20 30 40 50<br>
+2nd largest = 40</p>
+</details><br>
+
+
+<details>
+<summary>Question 18: Program to Find Largest Number in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, max;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    max = a[0];
+
+    for(i=1;i<n;i++) {
+        if(a[i] > max)
+            max = a[i];
+    }
+
+    cout<<"Largest element = "<<max;
+
+    getch();
+}
+</pre><p><b>output:</b>Enter size: 5<br>
+2 9 4 7 1<br>
+Largest element = 9</p>
+</details><br>
+
+<details>
+<summary>Question 19: C++ Program Find 2nd Smallest Number in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-i-1;j++)
+            if(a[j] > a[j+1]) {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+
+    cout<<"2nd smallest = "<<a[1];
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 50 10 40 20 30<br>
+2nd smallest = 20</p>
+</details><br>
+
+<details>
+<summary>Question 20: Program to Find Smallest Number in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, min;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    min = a[0];
+
+    for(i=1;i<n;i++) {
+        if(a[i] < min)
+            min = a[i];
+    }
+
+    cout<<"Smallest element = "<<min;
+
+    getch();
+}
+
+</pre><p><b>output:</b>Enter size: 5<br>
+8 3 6 1 9<br>
+Smallest element = 1</p>
+</details><br>
+<details>
+<summary>Question 21: Program to Remove Duplicate Element in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, k;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++) {
+        for(j=i+1;j<n;j++) {
+            if(a[i] == a[j]) {
+                for(k=j;k<n;k++)
+                    a[k] = a[k+1];
+                n--;
+                j--;
+            }
+        }
+    }
+
+    cout<<"Array after removing duplicates:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 6 → 1 2 2 3 1 4<br>
+Output:<br>
+1 2 3 4</p>
+</details><br>
+<details>
+<summary>Question 22: Program to Print Odd and Even Numbers from an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main() {
+    int a[10], n, i;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Even numbers:\n";
+    for(i=0;i<n;i++)
+        if(a[i]%2==0)
+            cout<<a[i]<<" ";
+
+    cout<<"\nOdd numbers:\n";
+    for(i=0;i<n;i++)
+        if(a[i]%2!=0)
+            cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Even numbers:<br>
+2 4<br>
+Odd numbers:<br>
+1 3 5</p>
+</details><br>
+<details>
+<summary>Question 23: Write a C++ program to swap the first and last elements of an array and create a new array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    temp = a[0];
+    a[0] = a[n-1];
+    a[n-1] = temp;
+
+    cout<<"After swapping:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+After swapping:<br>
+5 2 3 4 1</p>
+</details><br>
+<details>
+<summary>Question 24:Write a C++ program to count the number of even and odd elements in a given array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, even=0, odd=0;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++) {
+        if(a[i]%2==0)
+            even++;
+        else
+            odd++;
+    }
+
+    cout<<"Even count = "<<even;
+    cout<<"\nOdd count = "<<odd;
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Even count = 2<br>
+Odd count = 3</p>
+</details><br>
+<details>
+<summary>Question 25:Write a C++ program to sum values of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, sum=0;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++)
+        sum += a[i];
+
+    cout<<"Sum of elements = "<<sum;
+
+    getch();
+}</pre><p><b>output:</b>Enter size: 5<br>
+1 2 3 4 5<br>
+Sum of elements = 15<br></p>
+</details><br>
+<details>
+<summary>Question 26: Write a C++ program to find the index of an array element</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, key, pos=-1;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Enter element to search: ";
+    cin>>key;
+
+    for(i=0;i<n;i++) {
+        if(a[i]==key) {
+            pos = i;
+            break;
+        }
+    }
+
+    if(pos==-1)
+        cout<<"Element not found";
+    else
+        cout<<"Element found at index "<<pos;
+
+    getch();
+}</pre><p><b>output:</b>Enter size: 5<br>
+1 2 3 4 5<br>
+Enter element to search: 3<br>
+Element found at index 2</p>
+</details><br>
+<details>
+<summary>Question 27: Write a C++ program to calculate the average value of array elements</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, sum=0;
+    float avg;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++)
+        sum += a[i];
+
+    avg = (float)sum / n;
+
+    cout<<"Average = "<<avg;
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Average = 3</p>
+</details><br>
+<details>
+<summary>Question 28: Write a C++ program to test if an array contains a specific value</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, key, flag=0;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Enter value to search: ";
+    cin>>key;
+
+    for(i=0;i<n;i++) {
+        if(a[i]==key) {
+            flag=1;
+            break;
+        }
+    }
+
+    if(flag==1)
+        cout<<"Value exists in array";
+    else
+        cout<<"Value not found";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 10 20 30 40 50<br>
+Search: 30<br>
+Value exists in array</p>
+</details><br>
+<details>
+<summary>Question 29: Write a C++ program to find the maximum and minimum value of an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, max, min;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    max = min = a[0];
+
+    for(i=1;i<n;i++) {
+        if(a[i] > max)
+            max = a[i];
+        if(a[i] < min)
+            min = a[i];
+    }
+
+    cout<<"Maximum = "<<max;
+    cout<<"\nMinimum = "<<min;
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 5 2 9 1 6<br>
+Maximum = 9<br>
+Minimum = 1</p>
+</details><br>
+<details>
+<summary>Question 30:Write a C++ program to insert an element (specific position) into an array
+Start Solving</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[20], n, i, pos, val;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Enter position: ";
+    cin>>pos;
+
+    cout<<"Enter value: ";
+    cin>>val;
+
+    for(i=n;i>pos;i--)
+        a[i]=a[i-1];
+
+    a[pos]=val;
+    n++;
+
+    cout<<"Array after insertion:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Position: 2<br>
+Value: 99<br>
+Output:<br>
+1 2 99 3 4 5</p>
+</details><br>
+<details>
+<summary>Question 31: Write a C++ program to reverse an array of integer values</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, temp;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n/2;i++) {
+        temp = a[i];
+        a[i] = a[n-1-i];
+        a[n-1-i] = temp;
+    }
+
+    cout<<"Reversed array:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Output:<br>
+5 4 3 2 1</p>
+</details><br>
+<details>
+<summary>Question 32: Write a C++ program to find the common elements between two arrays</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], b[10], n1, n2, i, j;
+    clrscr();
+
+    cout<<"Enter size of array1: ";
+    cin>>n1;
+    for(i=0;i<n1;i++) cin>>a[i];
+
+    cout<<"Enter size of array2: ";
+    cin>>n2;
+    for(i=0;i<n2;i++) cin>>b[i];
+
+    cout<<"Common elements:\n";
+    for(i=0;i<n1;i++) {
+        for(j=0;j<n2;j++) {
+            if(a[i]==b[j]) {
+                cout<<a[i]<<" ";
+                break;
+            }
+        }
+    }
+
+    getch();
+}
+</pre><p><b>output:</b>Array1: 1 2 3 4<br>
+Array2: 3 4 5 6<br>
+Common elements:<br>
+3 4</p>
+</details><br>
+<details>
+<summary>Question 33: Write a C++ program to find the duplicate values of an array of integer values</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Duplicates:\n";
+    for(i=0;i<n;i++) {
+        for(j=i+1;j<n;j++) {
+            if(a[i]==a[j]) {
+                cout<<a[i]<<" ";
+                break;
+            }
+        }
+    }
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 2 1<br>
+Duplicates:<br>
+1 2</p>
+</details><br>
+<details>
+<summary>Question 34:Write a C++ program to find second largest number from the array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-i-1;j++)
+            if(a[j]>a[j+1]) {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+
+    cout<<"Second largest = "<<a[n-2];
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 10 20 30 40 50<br>
+Second largest = 40</p>
+</details><br>
+<details>
+<summary>Question 35: Write a C++ program to find second lowest number from the array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-i-1;j++)
+            if(a[j]>a[j+1]) {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+
+    cout<<"Second lowest = "<<a[1];
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 50 10 40 20 30<br>
+Second lowest = 20</p>
+</details><br>
+
+<details>
+<summary>Question 36:Write a C++ program to find the number of even and odd integers in a given array of integers</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, even=0, odd=0;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++) {
+        if(a[i]%2==0) even++;
+        else odd++;
+    }
+
+    cout<<"Even = "<<even;
+    cout<<"\nOdd = "<<odd;
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+Even = 2<br>
+Odd = 3</p>
+</details><br>
+
+<details>
+<summary>Question 37:Write a C++ program to get the difference between the largest and smallest values in an array of integers</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, max, min;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    max=min=a[0];
+
+    for(i=1;i<n;i++) {
+        if(a[i]>max) max=a[i];
+        if(a[i]<min) min=a[i];
+    }
+
+    cout<<"Difference = "<<max-min;
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 5 2 9 1 6<br>
+Difference = 8</p>
+</details><br>
+
+<details>
+<summary>Question 38: Write a C++ program to segregate all 0s on left side and all 1s on right side of a given array of 0s and 1s</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, count0=0;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n;i++)
+        if(a[i]==0) count0++;
+
+    for(i=0;i<count0;i++) a[i]=0;
+    for(i=count0;i<n;i++) a[i]=1;
+
+    cout<<"Result:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 6 → 0 1 0 1 1 0<br>
+Result:<br>
+0 0 0 1 1 1</p>
+</details><br>
+<details>
+<summary>Question 39: Write a C++ program to cyclically rotate a given array clockwise by one</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, last;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    last = a[n-1];
+
+    for(i=n-1;i>0;i--)
+        a[i]=a[i-1];
+
+    a[0]=last;
+
+    cout<<"After rotation:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Input: 5 → 1 2 3 4 5<br>
+After rotation:<br>
+5 1 2 3 4</p>
+</details><br>
+
+<details>
+<summary>Question 40:Write a C++ program to print all unique element in an array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, count;
+    clrscr();
+
+    cin>>n;
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Unique elements:\n";
+
+    for(i=0;i<n;i++) {
+        count=0;
+        for(j=0;j<n;j++) {
+            if(a[i]==a[j])
+                count++;
+        }
+        if(count==1)
+            cout<<a[i]<<" ";
+    }
+
+    getch();
+}</pre><p><b>output:</b>Input: 5 → 1 2 2 3 4<br>
+Unique elements:<br>
+1 3 4</p>
+</details><br>
+<details>
+<summary>Question 41: Write a C++ Program to Sort the Array in an Ascending Order</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++) {
+        for(j=0;j<n-i-1;j++) {
+            if(a[j] > a[j+1]) {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+
+    cout<<"Array in ascending order:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}
+</pre><p><b>output:</b>Enter size: 5<br>
+Enter elements:<br>
+5 3 1 4 2<br>
+Array in ascending order:<br>
+1 2 3 4 5</p>
+</details><br>
+
+
+<details>
+<summary>Question 42: Write a C++ Program to Sort the Array in an Descending Order</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, j, temp;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    for(i=0;i<n-1;i++) {
+        for(j=0;j<n-i-1;j++) {
+            if(a[j] < a[j+1]) {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+
+    cout<<"Array in descending order:\n";
+    for(i=0;i<n;i++) cout<<a[i]<<" ";
+
+    getch();
+}</pre><p><b>output:</b>Enter size: 5<br>
+Enter elements:<br>
+5 3 1 4 2<br>
+Array in descending order:<br>
+5 4 3 2 1</p>
+</details><br>
+
+<details>
+<summary>Question 43: Write a C++ Program to Search Key Elements in an Array</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    int a[10], n, i, key, found=0;
+    clrscr();
+
+    cout<<"Enter size: ";
+    cin>>n;
+
+    cout<<"Enter elements:\n";
+    for(i=0;i<n;i++) cin>>a[i];
+
+    cout<<"Enter element to search: ";
+    cin>>key;
+
+    for(i=0;i<n;i++) {
+        if(a[i] == key) {
+            cout<<"Element found at position "<<i;
+            found = 1;
+            break;
+        }
+    }
+
+    if(found == 0)
+        cout<<"Element not found";
+
+    getch();
+}</pre><p><b>output:</b>Enter size: 5<br>
+Enter elements:<br>
+10 20 30 40 50<br>
+Enter element to search: 30<br>
+Element found at position 2</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+<footer><center><a href="cpp_link.html">back</a></center></footer>
+</body>
+</html>
+

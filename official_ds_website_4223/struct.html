@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>STRUCTURE</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1: Create structure of employee which there is emp.ID, name, designation of 50 employees from user, print details in tabular form ? </summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+struct Employee
+{
+int id;
+char name[50];
+char designation[50];
+};
+int main()
+{
+struct Employee emp[50];
+int i, n;
+printf("Enter number of employees (max 50): ");
+scanf("%d", &n);
+for(i = 0; i < n; i++)
+{
+printf("\nEnter details of employee %d:\n", i + 1);
+printf("Enter Employee ID: ");
+scanf("%d", &emp[i].id);
+printf("Enter Name: ");
+scanf("%s", emp[i].name);  // single word name (can use fgets for full name)
+printf("Enter Designation: ");
+scanf("%s", emp[i].designation);
+}
+printf("\n---------------------------------------------------------\n");
+printf("Emp.ID\t\tName\t\tDesignation\n");
+printf("---------------------------------------------------------\n");
+for(i = 0; i < n; i++)
+{
+printf("%d\t\t%-10s\t%-10s\n", emp[i].id, emp[i].name, emp[i].designation);
+}
+printf("---------------------------------------------------------\n");
+getch();
+}
+
+
+</pre><p><b>output:</b>enter details of employee 1:<br>enter employee ID:101<br>enter name:raj<br>enter designation:manager<br><br>
+enter details of employee 2:<br>enter employee ID:102<br>enter name:anu<br>enter designation:clerk<br><br>enter details of employee 3:<br>enter employee ID:103<br>enter name:ravi<br>enter designation:engineer<br><br>emp.id		name		designation<br>101		raj		manager<br>102		anu		clerk<br>103		ravi		engineer</p>
+</details><br>
+
+<details>
+<summary>Question 2: Create structure of employee which there is emp.ID, name, designation of 50 employees from user and print only name of the employee ? </summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+struct Employee
+{
+int id;
+char name[50];
+char designation[50];
+};
+int main()
+{
+struct Employee emp[50];
+int i, n;
+printf("Enter number of employees (max 50): ");
+scanf("%d", &n);
+for(i = 0; i < n; i++)
+{
+printf("\nEnter details of employee %d:\n", i + 1);
+printf("Enter Employee ID: ");
+scanf("%d", &emp[i].id);
+printf("Enter Name: ");
+scanf("%s", emp[i].name);  // for single-word name
+printf("Enter Designation: ");
+scanf("%s", emp[i].designation);
+}
+printf("\n------------------------------\n");
+printf("Names of all employees:\n");
+printf("------------------------------\n");
+for(i = 0; i < n; i++)
+{
+printf("%s\n", emp[i].name);
+}
+getch();
+}
+
+</pre><p><b>output:</b>enter details of employee 1:<br>enter employee ID:101<br>enter name:raj<br>enter designation:manager<br><br>
+enter details of employee 2:<br>enter employee ID:102<br>enter name:anu<br>enter designation:clerk<br><br>enter details of employee 3:<br>enter employee ID:103<br>enter name:ravi<br>enter designation:engineer<br><br>names of all employees<br>raj<br>anu<br>ravi</p>
+</details><br>
+
+
+<details>
+<summary>Question 3:Create structure of employee which there is emp.ID, name, designation of 50 employees from user and print name character with emp.ID in tabular form ? </summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+struct Employee
+{
+int id;
+char name[50];
+char designation[50];
+};
+int main()
+{
+struct Employee emp[50];
+int i, j, n;
+printf("Enter number of employees (max 50): ");
+scanf("%d", &n);
+for(i = 0; i < n; i++)
+{
+printf("\nEnter details of employee %d:\n", i + 1);
+printf("Enter Employee ID: ");
+scanf("%d", &emp[i].id);
+printf("Enter Name: ");
+scanf("%s", emp[i].name);   // use fgets for full name
+printf("Enter Designation: ");
+scanf("%s", emp[i].designation);
+}
+printf("\n-------------------------------------------\n");
+printf("Emp.ID\t\tName (character by character)\n");
+printf("-------------------------------------------\n");
+for(i = 0; i < n; i++)
+{
+printf("%d\t\t", emp[i].id);
+for(j = 0; emp[i].name[j] != '\0'; j++)
+{
+printf("%c ", emp[i].name[j]);  // print each character with space
+}
+printf("\n");
+}
+printf("-------------------------------------------\n");
+getch();
+}
+
+</pre><p><b>output:</b>enter number of employees<br>enter details of employee <br>
+
+enter details of employee 1:<br>
+enter employee id:101<br>
+enter name:riya<br>
+enter designation:manager<br><br>
+
+enter details of employee 2: <br>
+
+enter employee id:102<br>
+enter name:aman<br>
+enter designation:clerk<br><br>
+emp.id name<br>101 riya<br>102 aman
+
+</p>
+</details><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary>Question 4:Enter student details like roll name, fee, DOB and print all the detail by ascending order of roll number ? </summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+struct Employee
+{
+int id;
+char name[50];
+char designation[50];
+};
+int main()
+{
+struct Employee emp[50];
+int i, j, n;
+printf("Enter number of employees (max 50): ");
+scanf("%d", &n);
+for(i = 0; i < n; i++)
+{
+printf("\nEnter details of employee %d:\n", i + 1);
+printf("Enter Employee ID: ");
+scanf("%d", &emp[i].id);
+printf("Enter Name: ");
+scanf("%s", emp[i].name);   // use fgets for full name
+printf("Enter Designation: ");
+scanf("%s", emp[i].designation);
+}
+printf("\n-------------------------------------------\n");
+printf("Emp.ID\t\tName (character by character)\n");
+printf("-------------------------------------------\n");
+for(i = 0; i < n; i++)
+{
+printf("%d\t\t", emp[i].id);
+for(j = 0; emp[i].name[j] != '\0'; j++)
+{
+printf("%c ", emp[i].name[j]);  // print each character with space
+}
+printf("\n");
+}
+printf("-------------------------------------------\n");
+getch();
+}
+
+</pre><p><b>output:</b>enter number of student(max 50)
+enter details of student 1:<br>enter roll no:101
+<br>enter name:neha
+<br>enter fee:4500
+<br>enter dob(dd-mm-yyyy):12-05-2006
+<br><br>
+enter roll no:102
+<br>enter name:ravi
+<br>enter fee:4200
+<br>enter dob(dd-mm-yyyy):02-05-2007
+<br><br>
+enter roll no:103
+<br>enter name:ravi
+<br>enter fee:4300
+<br>enter dob(dd-mm-yyyy):06-04-2005
+<br><br>
+roll        name        fee<br>101        neha        4500<br>102        ravi        4200<br>103        ravi       4300<br>        
+</p>
+</details><br>
+
+
+
+
+
+
+
+</h3>
+<footer><center><a href="c_link.html">back</a></center></footer>
+
+</body>
+</html>

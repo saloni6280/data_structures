@@ -1,0 +1,570 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1> FUNCTIONS </h1>
+
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+<summary>Question 1:  Write a program to enter 2 number from the users add them and display the answer,
+again enter 2 number from the user subtract them and display the answer,
+again enter 2 number from the user add them and display the answer,
+again enter 2 number from the user multiply them and display the answer,
+again enter 2 number from the user subtract them and display the answer,
+again enter 2 number from the user multiply them and display the answer,
+again enter 2 number from the user divide them and display the answer,
+again enter 2 number from the user divide them and display the answer,
+again enter 2 number from the user add them and display the answer ?
+</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void input(int *x, int *y) {
+    printf("\nEnter first number: ");
+    scanf("%d", x);
+    printf("Enter second number: ");
+    scanf("%d", y);
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int sub(int a, int b) {
+    return a - b;
+}
+
+int mul(int a, int b) {
+    return a * b;
+}
+
+float divide(int a, int b) {
+    if(b == 0) {
+	printf("Cannot divide by zero!\n");
+	return 0;
+    } else
+	return (float)a / b;
+}
+
+void displayIntResult(int result) {
+    printf("Result = %d\n\n", result);
+}
+
+void displayFloatResult(float result) {
+    printf("Result = %.2f\n\n", result);
+}
+
+void main() {
+    int a, b;
+    clrscr();
+
+    printf("Enter numbers for addition:");
+    input(&a, &b);
+    displayIntResult(add(a, b));
+
+    printf("Enter numbers for subtraction:");
+    input(&a, &b);
+    displayIntResult(sub(a, b));
+
+    printf("Enter numbers for addition:");
+    input(&a, &b);
+    displayIntResult(add(a, b));
+
+    printf("Enter numbers for multiplication:");
+    input(&a, &b);
+    displayIntResult(mul(a, b));
+
+    printf("Enter numbers for subtraction:");
+    input(&a, &b);
+    displayIntResult(sub(a, b));
+
+    printf("Enter numbers for multiplication:");
+    input(&a, &b);
+    displayIntResult(mul(a, b));
+
+    printf("Enter numbers for division:");
+    input(&a, &b);
+    displayFloatResult(divide(a, b));
+
+    printf("Enter numbers for division:");
+    input(&a, &b);
+    displayFloatResult(divide(a, b));
+
+    printf("Enter numbers for addition:");
+    input(&a, &b);
+    displayIntResult(add(a, b));
+}
+</pre><p><b>output:</b>Enter number addition: <br>
+    Enter first number : 2 <br>
+    Enter second number : 4 <br>
+    Result = 6 <br> <br>
+    Enter numbers for subtraction:<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 2 <br> <br>
+    Enter number addition: <br>
+    Enter first number : 2 <br>
+    Enter second number : 4 <br>
+    Result = 6 <br> <br>
+    Enter numbers for multiplication :<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 8 <br> <br>
+    Enter numbers for subtraction:<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 2 <br> <br>
+    Enter numbers for multiplication :<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 8 <br> <br>
+    Enter numbers for Division :<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 2 <br> <br>
+    Enter numbers for Division :<br>
+    Enter first number : 4 <br>
+    Enter second number : 2 <br>
+    Result = 2 <br> <br>
+    Enter number addition: <br>
+    Enter first number : 2 <br>
+    Enter second number : 4 <br>
+    Result = 6 <br> <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 2:Write a program to enter 10 number from the user add the number and display the answer ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+int input() {
+    int a;
+    printf("Enter a number: ");
+    scanf("%d",&a);
+    return a;
+}
+
+int sum(int a, int b) {
+    return a + b;
+}
+
+void main() {
+    int num[10], i, result = 0;
+
+    clrscr();
+
+    for (i=0; i<10; i++) {
+        num[i] = input();
+    }
+    
+    for (i=0; i<10; i = i+2) {
+        result = result + sum(num[i], num[i+1]);
+    }
+
+    printf("The sum of all the numbers: %d", result);
+
+}</pre><p><b>output:</b>Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+Enter a number : 3 <br>
+<br>
+The sum of all the numbers : 30 <br>
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 3: Write a program to return an array from function ? ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+int * set_array(int a) {
+    int i;
+    static int array[5];
+
+    for(i=0; i<5; i++) {
+	array[i] = a;
+    }
+
+    return array;
+}
+
+void main() {
+    int i, *arrayptr, num;
+
+    clrscr();
+
+    printf("Enter a number to fill the array: ");
+    scanf("%d",&num);
+
+    arrayptr = set_array(num);
+    printf("\n\nArray: ");
+    for(i=0; i<5; i++) {
+	printf("%d", arrayptr[i]);
+    }
+}</pre><p><b>output:</b> Enter a number to fill the array : 3 <br>
+Array : 33333 <br>
+</p>
+
+</details>
+<br>
+
+<details>
+<summary>Question 4: Making following program using local and global variable ? 
+    Factorial , Reverse , Palindrome , Prime numbers, Armstrong , Fibonacci</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+#include&lt;string.h>
+
+int factorial(int num) {
+    int result = num;
+
+    if(num == 0) {
+	return 1;
+    }
+
+    while(num != 1) {
+	result = result * (num-1);
+	num--;
+    }
+
+    return result;
+}
+
+void reversestr(char array[]) {
+    int length=0, i=0;
+    char temparray[25];
+
+    strcpy(temparray, array);
+
+    length = strlen(array) - 1;
+
+    while(length>=0) {
+	array[i++] = temparray[length--];
+    }
+    array[i] = '\0';
+}
+
+void isprime(int num) {
+    int i, count=0;
+
+    if(num <= 1) {
+	printf("Not a prime number!");
+    }
+    else {
+	for(i=2; i<num; i++) {
+	    if(num % i == 0) {
+		count++;
+		break;
+	    }
+	}
+	if(count>0) {
+	    printf("Not a prime number!");
+	}
+	else {
+	    printf("Prime number!");
+	}
+    }
+}
+
+void isarmstrong(int num) {
+    int d1, d2, d3, d4, d5, tempnum, sum;
+
+    tempnum = num;
+
+    if(num < 999 && num > 99) {
+        d1 = tempnum / 100;
+        tempnum = tempnum % 100;
+	d2 = tempnum / 10;
+	tempnum = tempnum % 10;
+	d3 = tempnum;
+	d4 = 0;
+	d5 = 0;
+    }
+    else if(num < 9999 && num > 999) {
+	d1 = tempnum / 1000;
+	tempnum = tempnum % 1000;
+	d2 = tempnum / 100;
+	tempnum = tempnum % 100;
+	d3 = tempnum / 10;
+	tempnum = tempnum % 10;
+	d4 = tempnum;
+	d5 = 0;
+    }
+    else if(num < 32767 && num > 9999) {
+	d1 = tempnum / 10000;
+	tempnum = tempnum % 10000;
+	d2 = tempnum / 1000;
+	tempnum = tempnum % 1000;
+	d3 = tempnum / 100;
+	tempnum = tempnum % 100;
+	d4 = tempnum / 10;
+	tempnum = tempnum % 10;
+	d5 = tempnum;
+    }
+    else {
+	printf("Error! Enter a positive number...");
+	return;
+    }
+
+    sum = (d1*d1*d1) + (d2*d2*d2) + (d3*d3*d3) + (d4*d4*d4) + (d5*d5*d5);
+
+    if(num == sum) {
+	printf("Armstrong number!");
+    }
+    else {
+	printf("Not an Armstrong number!");
+    }
+}
+
+void fibonacci(int num) {
+    int i, next, first = 0, second = 1;
+
+    for(i=0; i<num; i++) {
+	if(i<=1) {
+	    next = i;
+	}
+	else {
+	    next = first + second;
+	    first = second;
+	    second = next;
+	}
+
+	printf("%d ", next);
+    }
+}
+
+void main() {
+    int num, result;
+    char str[25], tempstr[25];
+
+    clrscr();
+
+    inputnum:
+    printf("Enter a number for factorial: ");
+    scanf("%d", &num);
+    fflush(stdin);
+
+    if(num < 0) {
+	printf("Error! Enter a positive number...\n");
+	goto inputnum;
+    }
+
+    result = factorial(num);
+    printf("The factorial of %d: %d", num, result);
+
+
+    printf("\n\nEnter a string to print in reverse order: ");
+    gets(str);
+
+    reversestr(str);
+
+    printf("Reversed string: %s", str);
+
+
+    printf("\n\nEnter a string to check if its a palindrome or not: ");
+    gets(str);
+
+    strcpy(tempstr, str);
+
+    reversestr(tempstr);
+
+    if(strcmp(str,tempstr) == 0) {
+	printf("This string is a palindrome!");
+    }
+    else {
+	printf("This string is not a palindrome!");
+    }
+
+
+    printf("\n\nEnter a number to check if it is a prime number or not: ");
+    scanf("%d", &num);
+
+    isprime(num);
+
+
+    printf("\n\nEnter a number to check if it is armstrong number or not: ");
+    scanf("%d", &num);
+
+    isarmstrong(num);
+
+
+    printf("\n\nEnter a number for how long you want fibonacci series: ");
+    scanf("%d", &num);
+
+    fibonacci(num);
+}
+</pre><p><b>output:</b> Enter number factorial : 5 <br> 
+The factorial of 5 : 120 <br>
+Enter a string to print in Reverse order : olleH <br>
+reversed string :Hello <br>
+Enter a string to check if its a palindrome or not : madam <br>
+This string is a palindrome <br>
+Enter a number to check if it a prime number or not ;13 <br>
+Prime number ! <br>
+Enter a number to check if it is armstrong number or not : 153 <br>
+Armsrong number ! <br>
+Enter a number for how long you want fibonacci series :7 <br>
+0 1 1 2 3 5 8 <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 5: Swap numbers using Call by address ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+void swap(int *a, int *b) {
+    int temp;
+    
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void main() {
+    int *num1, *num2;
+
+    clrscr();
+
+    printf("Enter first number: ");
+    scanf("%d", num1);
+    printf("Enter second number: ");
+    scanf("%d", num2);
+
+    swap(num1, num2);
+
+    printf("After swapping:\n");
+    printf("First number: %d\n", *num1);
+    printf("Second number: %d", *num2);
+}
+</pre><p><b>output:</b> Enter first number: 5 <br>
+    Enter second number: 10 <br>
+    <br>    
+    After swapping: <br>
+    First number: 10 <br>
+    Second number: 5 <br>
+
+</p>
+</details><br>
+<details>
+<summary>Question 6: Swap numbers using Call by function ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+vvoid swap(int a, int b) {
+    int temp;
+
+    temp = a;
+    a = b;
+    b = temp;
+
+    printf("\nAfter swapping inside function:\n");
+    printf("First number: %d\n", a);
+    printf("Second number: %d\n", b);
+}
+
+void main() {
+    int num1, num2;
+
+    clrscr();
+
+    printf("Enter first number: ");
+    scanf("%d", &num1);
+    printf("Enter second number: ");
+    scanf("%d", &num2);
+
+    swap(num1, num2);
+
+    printf("\nAfter swapping in main:\n");
+    printf("First number: %d\n", num1);
+    printf("Second number: %d", num2);
+}</pre><p><b>output:</b> Enter first number: 7 <br>
+    Enter second number: 12 <br>
+ <br>
+    After swapping in main: <br>
+    First number: 7 <br>
+    Second number: 12 <br>
+
+</p>
+</details><br>
+
+<details>
+<summary>Question 7: Make function for find out power of number, enter the number and power from user ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+
+int power(int base, int exp) {
+    int result = 1, i;
+
+    for (i = 0; i < exp; i++) {
+        result = result * base;
+    }
+
+    return result;
+}
+
+void main() {
+    int base, exp, result;
+
+    clrscr();
+
+    printf("Enter a number: ");
+    scanf("%d", &base);
+    printf("Enter the power: ");
+    scanf("%d", &exp);
+
+    result = power(base, exp);
+
+    printf("%d to the power of %d: %d", base, exp, result);
+
+}
+}
+</pre><p><b>output:</b> Enter a number: 3
+Enter the power: 4 <br>
+ <br>
+3 to the power of 4: 81 <br>
+<br>
+</p>
+</details><br>
+
+<details>
+<summary>Question 8: Make function for find out Cube a user entered number ?</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+int cube(int n) {
+    return n * n * n;
+}
+
+void main() {
+    int num;
+
+    clrscr();
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    printf("The cube of %d: %d", num, cube(num));
+}</pre><p><b>output:</b> EnteEnter a number: 5 <br>
+  The cube of 5: 125 <br>
+<br>
+    Enter elements : 2 3 4 <br>
+    square of elements : 4 9 16 <br>
+</p>
+</details><br>
+</h3>
+
+<footer>
+<center><a href="c_link.html">back</a></center>
+</footer>
+</body>
+</html>

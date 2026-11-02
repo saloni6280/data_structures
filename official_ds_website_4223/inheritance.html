@@ -1,0 +1,446 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>INHERITANCE</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1:Write a C++ program to create a class called Animal with a method called makeSound(). Create a derived class called Cat that overrides the makeSound() method to bark.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+class Animal {
+public:
+    void makeSound() {
+        cout<<"Animal makes sound"<<endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void makeSound() {
+        cout<<"Cat barks"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Cat c;
+    c.makeSound();
+    getch();
+}
+</pre><p><b>output:</b>Cat barks</p>
+</details><br>
+
+<details>
+<summary>Question 2:Write a C++ program to create a class called Vehicle with a method called drive(). Create a derived class called Car that overrides the drive() method to print "Repairing a car".</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+
+class Vehicle {
+public:
+    void drive() {
+        cout<<"Driving vehicle"<<endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void drive() {
+        cout<<"Repairing a car"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Car c;
+    c.drive();
+    getch();
+}</pre><p><b>output:</b>Repairing a car</p>
+</details><br>
+
+
+<details>
+<summary>Question 3:  Write a C++ program to create a class called Shape with a method called getArea(). Create a derived class called Rectangle that overrides the getArea() method to calculate the area of a rectangle.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+
+class Shape {
+public:
+    virtual void getArea() {
+        cout<<"Area not defined"<<endl;
+    }
+};
+
+class Rectangle : public Shape {
+    int l, b;
+public:
+    void input() {
+        cout<<"Enter length and breadth: ";
+        cin>>l>>b;
+    }
+
+    void getArea() {
+        cout<<"Area of Rectangle = "<<l*b<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Rectangle r;
+    r.input();
+    r.getArea();
+    getch();
+}
+</pre><p><b>output:</b>Enter length and breadth: 5 4<br>
+Area of Rectangle = 20</p>
+</details><br>
+
+
+<details>
+<summary>Question 4:Write a C++ program to create a class called Employee with methods called work() and getSalary(). Create a derived class called HRManager that overrides the work() method and adds a new method called addEmployee().</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+class Employee {
+public:
+    void work() {
+        cout<<"Employee working"<<endl;
+    }
+    void getSalary() {
+        cout<<"Salary is 30000"<<endl;
+    }
+};
+
+class HRManager : public Employee {
+public:
+    void work() {
+        cout<<"HR Manager managing employees"<<endl;
+    }
+    void addEmployee() {
+        cout<<"Employee added"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    HRManager h;
+    h.work();
+    h.getSalary();
+    h.addEmployee();
+    getch();
+}</pre><p><b>output:</b>HR Manager managing employees<br>
+Salary is 30000<br>
+Employee added</p><br>
+</details><br>
+
+
+
+<details>
+<summary>Question 5:Write a C++ program to create a class known as "BankAccount" with methods called deposit() and withdraw(). Create a derived class called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+
+class BankAccount {
+protected:
+    float balance;
+public:
+    void deposit(float amt) {
+        balance += amt;
+    }
+    void withdraw(float amt) {
+        balance -= amt;
+    }
+    void show() {
+        cout<<"Balance: "<<balance<<endl;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    void withdraw(float amt) {
+        if(balance - amt < 100) {
+            cout<<"Cannot withdraw. Minimum balance required!"<<endl;
+        } else {
+            balance -= amt;
+        }
+    }
+};
+
+void main() {
+    clrscr();
+    SavingsAccount s;
+    s.deposit(500);
+    s.withdraw(450);
+    s.show();
+    getch();
+}
+</pre><p><b>output:</b>Cannot withdraw. Minimum balance required!<br>
+Balance: 500</p>
+</details><br>
+
+
+<details>
+<summary>Question 6:Write a C++ program to create a class called Animal with a method named move(). Create a derived class called Cheetah that overrides the move() method to run.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+class Animal {
+public:
+    void move() {
+        cout<<"Animal moves"<<endl;
+    }
+};
+
+class Cheetah : public Animal {
+public:
+    void move() {
+        cout<<"Cheetah runs fast"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Cheetah c;
+    c.move();
+    getch();
+}</pre><p><b>Cheetah runs fast</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 7:Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;string>
+
+
+class Person {
+protected:
+    char fname[20], lname[20];
+public:
+    void input() {
+        cout<<"Enter first name and last name: ";
+        cin>>fname>>lname;
+    }
+
+    void getFirstName() {
+        cout<<"First Name: "<<fname<<endl;
+    }
+
+    virtual void getLastName() {
+        cout<<"Last Name: "<<lname<<endl;
+    }
+};
+
+class Employee : public Person {
+    int empId;
+    char title[20];
+public:
+    void getData() {
+        cout<<"Enter Employee ID and Title: ";
+        cin>>empId>>title;
+    }
+
+    void getEmployeeId() {
+        cout<<"Employee ID: "<<empId<<endl;
+    }
+
+    void getLastName() {
+        cout<<"Last Name with Title: "<<lname<<" ("<<title<<")"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Employee e;
+    e.input();
+    e.getData();
+    e.getFirstName();
+    e.getLastName();
+    e.getEmployeeId();
+    getch();
+}</pre><p><b>output:</b>Rahul Sharma<br>
+101 Manager</p>
+</details><br>
+
+<details>
+<summary>Question 8: Write a C++ program to create a class called Shape with methods called getPerimeter() and getArea(). Create a derived class called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+class Shape {
+public:
+    virtual void getArea() {}
+    virtual void getPerimeter() {}
+};
+
+class Circle : public Shape {
+    float r;
+public:
+    void input() {
+        cout<<"Enter radius: ";
+        cin>>r;
+    }
+
+    void getArea() {
+        cout<<"Area: "<<3.14*r*r<<endl;
+    }
+
+    void getPerimeter() {
+        cout<<"Perimeter: "<<2*3.14*r<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Circle c;
+    c.input();
+    c.getArea();
+    c.getPerimeter();
+    getch();
+}
+</pre><p><b>output:</b>Enter radius: 5<br>
+Area: 78.5<br>
+Perimeter: 31.4</p>
+</details><br>
+
+
+<details>
+<summary>Question 9: Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+class Vehicle {
+protected:
+    char make[20], model[20];
+    int year;
+    float fuel;
+public:
+    void input() {
+        cout<<"Enter make, model, year, fuel: ";
+        cin>>make>>model>>year>>fuel;
+    }
+
+    void show() {
+        cout<<make<<" "<<model<<" "<<year<<" Fuel:"<<fuel<<endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void speed() {
+        cout<<"Max speed: 180 km/h"<<endl;
+    }
+};
+
+class Truck : public Vehicle {
+public:
+    void speed() {
+        cout<<"Max speed: 120 km/h"<<endl;
+    }
+};
+
+class Motorcycle : public Vehicle {
+public:
+    void speed() {
+        cout<<"Max speed: 150 km/h"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Car c;
+    c.input();
+    c.show();
+    c.speed();
+    getch();
+}</pre><p><b>output:</b>Input:Toyota Corolla 2020 15</p>
+</details><br>
+
+
+<details>
+<summary>Question 10:Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects.</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+class Employee {
+protected:
+    char name[20];
+    float salary;
+public:
+    void input() {
+        cout<<"Enter name and salary: ";
+        cin>>name>>salary;
+    }
+
+    void bonus() {
+        cout<<"Bonus: "<<salary*0.1<<endl;
+    }
+};
+
+class Manager : public Employee {
+public:
+    void report() {
+        cout<<"Manager report generated"<<endl;
+    }
+};
+
+class Developer : public Employee {
+public:
+    void project() {
+        cout<<"Developer working on project"<<endl;
+    }
+};
+
+class Programmer : public Employee {
+public:
+    void code() {
+        cout<<"Programmer coding"<<endl;
+    }
+};
+
+void main() {
+    clrscr();
+    Manager m;
+    m.input();
+    m.bonus();
+    m.report();
+    getch();
+}</pre><p><b>output:</b>Enter name and salary: Amit 50000<br>
+Bonus: 5000<br>
+Manager report generated</p>
+</details><br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+<footer><center><a href="cpp_link.html">back</a></center></footer>
+</body>
+</html>
+

@@ -1,0 +1,426 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+
+<header>
+<h1>MULTI DIMENSION ARRAY</h1>
+
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+<summary>Question 1:  Enter the Matrix of rows and columns entered by the user and print in matrix format</summary><pre>
+#include&lt;iostream.h>
+#Include&lt;conio.h>
+
+void main() {
+    clrscr();
+    int a[10][10], r, c;
+
+    cout<<"Enter rows and columns: ";
+    cin>>r>>c;
+
+    cout<<"Enter matrix:\n";
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    cout<<"Matrix is:\n";
+    for(i=0;i<r;i++) {
+        for(int j=0;j<c;j++)
+            cout<<a[i][j]<<" ";
+        cout<<endl;
+    }
+    getch();}
+</pre><p><b>output:Enter rows and columns: 2 2<br>
+Enter matrix:
+1 2<br>
+3 4<br>
+Matrix is:<br>
+1 2
+3 4<br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 2:  Program to Add Two Matrices</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], b[10][10], c[10][10], r, col;
+
+    cout<<"Enter rows and columns: ";
+    cin>>r>>col;
+
+    cout<<"Enter Matrix A:\n";
+    for(int i=0;i<r;i++)
+        for(int j=0;j<col;j++)
+            cin>>a[i][j];
+
+    cout<<"Enter Matrix B:\n";
+    for(i=0;i<r;i++)
+        for(int j=0;j<col;j++)
+            cin>>b[i][j];
+
+    for(i=0;i<r;i++)
+        for(int j=0;j<col;j++)
+            c[i][j]=a[i][j]+b[i][j];
+
+    cout<<"Sum Matrix:\n";
+    for(i=0;i<r;i++) {
+        for(int j=0;j<col;j++)
+            cout<<c[i][j]<<" ";
+        cout<<endl;
+    }
+    getch();
+}</pre><p><b>output:</b>Sum Matrix:<br>
+6 8<br>
+10 12 <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 3: Program to Multiply Two Matrices</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], b[10][10], c[10][10];
+    int r1,c1,r2,c2;
+
+    cout<<"Enter rows & cols of A: ";
+    cin>>r1>>c1;
+    cout<<"Enter rows & cols of B: ";
+    cin>>r2>>c2;
+
+    if(c1!=r2) {
+        cout<<"Multiplication not possible";
+        getch();
+        return;
+    }
+
+    for(int i=0;i<r1;i++)
+        for(int j=0;j<c1;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<r2;i++)
+        for(int j=0;j<c2;j++)
+            cin>>b[i][j];
+
+    for(i=0;i<r1;i++)
+        for(int j=0;j<c2;j++) {
+            c[i][j]=0;
+            for(int k=0;k<c1;k++)
+                c[i][j]+=a[i][k]*b[k][j];
+        }
+
+    cout<<"Result:\n";
+    for(i=0;i<r1;i++) {
+        for(int j=0;j<c2;j++)
+            cout<<c[i][j]<<" ";
+        cout<<endl;
+    }
+    getch();
+}</pre><p><b>output:</b> Result:
+19 22
+43 50 <br>
+</p>
+
+</details>
+<br>
+
+<details>
+<summary>Question 4: Program to subtract the two matrices</summary><pre>#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+    int arr1[100], arr2[100], n, i;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements:\n");
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr1[i]);
+        
+    for(i = 0; i < n; i++)
+        arr2[i] = arr1[i] ;
+        
+    printf("Reversed copied array:\n");
+    for(i = n-1; i >= 0; i--)
+        printf("%d ", arr2[i]);
+}
+</pre><p><b>output:</b> Subtraction:<br>
+-4 -4<br>
+-4 -4</p>
+</details><br>
+
+
+<details>
+<summary>Question 5: Program to determine whether two matrices are equal</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], b[10][10], r,c,flag=1;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>b[i][j];
+
+    for(i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            if(a[i][j]!=b[i][j])
+                flag=0;
+
+    if(flag)
+        cout<<"Matrices are equal";
+    else
+        cout<<"Not equal";
+
+    getch();
+}</pre><p><b>output:</b> matrices are equal
+</p>
+</details><br>
+
+<details>
+<summary>Question 6:Program to display the lower triangular matrix</summary><pre>#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    clrscr();
+    int a[10][10], r,c;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    cout<<"Lower Triangular:\n";
+    for(i=0;i<r;i++) {
+        for(int j=0;j<c;j++) {
+            if(i>=j)
+                cout<<a[i][j]<<" ";
+            else
+                cout<<"0 ";
+        }
+        cout<<endl;
+    }
+    getch();
+}</pre><p><b>output:</b> 1 0<br>
+3 4
+</p>
+</details><br>
+
+<details>
+<summary>Question 7: Program to display the upper triangular matrix</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], r,c;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    cout<<"Upper Triangular:\n";
+    for(i=0;i<r;i++) {
+        for(int j=0;j<c;j++) {
+            if(i<=j)
+                cout<<a[i][j]<<" ";
+            else
+                cout<<"0 ";
+        }
+        cout<<endl;
+    }
+    getch();
+}</pre><p><b>output:</b> 1 2<br>
+0 4
+</p>
+</details><br>
+<details>
+<summary>Question 8:Program to find the frequency of odd & even numbers in the given matrix</summary><pre>
+#include&lt;conio.h>
+#include&lt;iostream.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], r,c,odd=0,even=0;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            if(a[i][j]%2==0)
+                even++;
+            else
+                odd++;
+
+    cout<<"Even="<<even<<" Odd="<<odd;
+    getch();
+}</pre><p><b>output:</b>
+    Even=2 Odd=2 <br>
+</p>
+</details><br>
+
+<details>
+<summary>Question 9:  Program to find the sum of each row and each column of a matrix</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    clrscr();
+    int a[10][10], r,c;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<r;i++) {
+        int sum=0;
+        for(int j=0;j<c;j++)
+            sum+=a[i][j];
+        cout<<"Row "<<i<<"="<<sum<<endl;
+    }
+
+    for(int j=0;j<c;j++) {
+        int sum=0;
+        for(int i=0;i<r;i++)
+            sum+=a[i][j];
+        cout<<"Col "<<j<<"="<<sum<<endl;
+    }
+    getch();
+}
+</pre><p><b>output:</b>Row 0=3<br>
+Row 1=7<br>
+Col 0=4<br>
+Col 1=6 <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 10: Program to determine whether a given matrix is an identity matrix</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+void main() {
+    clrscr();
+    int a[10][10], n,flag=1;
+
+    cin>>n;
+
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<n;i++)
+        for(int j=0;j<n;j++) {
+            if(i==j && a[i][j]!=1) flag=0;
+            if(i!=j && a[i][j]!=0) flag=0;
+        }
+
+    if(flag)
+        cout<<"Identity Matrix";
+    else
+        cout<<"Not Identity";
+
+    getch();
+}</pre><p><b>output:</b>Identity Matrix</p>
+</details><br>
+
+
+<details>
+<summary>Question 11:  Program to Transpose matrix</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], t[10][10], r,c;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            cin>>a[i][j];
+
+    for(i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+            t[j][i]=a[i][j];
+
+    cout<<"Transpose:\n";
+    for(i=0;i<c;i++) {
+        for(int j=0;j<r;j++)
+            cout<<t[i][j]<<" ";
+        cout<<endl;
+    }
+    getch();
+}</pre><p><b>output:</b>1 3<br>
+2 4 <br> 
+</p>
+</details><br>
+<details>
+<summary>Question 12:Program to determine whether a given matrix is a sparse matrix</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+
+void main() {
+    clrscr();
+    int a[10][10], r,c,zero=0;
+
+    cin>>r>>c;
+
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++) {
+            cin>>a[i][j];
+            if(a[i][j]==0)
+                zero++;
+        }
+
+    if(zero > (r*c)/2)
+        cout<<"Sparse Matrix";
+    else
+        cout<<"Not Sparse";
+
+    getch();
+}</pre><p><b>output: </b> Sparse Matrix <br>
+</details> <br>
+<br></h3>
+
+<footer>
+<center><a href="cpp_link.html">back</a></center>
+</footer>
+</body>
+</html>

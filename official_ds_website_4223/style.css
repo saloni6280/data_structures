@@ -1,0 +1,126 @@
+body {
+    font-family: Arial;
+    background-color: #f7f8ef;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: #c5cc9b;
+    color: #263018;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #a5af75;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin-bottom: 0;
+}
+
+marquee {
+    color: #4d5931;
+    font-weight: bold;
+    background-color: #e8ebd5;
+    padding: 10px;
+}
+
+h3 {
+    margin: 20px;
+}
+
+details {
+    background-color: white;
+    border: 1px solid #e5a5b2;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+summary {
+    background-color: #e4e8cf;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+summary:hover {
+    background-color: #d5ddb4;
+}
+
+pre {
+    background-color: #f7f8ef;
+    border: 1px solid #dce1c5;
+    padding: 15px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: #596638;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.center {
+    text-align: center;
+    margin: 25px;
+}
+
+footer {
+    background-color: #c5cc9b;
+    color: #263018;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+ol{
+  background-color: white;
+    border: 1px solid #e5a5b2;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 15px;
+    padding-left:40px;
+list-style-type:decimal;
+}
+ol li{
+ background-color: #e4e8cf;
+    padding: 15 px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    list-style-position:outside;
+}
+ol li:hover{
+background-color: #d5ddb4;
+}
+}
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 8px 20px rgba(0,0,0,0,3);
+background_color:pink;
+color:black;
+padding:10px 20px;
+text-decoration:none;
+border-radius:5px;
+display:inline-block;
+font-family:times new roman;
+font-size-18px;
+border:200px;
+border-radius:40px;
+padding:15px 35px;
+cursor:pointer;
+}

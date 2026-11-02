@@ -1,0 +1,913 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>SINGLE DIMENSION ARRAY</h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: Enter an array from user and display all the value ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void input(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    input(a, n);
+
+    printf("Array elements are: ");
+    display(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 10 20 30 40 50<br>
+Array elements are: 10 20 30 40 50</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 2: Enter an array from user and print the array in reverse order ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void input(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+}
+
+void reverseDisplay(int a[], int n)
+{
+    int i;
+    for(i = n - 1; i >= 0; i--)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    input(a, n);
+
+    printf("Array in reverse order: ");
+    reverseDisplay(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 1 2 3 4 5<br>
+Array in reverse order: 5 4 3 2 1</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 3: Enter an array from user and copy the array into second array?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void input(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+}
+
+void copyArray(int a[], int b[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        b[i] = a[i];
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], b[MAX], n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    input(a, n);
+
+    copyArray(a, b, n);
+    printf("Second array: ");
+    display(b, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 4<br>
+Enter array elements: 5 10 15 20<br>
+Second array: 5 10 15 20</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 4: Enter an array from user and copy it into another array in reverse order?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void input(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+}
+
+void reverseCopy(int a[], int b[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        b[i] = a[n - 1 - i];
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], b[MAX], n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    input(a, n);
+
+    reverseCopy(a, b, n);
+    printf("Second array in reverse order: ");
+    display(b, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 2 4 6 8 10<br>
+Second array in reverse order: 10 8 6 4 2</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 5: enter an array from user and print the number which is even ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void printEven(int a[], int n)
+{
+    int i;
+    printf("Even numbers: ");
+    for(i = 0; i < n; i++)
+        if(a[i] % 2 == 0)
+            printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printEven(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 1 2 3 4 6<br>
+Even numbers: 2 4 6</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 6: Enter an array from user and print the number which is positive ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void printPositive(int a[], int n)
+{
+    int i;
+    printf("Positive numbers: ");
+    for(i = 0; i < n; i++)
+        if(a[i] > 0)
+            printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printPositive(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: -3 0 5 8 -2<br>
+Positive numbers: 5 8</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 7: Enter an array from user and square all the values of array ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void square(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        a[i] = a[i] * a[i];
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    square(a, n);
+    printf("Square of all values: ");
+    display(a, n);
+    return 0;
+}
+
+</pre><p><b>output:Enter size of array: 4<br>
+Enter array elements: 2 3 4 5<br>
+Square of all values: 4 9 16 25</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 8: Enter an array from user and find maximum and minimum value?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void findMinMax(int a[], int n)
+{
+    int i, min, max;
+    min = max = a[0];
+
+    for(i = 1; i < n; i++)
+    {
+        if(a[i] < min)
+            min = a[i];
+        if(a[i] > max)
+            max = a[i];
+    }
+    printf("Minimum value = %d\n", min);
+    printf("Maximum value = %d\n", max);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    findMinMax(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 8 2 10 4 6<br>
+Minimum value = 2<br>
+Maximum value = 10</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 9: Enter an array from user and find the k-th smallest value?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void kthSmallest(int a[], int n, int k)
+{
+    int i, j, temp;
+    for(i = 0; i < n - 1; i++)
+    {
+        for(j = 0; j < n - 1 - i; j++)
+        {
+            if(a[j] > a[j + 1])
+            {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+
+    if(k >= 1 && k <= n)
+        printf("%dth smallest value = %d", k, a[k - 1]);
+    else
+        printf("Invalid value of k");
+}
+
+int main()
+{
+    int a[MAX], n, k, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+    printf("Enter k: ");
+    scanf("%d", &k);
+
+    kthSmallest(a, n, k);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 7 2 9 1 5<br>
+Enter k: 3<br>
+3th smallest value = 5</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 10: Enter an array from user and add all values ?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+int addArray(int a[], int n)
+{
+    int i, sum = 0;
+    for(i = 0; i < n; i++)
+        sum = sum + a[i];
+    return sum;
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Sum of array values = %d", addArray(a, n));
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 4<br>
+Enter array elements: 10 20 30 40<br>
+Sum of array values = 100</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 11: Enter an array from user and find the duplicate values?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void printDuplicates(int a[], int n)
+{
+    int i, j, found;
+    printf("Duplicate values: ");
+    for(i = 0; i < n; i++)
+    {
+        found = 0;
+        for(j = 0; j < i; j++)
+            if(a[i] == a[j])
+                found = 1;
+
+        if(found == 0)
+        {
+            for(j = i + 1; j < n; j++)
+                if(a[i] == a[j])
+                {
+                    printf("%d ", a[i]);
+                    break;
+                }
+        }
+    }
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printDuplicates(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 7
+Enter array elements: 2 4 2 5 4 6 2
+Duplicate values: 2 4</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 12: Enter an array from user and remove the duplicate values and fill with zero?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void removeDuplicates(int a[], int n)
+{
+    int i, j;
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < i; j++)
+        {
+            if(a[i] == a[j])
+            {
+                a[i] = 0;
+                break;
+            }
+        }
+    }
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    removeDuplicates(a, n);
+    printf("Array after replacing duplicate occurrences with zero: ");
+    display(a, n);
+    return 0;
+}
+
+</pre><p><b>output:Enter size of array: 6<br>
+Enter array elements: 2 4 2 5 4 6<br>
+Array after replacing duplicate occurrences with zero: 2 4 0 5 0 6</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 13: Enter an array from user and count the duplicate values?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void countDuplicates(int a[], int n)
+{
+    int i, j, count, already;
+    int total = 0;
+
+    for(i = 0; i < n; i++)
+    {
+        already = 0;
+        for(j = 0; j < i; j++)
+            if(a[i] == a[j])
+                already = 1;
+
+        if(already == 0)
+        {
+            count = 0;
+            for(j = 0; j < n; j++)
+                if(a[i] == a[j])
+                    count++;
+
+            if(count > 1)
+            {
+                printf("%d occurs %d times\n", a[i], count);
+                total = total + count - 1;
+            }
+        }
+    }
+    printf("Total duplicate occurrences = %d", total);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    countDuplicates(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 6<br>
+Enter array elements: 2 4 2 5 4 2<br>
+2 occurs 3 times<br>
+4 occurs 2 times<br>
+Total duplicate occurrences = 3</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 14: Enter an array from user and print all possible combinations of the elements?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 20
+
+void combinations(int a[], int n)
+{
+    int i, j, total, bit;
+    total = 1 << n;
+
+    printf("All possible non-empty combinations:\n");
+    for(i = 1; i < total; i++)
+    {
+        printf("{ ");
+        for(j = 0; j < n; j++)
+        {
+            bit = 1 << j;
+            if(i & bit)
+                printf("%d ", a[j]);
+        }
+        printf("}\n");
+    }
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array (maximum 20): ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    combinations(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array (maximum 20): 3<br>
+Enter array elements: 1 2 3<br>
+All possible non-empty combinations:<br>
+{ 1 }<br>
+{ 2 }<br>
+{ 1 2 }<br>
+{ 3 }<br>
+{ 1 3 }<br>
+{ 2 3 }<br>
+{ 1 2 3 }</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 15: Enter an array from user and print all the palindrome numbers?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+int isPalindrome(int num)
+{
+    int original, reverse = 0, digit;
+    original = num;
+
+    if(num < 0)
+        return 0;
+
+    while(num > 0)
+    {
+        digit = num % 10;
+        reverse = reverse * 10 + digit;
+        num = num / 10;
+    }
+
+    if(original == reverse)
+        return 1;
+    else
+        return 0;
+}
+
+void printPalindromes(int a[], int n)
+{
+    int i;
+    printf("Palindrome numbers: ");
+    for(i = 0; i < n; i++)
+        if(isPalindrome(a[i]))
+            printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printPalindromes(a, n);
+    return 0;
+}
+
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements: 121 34 55 123 7<br>
+Palindrome numbers: 121 55 7</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 16: Enter two arrays from the user and check they are same or not?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+int sameArray(int a[], int b[], int n, int m)
+{
+    int i;
+    if(n != m)
+        return 0;
+
+    for(i = 0; i < n; i++)
+        if(a[i] != b[i])
+            return 0;
+
+    return 1;
+}
+
+int main()
+{
+    int a[MAX], b[MAX], n, m, i;
+    printf("Enter size of first array: ");
+    scanf("%d", &n);
+    printf("Enter first array: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Enter size of second array: ");
+    scanf("%d", &m);
+    printf("Enter second array: ");
+    for(i = 0; i < m; i++)
+        scanf("%d", &b[i]);
+
+    if(sameArray(a, b, n, m))
+        printf("Both arrays are same");
+    else
+        printf("Both arrays are not same");
+
+    return 0;
+}
+</pre><p><b>output:Enter size of first array: 3<br>
+Enter first array: 1 2 3<br>
+Enter size of second array: 3<br>
+Enter second array: 1 2 3<br>
+Both arrays are same</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 17: Merge the two sorted arrays into one array but in sorted order?
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void mergeSorted(int a[], int n, int b[], int m, int c[])
+{
+    int i = 0, j = 0, k = 0;
+
+    while(i < n && j < m)
+    {
+        if(a[i] < b[j])
+            c[k++] = a[i++];
+        else
+            c[k++] = b[j++];
+    }
+
+    while(i < n)
+        c[k++] = a[i++];
+
+    while(j < m)
+        c[k++] = b[j++];
+}
+
+void display(int a[], int n)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
+
+int main()
+{
+    int a[MAX], b[MAX], c[2 * MAX];
+    int n, m, i;
+    printf("Enter size of first sorted array: ");
+    scanf("%d", &n);
+    printf("Enter first array in sorted order: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Enter size of second sorted array: ");
+    scanf("%d", &m);
+    printf("Enter second array in sorted order: ");
+    for(i = 0; i < m; i++)
+        scanf("%d", &b[i]);
+
+    mergeSorted(a, n, b, m, c);
+    printf("Merged sorted array: ");
+    display(c, n + m);
+    return 0;
+}
+
+</pre><p><b>output:Enter size of first sorted array: 3<br>
+Enter first array in sorted order: 1 4 7<br>
+Enter size of second sorted array: 3<br>
+Enter second array in sorted order: 2 3 8<br>
+Merged sorted array: 1 2 3 4 7 8</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 18: Find the local minima in the array? (An element in an array is a local minima if it less than the element after it, and the element before it)
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void localMinima(int a[], int n)
+{
+    int i, found = 0;
+    printf("Local minima: ");
+
+    for(i = 1; i < n - 1; i++)
+    {
+        if(a[i] < a[i - 1] && a[i] < a[i + 1])
+        {
+            printf("%d ", a[i]);
+            found = 1;
+        }
+    }
+
+    if(found == 0)
+        printf("No local minima found");
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    localMinima(a, n);
+    return 0;
+}
+
+</pre><p><b>output:Enter size of array: 7<br>
+Enter array elements: 9 5 8 3 6 2 7<br>
+Local minima: 5 3 2<br>
+</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 19: Find the local maxima in the array? (An element in an array is a local maxima if it greater than the element after it, and the element before it)
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+void localMaxima(int a[], int n)
+{
+    int i, found = 0;
+    printf("Local maxima: ");
+
+    for(i = 1; i < n - 1; i++)
+    {
+        if(a[i] > a[i - 1] && a[i] > a[i + 1])
+        {
+            printf("%d ", a[i]);
+            found = 1;
+        }
+    }
+
+    if(found == 0)
+        printf("No local maxima found");
+}
+
+int main()
+{
+    int a[MAX], n, i;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    localMaxima(a, n);
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 7<br>
+Enter array elements: 1 5 2 8 3 9 4<br>
+Local maxima: 5 8 9<br>
+</b>
+</p>
+</details><br>
+
+
+
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

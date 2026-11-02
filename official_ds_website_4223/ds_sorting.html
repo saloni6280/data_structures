@@ -1,0 +1,1257 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>SORTING ALGORITHM</h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+void selectionSort(int a[], int n)
+{
+    int i, j, min, temp;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        min = i;
+
+        // Find the smallest element
+        for (j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[min])
+                min = j;
+        }
+
+        // Swap elements
+        temp = a[i];
+        a[i] = a[min];
+        a[min] = temp;
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    selectionSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 5 3 8 1 2<br>
+Sorted array: 1 2 3 5 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 2: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+void selectionSort(int a[], int n, int i)
+{
+    int j, min, temp;
+
+    if (i == n - 1)
+        return;
+
+    min = i;
+
+    // Find smallest element
+    for (j = i + 1; j < n; j++)
+    {
+        if (a[j] < a[min])
+            min = j;
+    }
+
+    // Swap elements
+    temp = a[i];
+    a[i] = a[min];
+    a[min] = temp;
+
+    // Recursive function call
+    selectionSort(a, n, i + 1);
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    selectionSort(a, n, 0);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 9 4 2 7 1<br>
+Sorted array: 1 2 4 7 9</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 3: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM BUBBLE SORT ALGORITHM THROUGH ITERATION. 
+</summary><pre>
+#include&lt;stdio.h>
+void bubbleSort(int a[], int n)
+{
+    int i, j, temp;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (a[j] > a[j + 1])
+            {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    bubbleSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 5 1 4 2 8<br>
+Sorted array: 1 2 4 5 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 4:ENTER A INTEGER ARRAY FROM THE USER AND PERFORM BUBBLE SORT ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+void bubbleSort(int a[], int n)
+{
+    int i, temp;
+
+    if (n == 1)
+        return;
+
+    // One pass of bubble sort
+    for (i = 0; i < n - 1; i++)
+    {
+        if (a[i] > a[i + 1])
+        {
+            temp = a[i];
+            a[i] = a[i + 1];
+            a[i + 1] = temp;
+        }
+    }
+
+    // Recursive call
+    bubbleSort(a, n - 1);
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    bubbleSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 6 3 9 2 1<br>
+Sorted array: 1 2 3 6 9</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 5: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH ITERATION. 
+</summary><pre>
+#include&lt;stdio.h>
+void insertionSort(int a[], int n)
+{
+    int i, j, key;
+
+    for (i = 1; i < n; i++)
+    {
+        key = a[i];
+        j = i - 1;
+
+        // Move greater elements forward
+        while (j >= 0 && a[j] > key)
+        {
+            a[j + 1] = a[j];
+            j--;
+        }
+
+        a[j + 1] = key;
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    insertionSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 8 4 3 7 1<br>
+Sorted array: 1 3 4 7 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 6: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+void insertionSort(int a[], int n)
+{
+    int key, j;
+
+    if (n <= 1)
+        return;
+
+    // Sort previous elements
+    insertionSort(a, n - 1);
+
+    key = a[n - 1];
+    j = n - 2;
+
+    // Insert element at correct position
+    while (j >= 0 && a[j] > key)
+    {
+        a[j + 1] = a[j];
+        j--;
+    }
+
+    a[j + 1] = key;
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    insertionSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 7 2 9 1 5<br>
+Sorted array: 1 2 5 7 9</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 7: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM MERGE SORT ALGORITHM THROUGH ITERATION
+</summary><pre>
+#include&lt;stdio.h>
+void merge(int a[], int l, int m, int r)
+{
+    int temp[100], i = l, j = m + 1, k = 0;
+
+    while (i <= m && j <= r)
+    {
+        if (a[i] < a[j])
+            temp[k++] = a[i++];
+        else
+            temp[k++] = a[j++];
+    }
+
+    while (i <= m)
+        temp[k++] = a[i++];
+
+    while (j <= r)
+        temp[k++] = a[j++];
+
+    for (i = l, k = 0; i <= r; i++, k++)
+        a[i] = temp[k];
+}
+
+void mergeSort(int a[], int n)
+{
+    int size, l, m, r;
+
+    for (size = 1; size < n; size *= 2)
+    {
+        for (l = 0; l < n - 1; l += 2 * size)
+        {
+            m = l + size - 1;
+            r = l + 2 * size - 1;
+
+            if (m >= n)
+                m = n - 1;
+            if (r >= n)
+                r = n - 1;
+
+            if (m < r)
+                merge(a, l, m, r);
+        }
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    mergeSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 9 4 6 2 1<br>
+Sorted array: 1 2 4 6 9</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 8: ENTER A INTEGER ARRAY FROM THE USER AND PERFORM MERGE SORT ALGORITHM THROUGH RECURSION. 
+</summary><pre>
+#include&lt;stdio.h>
+void merge(int a[], int l, int m, int r)
+{
+    int temp[100], i = l, j = m + 1, k = 0;
+
+    while (i <= m && j <= r)
+    {
+        if (a[i] < a[j])
+            temp[k++] = a[i++];
+        else
+            temp[k++] = a[j++];
+    }
+
+    while (i <= m)
+        temp[k++] = a[i++];
+
+    while (j <= r)
+        temp[k++] = a[j++];
+
+    for (i = l, k = 0; i <= r; i++, k++)
+        a[i] = temp[k];
+}
+
+void mergeSort(int a[], int l, int r)
+{
+    int m;
+
+    if (l < r)
+    {
+        m = (l + r) / 2;
+
+        mergeSort(a, l, m);
+        mergeSort(a, m + 1, r);
+
+        merge(a, l, m, r);
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    mergeSort(a, 0, n - 1);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 8 3 5 1 4<br>
+Sorted array: 1 3 4 5 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 9: NTER A INTEGER ARRAY FROM THE USER AND PERFORM QUICK SORT ALGORITHM THROUGH ITERATION
+</summary><pre>
+#include&lt;stdio.h>
+void quickSort(int a[], int n)
+{
+    int stack[100], top = -1;
+    int low, high, i, j, pivot, temp;
+
+    stack[++top] = 0;
+    stack[++top] = n - 1;
+
+    while (top >= 0)
+    {
+        high = stack[top--];
+        low = stack[top--];
+
+        pivot = a[high];
+        i = low - 1;
+
+        for (j = low; j < high; j++)
+        {
+            if (a[j] < pivot)
+            {
+                i++;
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+
+        temp = a[i + 1];
+        a[i + 1] = a[high];
+        a[high] = temp;
+
+        j = i + 1;
+
+        if (j - 1 > low)
+        {
+            stack[++top] = low;
+            stack[++top] = j - 1;
+        }
+
+        if (j + 1 < high)
+        {
+            stack[++top] = j + 1;
+            stack[++top] = high;
+        }
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    quickSort(a, n);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 5 9 2 7 1<br>
+Sorted array: 1 2 5 7 9</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 10:ENTER A INTEGER ARRAY FROM THE USER AND PERFORM QUICK SORT ALGORITHM THROUGH RECURSION. 
+</summary><pre>
+#include&lt;stdio.h>
+int partition(int a[], int low, int high)
+{
+    int pivot = a[high];
+    int i = low - 1, j, temp;
+
+    for (j = low; j < high; j++)
+    {
+        if (a[j] < pivot)
+        {
+            i++;
+
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+
+    temp = a[i + 1];
+    a[i + 1] = a[high];
+    a[high] = temp;
+
+    return i + 1;
+}
+
+void quickSort(int a[], int low, int high)
+{
+    int p;
+
+    if (low < high)
+    {
+        p = partition(a, low, high);
+
+        quickSort(a, low, p - 1);
+        quickSort(a, p + 1, high);
+    }
+}
+
+int main()
+{
+    int a[100], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    quickSort(a, 0, n - 1);
+
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of elements: 5<br>
+Enter array elements: 10 4 8 2 6<br>
+Sorted array: 2 4 6 8 10</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 11: ENTER A STRING ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+
+void selectionSort(char a[][50], int n)
+{
+    int i, j, min;
+    char temp[50];
+
+    for (i = 0; i < n - 1; i++)
+    {
+        min = i;
+
+       
+        for (j = i + 1; j < n; j++)
+        {
+            if (strcmp(a[j], a[min]) < 0)
+                min = j;
+        }
+
+       
+        strcpy(temp, a[i]);
+        strcpy(a[i], a[min]);
+        strcpy(a[min], temp);
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    selectionSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: mango apple banana orange grape<br>
+Sorted strings: apple banana grape mango orange</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 12: ENTER A STRING ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void selectionSort(char a[][50], int n, int i)
+{
+    int j, min;
+    char temp[50];
+
+    if (i == n - 1)
+        return;
+
+    min = i;
+
+    // Find smallest string
+    for (j = i + 1; j < n; j++)
+    {
+        if (strcmp(a[j], a[min]) < 0)
+            min = j;
+    }
+
+    // Swap strings
+    strcpy(temp, a[i]);
+    strcpy(a[i], a[min]);
+    strcpy(a[min], temp);
+
+    // Recursive call
+    selectionSort(a, n, i + 1);
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    selectionSort(a, n, 0);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: dog cat apple ball fish<br>
+Sorted strings: apple ball cat dog fish</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 13: ENTER A STRING ARRAY FROM THE USER AND PERFORM BUBBLE SORT ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void bubbleSort(char a[][50], int n)
+{
+    int i, j;
+    char temp[50];
+
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (strcmp(a[j], a[j + 1]) > 0)
+            {
+                strcpy(temp, a[j]);
+                strcpy(a[j], a[j + 1]);
+                strcpy(a[j + 1], temp);
+            }
+        }
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    bubbleSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: red blue green yellow black<br>
+Sorted strings: black blue green red yellow</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 14: ENTER A STRING ARRAY FROM THE USER AND PERFORM BUBBLE SORT ALGORITHM THROUGH RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void bubbleSort(char a[][50], int n)
+{
+    int i;
+    char temp[50];
+
+    if (n == 1)
+        return;
+
+    // Compare adjacent strings
+    for (i = 0; i < n - 1; i++)
+    {
+        if (strcmp(a[i], a[i + 1]) > 0)
+        {
+            strcpy(temp, a[i]);
+            strcpy(a[i], a[i + 1]);
+            strcpy(a[i + 1], temp);
+        }
+    }
+
+    // Recursive call
+    bubbleSort(a, n - 1);
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    bubbleSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: tiger lion elephant dog cat<br>
+Sorted strings: cat dog elephant lion tiger</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 15: ENTER A STRING ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void insertionSort(char a[][50], int n)
+{
+    int i, j;
+    char key[50];
+
+    for (i = 1; i < n; i++)
+    {
+        strcpy(key, a[i]);
+        j = i - 1;
+
+        // Shift greater strings
+        while (j >= 0 && strcmp(a[j], key) > 0)
+        {
+            strcpy(a[j + 1], a[j]);
+            j--;
+        }
+
+        strcpy(a[j + 1], key);
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    insertionSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: mango apple orange banana grape<br>
+Sorted strings: apple banana grape mango orang</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 16: ENTER A STRING ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void insertionSort(char a[][50], int n)
+{
+    int j;
+    char key[50];
+
+    if (n <= 1)
+        return;
+
+    // Sort previous strings
+    insertionSort(a, n - 1);
+
+    strcpy(key, a[n - 1]);
+    j = n - 2;
+
+    // Insert string at correct position
+    while (j >= 0 && strcmp(a[j], key) > 0)
+    {
+        strcpy(a[j + 1], a[j]);
+        j--;
+    }
+
+    strcpy(a[j + 1], key);
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    insertionSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: zebra apple mango cat dog<br>
+Sorted strings: apple cat dog mango zebra</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 17: ENTER A STRING ARRAY FROM THE USER AND PERFORM MERGE SORT ALGORITHM THROUGH ITERATION
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void merge(char a[][50], int l, int m, int r)
+{
+    char temp[100][50];
+    int i = l, j = m + 1, k = 0;
+
+    while (i <= m && j <= r)
+    {
+        if (strcmp(a[i], a[j]) < 0)
+            strcpy(temp[k++], a[i++]);
+        else
+            strcpy(temp[k++], a[j++]);
+    }
+
+    while (i <= m)
+        strcpy(temp[k++], a[i++]);
+
+    while (j <= r)
+        strcpy(temp[k++], a[j++]);
+
+    for (i = l, k = 0; i <= r; i++, k++)
+        strcpy(a[i], temp[k]);
+}
+
+void mergeSort(char a[][50], int n)
+{
+    int size, l, m, r;
+
+    for (size = 1; size < n; size *= 2)
+    {
+        for (l = 0; l < n - 1; l += 2 * size)
+        {
+            m = l + size - 1;
+            r = l + 2 * size - 1;
+
+            if (m >= n)
+                m = n - 1;
+
+            if (r >= n)
+                r = n - 1;
+
+            if (m < r)
+                merge(a, l, m, r);
+        }
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    mergeSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: mango apple grape banana orange<br>
+Sorted strings: apple banana grape mango orange</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 18: ENTER A STRING ARRAY FROM THE USER AND PERFORM MERGE SORT ALGORITHM THROUGH ITERATION
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void merge(char a[][50], int l, int m, int r)
+{
+    char temp[100][50];
+    int i = l, j = m + 1, k = 0;
+
+    while (i <= m && j <= r)
+    {
+        if (strcmp(a[i], a[j]) < 0)
+            strcpy(temp[k++], a[i++]);
+        else
+            strcpy(temp[k++], a[j++]);
+    }
+
+    while (i <= m)
+        strcpy(temp[k++], a[i++]);
+
+    while (j <= r)
+        strcpy(temp[k++], a[j++]);
+
+    for (i = l, k = 0; i <= r; i++, k++)
+        strcpy(a[i], temp[k]);
+}
+
+void mergeSort(char a[][50], int l, int r)
+{
+    int m;
+
+    if (l < r)
+    {
+        m = (l + r) / 2;
+
+        mergeSort(a, l, m);
+        mergeSort(a, m + 1, r);
+
+        merge(a, l, m, r);
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    mergeSort(a, 0, n - 1);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: pear apple kiwi mango banana<br>
+Sorted strings: apple banana kiwi mango pear</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 19: ENTER A STRING ARRAY FROM THE USER AND PERFORM QUICK SORT ALGORITHM THROUGH ITERATION. 
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+void quickSort(char a[][50], int n)
+{
+    int stack[200], top = -1;
+    int low, high, i, j;
+    char pivot[50], temp[50];
+
+    stack[++top] = 0;
+    stack[++top] = n - 1;
+
+    while (top >= 0)
+    {
+        high = stack[top--];
+        low = stack[top--];
+
+        strcpy(pivot, a[high]);
+        i = low - 1;
+
+        for (j = low; j < high; j++)
+        {
+            if (strcmp(a[j], pivot) < 0)
+            {
+                i++;
+
+                strcpy(temp, a[i]);
+                strcpy(a[i], a[j]);
+                strcpy(a[j], temp);
+            }
+        }
+
+        strcpy(temp, a[i + 1]);
+        strcpy(a[i + 1], a[high]);
+        strcpy(a[high], temp);
+
+        j = i + 1;
+
+        if (j - 1 > low)
+        {
+            stack[++top] = low;
+            stack[++top] = j - 1;
+        }
+
+        if (j + 1 < high)
+        {
+            stack[++top] = j + 1;
+            stack[++top] = high;
+        }
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    quickSort(a, n);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: orange apple mango banana grape<br>
+Sorted strings: apple banana grape mango orange</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 20: ENTER A STRING ARRAY FROM THE USER AND PERFORM QUICK SORT ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+int partition(char a[][50], int low, int high)
+{
+    char pivot[50], temp[50];
+    int i = low - 1, j;
+
+    strcpy(pivot, a[high]);
+
+    for (j = low; j < high; j++)
+    {
+        if (strcmp(a[j], pivot) < 0)
+        {
+            i++;
+
+            strcpy(temp, a[i]);
+            strcpy(a[i], a[j]);
+            strcpy(a[j], temp);
+        }
+    }
+
+    strcpy(temp, a[i + 1]);
+    strcpy(a[i + 1], a[high]);
+    strcpy(a[high], temp);
+
+    return i + 1;
+}
+
+void quickSort(char a[][50], int low, int high)
+{
+    int p;
+
+    if (low < high)
+    {
+        p = partition(a, low, high);
+
+        // Recursive calls
+        quickSort(a, low, p - 1);
+        quickSort(a, p + 1, high);
+    }
+}
+
+int main()
+{
+    char a[100][50];
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings: ");
+    for (i = 0; i < n; i++)
+        scanf("%49s", a[i]);
+
+    quickSort(a, 0, n - 1);
+
+    printf("Sorted strings: ");
+    for (i = 0; i < n; i++)
+        printf("%s ", a[i]);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of strings: 5<br>
+Enter strings: tiger apple dog cat lion<br>
+Sorted strings: apple cat dog lion tiger</b>
+</p>
+</details><br>
+
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

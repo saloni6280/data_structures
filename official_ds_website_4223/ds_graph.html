@@ -1,0 +1,772 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1> GRAPH </h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: ENTER THE VERTICES AND EDGES AND REPRESENT IN ADJACENCY MATRIX AND PRINT IT.
+</summary><pre>
+#include&lt;stdio.h>
+#define SIZE 10
+int graph[SIZE][SIZE];
+int vertices = 0;
+void createvertex(){
+    if(vertices==SIZE){
+        printf("full\n");
+    }
+
+else{
+    vertices++;
+    printf("vertix %d is created", vertices);
+}
+}
+void createedge(){
+    int u, v;
+    printf("enter first vertex");
+    scanf("%d", &u);
+    printf("enter  second vertex");
+    scanf("%d", &v);
+    if(u<1||v>vertices){
+        printf("invalid vertex\n");
+
+    }
+    else{
+        graph[u - 1][v - 1] = 1;
+        graph[v - 1][u - 1] = 1;
+        printf("edge created");
+}
+}
+
+void deletevertex(){}
+int main(){
+    createvertex();
+    return 0;
+}
+</pre><p><b>output:</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 2: CREATE THE GRAPH AS A ADJACENCY LIST WITH OPERATIONS SUCH AS INSERTION, DELETION?
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+#define MAX 100
+
+struct Node
+{
+    int vertex;
+    struct Node *next;
+};
+
+struct Node *adj[MAX];
+int vertices;
+
+void insertEdge(int u, int v)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    newNode->vertex = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    newNode->vertex = u;
+    newNode->next = adj[v];
+    adj[v] = newNode;
+
+    printf("Edge inserted successfully.\n");
+}
+
+void deleteOneDirection(int u, int v)
+{
+    struct Node *temp = adj[u];
+    struct Node *prev = NULL;
+
+    while (temp != NULL)
+    {
+        if (temp->vertex == v)
+        {
+            if (prev == NULL)
+                adj[u] = temp->next;
+            else
+                prev->next = temp->next;
+
+            free(temp);
+            return;
+        }
+
+        prev = temp;
+        temp = temp->next;
+    }
+}
+
+void deleteEdge(int u, int v)
+{
+    deleteOneDirection(u, v);
+    deleteOneDirection(v, u);
+
+    printf("Edge deleted if it existed.\n");
+}
+
+void displayGraph()
+{
+    int i;
+    struct Node *temp;
+
+    printf("\nAdjacency List:\n");
+
+    for (i = 0; i < vertices; i++)
+    {
+        printf("%d: ", i);
+
+        temp = adj[i];
+
+        while (temp != NULL)
+        {
+            printf("%d -> ", temp->vertex);
+            temp = temp->next;
+        }
+
+        printf("NULL\n");
+    }
+}
+
+int main()
+{
+    int edges, u, v;
+    int choice, i;
+
+    for (i = 0; i < MAX; i++)
+        adj[i] = NULL;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    if (vertices <= 0 || vertices > MAX)
+    {
+        printf("Invalid number of vertices.\n");
+        return 1;
+    }
+
+    printf("Enter number of initial edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++)
+    {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+
+        if (u >= 0 && u < vertices &&
+            v >= 0 && v < vertices && u != v)
+        {
+            insertEdge(u, v);
+        }
+        else
+        {
+            printf("Invalid edge.\n");
+        }
+    }
+
+    do
+    {
+        printf("\n1. Insert Edge\n");
+        printf("2. Delete Edge\n");
+        printf("3. Display Graph\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter vertices u and v: ");
+            scanf("%d %d", &u, &v);
+
+            if (u >= 0 && u < vertices &&
+                v >= 0 && v < vertices && u != v)
+                insertEdge(u, v);
+            else
+                printf("Invalid edge.\n");
+
+            break;
+
+        case 2:
+            printf("Enter vertices u and v: ");
+            scanf("%d %d", &u, &v);
+
+            if (u >= 0 && u < vertices &&
+                v >= 0 && v < vertices)
+                deleteEdge(u, v);
+            else
+                printf("Invalid vertices.\n");
+
+            break;
+
+        case 3:
+            displayGraph();
+            break;
+
+        case 4:
+            printf("Exiting program.\n");
+            break;
+
+        default:
+            printf("Invalid choice.\n");
+        }
+
+    } while (choice != 4);
+
+    for (i = 0; i < vertices; i++)
+    {
+        struct Node *temp = adj[i];
+
+        while (temp != NULL)
+        {
+            struct Node *next = temp->next;
+            free(temp);
+            temp = next;
+        }
+    }
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of vertices: 3<br>
+Enter number of initial edges: 2<br>
+Enter edge (u v): 0 1<br>
+Edge inserted successfully.<br>
+Enter edge (u v): 1 2<br>
+Edge inserted successfully.<br>
+
+1. Insert Edge<br>
+2. Delete Edge<br>
+3. Display Graph<br>
+4. Exit<br>
+Enter choice: 3<br>
+
+Adjacency List:<br>
+0: 1 -> NULL<br>
+1: 2 -> 0 -> NULL<br>
+2: 1 -> NULL<br>
+
+Enter choice: 4<br>
+Exiting program.<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 3: TRAVERSE THE ADJACENT MATRIX WITH DEPTH FIRST SEARCH
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+int graph[MAX][MAX];
+int visited[MAX];
+int vertices;
+
+void DFS(int vertex)
+{
+    int i;
+
+    visited[vertex] = 1;
+    printf("%d ", vertex);
+
+    for (i = 0; i < vertices; i++)
+    {
+        if (graph[vertex][i] == 1 && !visited[i])
+        {
+            DFS(i);
+        }
+    }
+}
+
+int main()
+{
+    int edges, u, v, start, i;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    if (vertices <= 0 || vertices > MAX)
+    {
+        printf("Invalid number of vertices.\n");
+        return 1;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++)
+    {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+
+        if (u < 0 || u >= vertices ||
+            v < 0 || v >= vertices)
+        {
+            printf("Invalid edge.\n");
+            return 1;
+        }
+
+        graph[u][v] = 1;
+        graph[v][u] = 1;
+    }
+
+    printf("Enter starting vertex: ");
+    scanf("%d", &start);
+
+    if (start < 0 || start >= vertices)
+    {
+        printf("Invalid starting vertex.\n");
+        return 1;
+    }
+
+    printf("DFS Traversal: ");
+    DFS(start);
+
+    printf("\n");
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of vertices: 4<br>
+Enter number of edges: 4<br>
+Enter edge (u v): 0 1<br>
+Enter edge (u v): 0 2<br>
+Enter edge (u v): 1 3<br>
+Enter edge (u v): 2 3<br>
+Enter starting vertex: 0<br>
+
+DFS Traversal: 0 1 3 2</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 4: TRAVERSE THE ADJACENT LIST WITH DEPTH FIRST SEARCH
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+struct Node
+{
+    int vertex;
+    struct Node *next;
+};
+
+struct Node *adj[MAX];
+int visited[MAX];
+int vertices;
+
+void insertEdge(int u, int v)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    newNode->vertex = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    newNode->vertex = u;
+    newNode->next = adj[v];
+    adj[v] = newNode;
+}
+
+void DFS(int vertex)
+{
+    struct Node *temp;
+
+    visited[vertex] = 1;
+    printf("%d ", vertex);
+
+    temp = adj[vertex];
+
+    while (temp != NULL)
+    {
+        if (!visited[temp->vertex])
+        {
+            DFS(temp->vertex);
+        }
+
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int edges, u, v, start, i;
+
+    for (i = 0; i < MAX; i++)
+        adj[i] = NULL;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    if (vertices <= 0 || vertices > MAX)
+    {
+        printf("Invalid number of vertices.\n");
+        return 1;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++)
+    {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+
+        if (u < 0 || u >= vertices ||
+            v < 0 || v >= vertices)
+        {
+            printf("Invalid edge.\n");
+            return 1;
+        }
+
+        insertEdge(u, v);
+    }
+
+    printf("Enter starting vertex: ");
+    scanf("%d", &start);
+
+    if (start < 0 || start >= vertices)
+    {
+        printf("Invalid starting vertex.\n");
+        return 1;
+    }
+
+    printf("DFS Traversal: ");
+    DFS(start);
+
+    printf("\n");
+
+    for (i = 0; i < vertices; i++)
+    {
+        struct Node *temp = adj[i];
+
+        while (temp != NULL)
+        {
+            struct Node *next = temp->next;
+            free(temp);
+            temp = next;
+        }
+    }
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of vertices: 4<br>
+Enter number of edges: 4<br>
+Enter edge (u v): 0 1<br>
+Enter edge (u v): 0 2<br>
+Enter edge (u v): 1 3<br>
+Enter edge (u v): 2 3<br>
+Enter starting vertex: 0<br>
+
+DFS Traversal: 0 2 3 1<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 5: TRAVERSE THE ADJACENT MATRIX WITH BREADTH FIRST SEARCH
+</summary><pre>
+#include&lt;stdio.h>
+#define MAX 100
+
+int graph[MAX][MAX];
+int visited[MAX];
+int queue[MAX];
+int vertices;
+
+void BFS(int start)
+{
+    int front = 0, rear = 0;
+    int vertex, i;
+
+    visited[start] = 1;
+    queue[rear++] = start;
+
+    while (front < rear)
+    {
+        vertex = queue[front++];
+        printf("%d ", vertex);
+
+        for (i = 0; i < vertices; i++)
+        {
+            if (graph[vertex][i] == 1 && !visited[i])
+            {
+                visited[i] = 1;
+                queue[rear++] = i;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int edges, u, v, start, i;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    if (vertices <= 0 || vertices > MAX)
+    {
+        printf("Invalid number of vertices.\n");
+        return 1;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++)
+    {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+
+        if (u < 0 || u >= vertices ||
+            v < 0 || v >= vertices)
+        {
+            printf("Invalid edge.\n");
+            return 1;
+        }
+
+        graph[u][v] = 1;
+        graph[v][u] = 1;
+    }
+
+    printf("Enter starting vertex: ");
+    scanf("%d", &start);
+
+    if (start < 0 || start >= vertices)
+    {
+        printf("Invalid starting vertex.\n");
+        return 1;
+    }
+
+    printf("BFS Traversal: ");
+    BFS(start);
+
+    printf("\n");
+
+    return 0;
+}
+
+</pre><p><b>output:Enter number of vertices: 4<br>
+Enter number of edges: 4<br>
+Enter edge (u v): 0 1<br>
+Enter edge (u v): 0 2<br>
+Enter edge (u v): 1 3<br>
+Enter edge (u v): 2 3<br>
+Enter starting vertex: 0<br>
+
+BFS Traversal: 0 1 2 3<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 6: TRAVERSE THE ADJACENT LIST WITH BREADTH FIRST SEARCH
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+#define MAX 100
+
+struct Node
+{
+    int vertex;
+    struct Node *next;
+};
+
+struct Node *adj[MAX];
+int visited[MAX];
+int queue[MAX];
+int vertices;
+
+void insertEdge(int u, int v)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    newNode->vertex = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    newNode->vertex = u;
+    newNode->next = adj[v];
+    adj[v] = newNode;
+}
+
+void BFS(int start)
+{
+    int front = 0, rear = 0;
+    int vertex;
+    struct Node *temp;
+
+    visited[start] = 1;
+    queue[rear++] = start;
+
+    while (front < rear)
+    {
+        vertex = queue[front++];
+        printf("%d ", vertex);
+
+        temp = adj[vertex];
+
+        while (temp != NULL)
+        {
+            if (!visited[temp->vertex])
+            {
+                visited[temp->vertex] = 1;
+                queue[rear++] = temp->vertex;
+            }
+
+            temp = temp->next;
+        }
+    }
+}
+
+int main()
+{
+    int edges, u, v, start, i;
+
+    for (i = 0; i < MAX; i++)
+        adj[i] = NULL;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    if (vertices <= 0 || vertices > MAX)
+    {
+        printf("Invalid number of vertices.\n");
+        return 1;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++)
+    {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+
+        if (u < 0 || u >= vertices ||
+            v < 0 || v >= vertices)
+        {
+            printf("Invalid edge.\n");
+            return 1;
+        }
+
+        insertEdge(u, v);
+    }
+
+    printf("Enter starting vertex: ");
+    scanf("%d", &start);
+
+    if (start < 0 || start >= vertices)
+    {
+        printf("Invalid starting vertex.\n");
+        return 1;
+    }
+
+    printf("BFS Traversal: ");
+    BFS(start);
+
+    printf("\n");
+
+    for (i = 0; i < vertices; i++)
+    {
+        struct Node *temp = adj[i];
+
+        while (temp != NULL)
+        {
+            struct Node *next = temp->next;
+            free(temp);
+            temp = next;
+        }
+    }
+
+    return 0;
+}
+</pre><p><b>output:Enter number of vertices: 4<br>
+Enter number of edges: 4<br>
+Enter edge (u v): 0 1<br>
+Enter edge (u v): 0 2<br>
+Enter edge (u v): 1 3<br>
+Enter edge (u v): 2 3<br>
+Enter starting vertex: 0<br>
+
+BFS Traversal: 0 2 1 3<br></b>
+</p>
+</details><br>
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

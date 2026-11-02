@@ -1,0 +1,576 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>FILE HANDLING</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1: Write a C++ program to create a new text file and write some text into it.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main() {
+    ofstream file("sample.txt");
+
+    if(file.is_open()) {
+        file << "Hello, this is a sample text file.\n";
+        file << "File handling in C++ is easy.\n";
+        file.close();
+        cout << "File created and data written successfully.";
+    }
+    else {
+        cout << "Error creating file.";
+    }
+
+  getch();
+}
+
+
+
+
+</pre><p><b>output:File created and data written successfully</b>
+
+
+</p>
+</details><br>
+
+<details>
+<summary>Question 2: Write a C++ program to open an existing text file and display its contents on the console.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    string line;
+
+    if(file.is_open()) {
+        while(getline(file, line)) {
+            cout << line << endl;
+        }
+        file.close();
+    }
+    else {
+        cout << "File not found.";
+    }
+
+ getch();
+}
+
+
+</pre><p><b>output:Hello, this is a sample text file.<br>
+File handling in C++ is easy.</b>
+
+
+</p>
+</details><br>
+
+<details>
+<summary>Question 3:  Write a C++ program to count the number of lines in a text file.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    string line;
+    int count = 0;
+
+    while(getline(file, line)) {
+        count++;
+    }
+
+    cout << "Total lines: " << count;
+
+    file.close();
+   getch();
+}
+
+
+</pre><p><b>output:Total lines: 2</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 4: Write a C++ program to count the number of words in a text file.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    string word;
+    int count = 0;
+
+    while(file >> word) {
+        count++;
+    }
+
+    cout << "Total words: " << count;
+
+    file.close();
+   getch();
+}
+
+
+
+</pre><p><b>output:Total words: 11</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 5:Write a C++ program to copy the contents of one text file to another.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream source("sample.txt");
+    ofstream dest("copy.txt");
+    string line;
+
+    while(getline(source, line)) {
+        dest << line << endl;
+    }
+
+    cout << "File copied successfully.";
+
+    source.close();
+    dest.close();
+
+   getch();
+}
+
+
+
+</pre><p><b>output:File copied successfully.</b>
+
+
+</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 6:Write a C++ program to find and replace a specific word in a text file.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    ofstream temp("temp.txt");
+
+    string word;
+
+    while(file >> word) {
+        if(word == "sample")
+            temp << "demo ";
+        else
+            temp << word << " ";
+    }
+
+    file.close();
+    temp.close();
+
+    cout << "Word replaced successfully.";
+
+  getch();
+}
+
+
+
+</pre><p><b>output:Word replaced successfully.</b>
+
+
+</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 7:Write a C++ program to append new data to an existing text file.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ofstream file("sample.txt", ios::app);
+
+    file << "Appending new data to file.\n";
+    file.close();
+
+    cout << "Data appended successfully.";
+
+getch();
+}
+
+
+</pre><p><b>output:Data appended successfully</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 8:write a c++ program to sort the linesof text filesof equal size  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;vector.h>
+#include&lt;algorithm.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    vector<string> lines;
+    string line;
+
+    while(getline(file, line))
+        lines.push_back(line);
+
+    sort(lines.begin(), lines.end());
+
+    for(string l : lines)
+        cout << l << endl;
+
+    file.close();
+    getch();
+}
+
+</pre><p><b>output:File handling in C++ is easy.<br>
+Hello, this is a sample text file</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 9: Write a C++ program to merge multiple text files into a single file.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+ void main() {
+    ifstream file1("file1.txt");
+    ifstream file2("file2.txt");
+    ofstream merged("merged.txt");
+
+    string line;
+
+    while(getline(file1, line))
+        merged << line << endl;
+
+    while(getline(file2, line))
+        merged << line << endl;
+
+    cout << "Files merged successfully.";
+
+   getch();
+}
+
+
+</pre><p><b>output:Files merged successfully.</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 10:  Write a C++ program to split a large text file into smaller files.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("large.txt");
+    ofstream part1("part1.txt");
+    ofstream part2("part2.txt");
+
+    string line;
+    int count = 0;
+
+    while(getline(file, line)) {
+        if(count < 5)
+            part1 << line << endl;
+        else
+            part2 << line << endl;
+        count++;
+    }
+
+    cout << "File split completed.";
+
+    getch();
+}
+
+
+</pre><p><b>output:File split completed</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 11: Write a C++ program to search for a string in a file and display line numbers.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    string line;
+    int lineNo = 1;
+
+    while(getline(file, line)) {
+        if(line.find("sample") != string::npos)
+            cout << "Found at line: " << lineNo << endl;
+
+        lineNo++;
+    }
+
+    getch();
+}
+
+
+</pre><p><b>output:Found at line: 1</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 12: Encrypt the contents of a text file using simple encryption.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("sample.txt");
+    ofstream enc("encrypted.txt");
+
+    char ch;
+
+    while(file.get(ch)) {
+        enc.put(ch + 3);
+    }
+
+    cout << "File encrypted.";
+
+   getch();
+}
+
+
+
+</pre><p><b>output:File encrypted.</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 13:Decrypt the contents of encrypted file.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("encrypted.txt");
+    ofstream dec("decrypted.txt");
+
+    char ch;
+
+    while(file.get(ch)) {
+        dec.put(ch - 3);
+    }
+
+    cout << "File decrypted.";
+
+    getch();
+}
+
+
+</pre><p><b>output:File decrypted</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 14:  Read a CSV file and display in tabular form.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;sstream.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("data.csv");
+    string line;
+
+    while(getline(file, line)) {
+        stringstream ss(line);
+        string item;
+
+        while(getline(ss, item, ',')) {
+            cout << item << "\t";
+        }
+        cout << endl;
+    }
+
+   getch();
+}
+
+
+</pre><p><b>output:ID      Name    Marks<br>
+1       John    90<br>
+2       Alice   85</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 15:Calculate the average of numbers stored in a file   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;fstream.h>
+void main() {
+    ifstream file("numbers.txt");
+
+    int num, sum = 0, count = 0;
+
+    while(file >> num) {
+        sum += num;
+        count++;
+    }
+
+    cout << "Average = " << (float)sum / count;
+
+    getch();
+}
+
+
+
+</pre><p><b>output:Average = 45</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 16:Store information of 10 students in binary file with operations:<br>
+1 Insert<br>
+2 Delete<br>
+3 Update<br>
+4 Search<br>
+5 Clone File<br>
+6 Exit <br>  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;cstring.h>
+#include&lt;fstream.h>
+using namespace std;
+
+class Student {
+    int rollno;
+    char name[50];
+    float marks;
+    char mobile[15];
+
+public:
+
+    void set() {
+        cout<<"Roll No: ";
+        cin>>rollno;
+        cout<<"Name: ";
+        cin>>name;
+        cout<<"Marks: ";
+        cin>>marks;
+        cout<<"Mobile: ";
+        cin>>mobile;
+    }
+
+    void get() {
+        cout<<rollno<<" "<<name<<" "<<marks<<" "<<mobile<<endl;
+    }
+
+    int getRoll() {
+        return rollno;
+    }
+};
+
+int main() {
+
+    Student s;
+    int choice;
+
+    do {
+        cout<<"\n1.Insert\n2.Search\n3.Clone\n4.Exit\n";
+        cin>>choice;
+
+        if(choice==1) {
+            ofstream file("student.dat",ios::binary|ios::app);
+            s.set();
+            file.write((char*)&s,sizeof(s));
+            file.close();
+        }
+
+        else if(choice==2) {
+            ifstream file("student.dat",ios::binary);
+            int r;
+            cout<<"Enter roll:";
+            cin>>r;
+
+            while(file.read((char*)&s,sizeof(s))) {
+                if(s.getRoll()==r)
+                    s.get();
+            }
+
+            file.close();
+        }
+
+        else if(choice==3) {
+            ifstream src("student.dat",ios::binary);
+            ofstream dest("clone.dat",ios::binary);
+
+            while(src.read((char*)&s,sizeof(s)))
+                dest.write((char*)&s,sizeof(s));
+
+            cout<<"File cloned.";
+        }
+
+    } while(choice!=4);
+
+    return 0;
+}
+
+
+</pre><p><b>output:1.Insert<br>
+2.Search<br>
+3.Clone<br>
+4.Exit<br>
+
+Choice:1<br>
+Roll No:1<br>
+Name:Rahul<br>
+Marks:85<br>
+Mobile:9876543210</b>
+
+
+</p>
+</details><br>
+
+
+
+
+<br>
+
+
+
+<footer><center><a href="cpp_link.html">back</a></center></footer>
+</body>
+</html>
+

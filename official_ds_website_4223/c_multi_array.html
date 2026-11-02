@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+
+<header>
+<h1>MULTI DIMENSION ARRAY </h1>
+
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1: Enter the four number from user and print it into matrix.</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+ int arr[2][2], i, j;
+ clrscr();
+ printf("Enter 4 elements for matrix:");
+ for(i = 0; i < 2; i++) {
+ for(j = 0; j < 2; j++) {
+ scanf("%d", &arr[i][j]);
+  }
+  }
+  printf("\nMatrix is:\n");
+  for(i = 0; i < 2; i++) {
+  for(j = 0; j < 2; j++) {
+   printf("%d ", arr[i][j]);
+    }
+    printf("\n");
+    }
+getch();
+}
+</pre><p><b>output:</b>Enter 4 elements for matrix: 1 2 3 4 <br>
+Matrix is: <br>
+1 2 <br>
+3 4</p>
+</details><br>
+
+
+<details>
+<summary>Question 2: Enter the matrix from user and transpose them.</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+void main()
+{
+int arr[3][3], brr[3][3], i, j;
+clrscr();
+printf("Enter elements for 3X3 matrix:\n");
+for(i = 0; i < 3; i++) {
+for(j = 0; j < 3; j++) {
+ scanf("%d", &arr[i][j]);
+ }
+ }
+for(i = 0; i < 3; i++) {
+ for(j = 0; j < 3; j++) {
+ brr[j][i] = arr[i][j];
+  }
+    }
+  printf("\nTranspose of matrix:\n");
+ for(i = 0; i < 3; i++) {
+   for(j = 0; j < 3; j++) {
+   printf("%d\t", brr[i][j]);
+   }
+   printf("\n");
+    }
+getch();
+}</pre><p><b>output:</b>Enter elements for 3X3 matrix: 1 2 3 4 5 6 7 8 9 <br>
+Transpose of matrix: <br>
+1   4   7 <br>
+2   5   8 <br>
+3   6   9 <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 3:  Enter 2 matrix from user and add them.</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+
+void main() {
+ int arr[3][3], brr[3][3], sum[3][3], i, j;
+ clrscr();
+ printf("Enter first 3x3 matrix:\n");
+ for(i = 0; i < 3; i++)
+  for(j = 0; j < 3; j++)
+   scanf("%d", &arr[i][j]);
+  printf("Enter second 3x3 matrix:\n");
+  for(i = 0; i < 3; i++)
+   for(j = 0; j < 3; j++)
+   scanf("%d", &brr[i][j]);
+  for(i = 0; i < 3; i++)
+   for(j = 0; j < 3; j++)
+   sum[i][j] = arr[i][j] + brr[i][j];
+    printf("\nSum of matrices:\n");
+    for(i = 0; i < 3; i++) {
+      for(j = 0; j < 3; j++)
+  printf("%d\t", sum[i][j]);
+        printf("\n");
+    }
+}</pre><p><b>output:</b><br>Enter first 3X3 matrix: 1 2 3 4 5 6 7 8 9 <br> Enter second 3X3 matrix: 1 2 3 4 5 6 7 8 9 <br>
+    Sum of matrices :<br>
+    2   4   6 <br>
+    8   10  12<br>
+    14  16  18<br></p>
+
+</details>
+<br>
+
+<details>
+<summary>Question 4: Enter 2 matrix from user and subtract them.</summary><pre>#include&lt;stdio.h>
+#include&lt;conio.h>
+void main()
+{
+    int arr[3][3], brr[3][3], subtract[3][3], i, j;
+    clrscr();
+    printf("Enter first 3x3 matrix:\n");
+    for(i = 0; i < 3; i++)
+  for(j = 0; j < 3; j++)
+ scanf("%d", &arr[i][j]);
+    printf("Enter second 3x3 matrix:\n");
+    for(i = 0; i < 3; i++)
+   for(j = 0; j < 3; j++)
+    scanf("%d", &brr[i][j]);
+    for(i = 0; i < 3; i++)
+       for(j = 0; j < 3; j++)
+      subtract[i][j] = arr[i][j] - brr[i][j];
+    printf("\nSubtraction of matrices:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++)
+ printf("%d\t", subtract[i][j]);
+        printf("\n");
+    }
+}
+</pre><p><b>output:</b>
+    Enter first 3X3 matrix: 9 8 7 6 5 4 3 2 1 <br>
+    Enter second 3X3 matrix: 9 8 7 6 5 4 3 2 1 <br>
+    Subtraction of matrices: <br>
+    0 0 0 <br>
+    0 0 0 <br>
+    0 0 0 <br>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 5:Enter 2 matrix from user and multiply them.</summary><pre>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+void main()
+ {
+    int arr[3][3], brr[3][3], multiply[3][3], i, j;
+    clrscr();
+    printf("Enter first 3x3 matrix:\n");
+    for(i = 0; i < 3; i++)
+        for(j = 0; j < 3; j++)
+            scanf("%d", &arr[i][j]);
+    printf("Enter second 3x3 matrix:\n");
+    for(i = 0; i < 3; i++)
+        for(j = 0; j < 3; j++)
+            scanf("%d", &brr[i][j]);
+    for(i = 0; i < 3; i++)
+        for(j = 0; j < 3; j++)
+            multiply[i][j] = arr[i][j] * brr[i][j];
+    printf("\n multiplication of matrices:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++)
+            printf("%d\t", multiply[i][j]);
+        printf("\n");
+    }
+}
+</pre><p><b>output:</b> Enter first 3X3 matrix : 1 2 3 4 5 6 7 8 9  <br>
+Enter second 3X3 matrix: 1 2 3 4 5 6 7 8 9 <br>
+multiplication of matrices : <br>
+1 4 9 <br>
+16 25 36 <br>
+49 64 81 <br>
+</p>
+</details><br></h3><center><a href="index.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html

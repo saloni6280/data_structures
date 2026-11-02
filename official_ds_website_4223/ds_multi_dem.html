@@ -1,0 +1,349 @@
+ds_multi_dem.html
+100%
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>MULTI DIMENSION ARRAY </h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: Enter a matrix of 4 rows and 2 columns from the user display it in matrix format?
+</summary><pre>
+#include&lt;stdio.h>
+#include<stdio.h>
+void input(int a[4][2]){
+    int i, j;
+    for (i = 1; i < 4;i++){
+        for (j = 1; j < 2;i++){
+            scanf("enter 8 elements %d" & a[i][j]);
+        }
+    }
+}
+void display(int a[4][2]){
+    for (i = 1; i < 4; i++)
+    {
+        for (j = 1; j < 2; i++)
+        {
+            printf("eight elements are %d" & a[i][j]);
+        }
+    }
+}
+int main(){
+    int a[4][2];
+input(a);
+printf("\nmatrix is")
+display(a);
+return 0;
+}
+</pre><p><b>output:enter eight element :1 2 3 4<br>5 6 7 8 <br><br>eight elements are:1 2 3 4 <br>5 6 7 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 2: Enter two Matrices from user, add the matrices and display the answer
+</summary><pre>
+#include&lt;stdio.h>
+int main(){
+    int a[2][2], b[2][2], c[2][2];
+    int i, j;
+    printf("enter first matrix\n");
+    for (i = 0; i < 2;i++){
+        for (j = 0; j < 2;j++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("enter second matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &b[i][j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            c[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    printf("sum of matrix is \n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+           printf("%d ",c[i][j]);
+
+        
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</pre><p><b>output:enter first martix:<br>2 2<br>2 2<br>enter second matrix:<br>2 2<br>2 2<br>sum of matrix is:<br>4 4<br>4 4<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 3: Enter two Matrices from user, subtract the matrices and display the answer?
+</summary><pre>
+#include&lt;stdio.h>
+int main()
+{
+    int a[2][2], b[2][2], c[2][2];
+    int i, j;
+    printf("enter first matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("enter second matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &b[i][j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            c[i][j] = a[i][j] - b[i][j];
+        }
+    }
+    printf("subtraction  of matrix is \n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            printf("%d ", c[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</pre><p><b>output:enter first martix:<br>4 4<br>4 4 <br>enter second matrix:<br>4 4<br>4 4<br>subraction of matrix is:<br>0 0<br>0 0</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 4: Enter two Matrices from user, multiply the matrices and display the answer?
+</summary><pre>
+#include&lt;stdio.h>
+int main()
+{
+    int a[2][2], b[2][2], c[2][2];
+    int i, j, k;
+    printf("enter first matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("enter second matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &b[i][j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            c[i][j] = 0;
+            for (k = 0; k < 2; k++)
+            {
+                c[i][j] = c[i][j] + a[i][k] * b[j][k];
+            }
+        }
+    }
+    printf("subtraction  of matrix is \n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            printf("%d ", c[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</pre><p><b>output:enter first martix:<br>2 2<br>2 2<br>enter second matrix:<br>2 2<br>2 2<br>sum of matrix is:<br>8 8<br>8 8</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 5: Enter a Matrix from user, copy it in another matrix of same size?
+</summary><pre>
+#include&lt;stdio.h>
+int main()
+{
+    int a[2][2], b[2][2];
+    int i, j ;
+    printf("enter  matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            b[i][j] = a[i][j];
+        }
+    }
+    printf("copied matrix is\n")
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            printf("%d ",b[i][j]);
+        }
+        printf("\n");
+    }
+    return 0
+}
+</pre><p><b>output:enter matrix:<br>1 2 <br>4 5 <br>copied matrix:<br>1 2 <br>4 5<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 6: Enter the Matrix from user, multiply it with a scalar value and display the answer?
+</summary><pre>
+#include&lt;stdio.h>
+int main()
+{
+    int a[2][2],i,j,s;
+
+    printf("enter  matrix\n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+        printf("enter a scaler value");
+        scanf("%d", &s);
+        for (i = 0; i < 2; i++)
+        {
+            for (j = 0; j < 2; j++)
+            {
+                a[i][j] = a[i][j] * s;
+            }
+    }
+    printf("result matrix is \n");
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 2; j++)
+        {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    return 0
+}
+</pre><p><b>output:enter a matrix:<br>2 2 2<br>2 2 2<br>2 2 2<br>enter scaler value:3<br>result matrix is :<br>6 6 6<br>6 6 6<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 7: Create a tic tac toe game using 2D Arrays.
+</summary><pre>
+#include&lt;stdio.h>
+int main(){
+    char a[3][3] = {
+        {'1', '2', '3'},
+        {'4', '5', '6'},
+        {'7', '8', '9'},
+    };
+    int i, j, pos, row, col, player = 1;
+    char mark;
+    while(1){
+        for (i = 0; i < 3;i++){
+            for (j = 0; j < 3;j++){
+                printf("%c", a[i][j]);
+            }
+            printf("\n");
+        }
+        if(player==1){
+            mark = 'X';
+            
+        }
+        else{
+            mark = 'O';
+
+        }
+        printf("player %d, enter position:", player);
+        scanf("%d", &pos);
+        row = (pos - 1) / 3;
+        col = (pos - 1) % 3;
+        if (pos < 1 || pos > 9 || a[row][col] == 'X' || a[row][col] == 'O'){
+            printf("invalid position!\n");
+            continue;
+        }
+        a[row][col] = mark;
+        for (i = 0; i < 3;i++){
+            if (a[i][0] == a[i][1] && a[i][1] == a[i][2]){
+                printf("player %d wins!\n", player);
+                return 0;
+            }
+            if(a[0][i] == a[1][i] && a[1][i] == a[2][i])
+            {
+                printf("player %d wins!\n", player);
+                return 0;
+            }
+        }
+        if (a[0][0] == a[1][1] && a[1][1] == a[2][2]){
+            printf("player %d wins!\n", player);
+            return 0;
+        }
+        if (a[0][2] == a[1][1] && a[1][1] == a[2][0])
+        {
+            printf("player %d wins!\n", player);
+            return 0;
+        }
+        player = 3 - player;
+        }
+        return 0;
+    }
+</pre><p><b>output:<br>1 2 3<br>4 5 6<br>7 8 9<br>player 1 enter position:1<br>x 2 3<br>4 5 6<br>7 8 9<br>player 2 enter position:5<br>x 2 3<br>4 o 6<br>7 8 9<br></b>
+</p>
+</details><br>
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>
+Displaying ds_multi_dem.html.

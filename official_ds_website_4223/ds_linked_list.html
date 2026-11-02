@@ -1,0 +1,2089 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>LINKED LIST </h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: IMPLEMENT THE OPERATIONS OF SINGLE LINKED LIST STORING INTEGER VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *head = NULL;
+
+void insert(int val)
+{
+    struct node *temp;
+    struct node *newnode;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    newnode->next = NULL;
+    if (head == NULL)
+    {
+        head = temp = newnode;
+    }
+    else
+    {
+        temp->next = newnode;
+        temp = newnode;
+    }
+}
+void display()
+{
+    struct node *p;
+    p = head;
+    while (p != NULL)
+    {
+        printf("%d is data\n", p->data);
+        p = p->next;
+    }
+}
+
+void insert_beg(int val)
+{
+    struct node *newnode;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    newnode->next = head;
+    head = newnode;
+}
+void insert_end(int val)
+{
+    struct node *newnode;
+    struct node *temp = NULL;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    newnode->next = NULL;
+    if (head == NULL)
+    {
+        head = newnode;
+    }
+    else
+    {
+        temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+        temp = newnode;
+    }
+}
+
+void insert_pos(int val, int pos)
+{
+    struct node *newnode;
+    struct node *temp = NULL;
+    int i;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    if (pos == 1)
+    {
+        newnode->next = head;
+        head = newnode;
+        return;
+    }
+    temp = head;
+    for (i = 1; i < pos - 1; i++)
+    {
+        temp = temp->next;
+    }
+    newnode->next = temp->next;
+    temp->next = newnode;
+}
+void delete_beg()
+{
+    struct node *temp;
+    temp = NULL;
+    if (head == NULL)
+    {
+        printf("list is empty you cannot delete\n");
+        return;
+    }
+    else
+    {
+        temp = head;
+        head = temp->next;
+        free(temp);
+    }
+}
+void delete_end()
+{
+    struct node *temp;
+    temp = NULL;
+    struct node *previous;
+    if (head == NULL)
+    {
+        printf("no node existed at end\n");
+        return;
+    }
+
+    temp = head;
+    while (temp->next == NULL)
+    {
+        previous = temp;
+        temp = temp->next;
+    }
+    if (temp == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        previous->next = NULL;
+    }
+    free(temp);
+}
+
+void search(int val)
+{
+    struct node *temp = NULL;
+    temp = head;
+    while (temp != NULL)
+    {
+        if (temp->data == val)
+        {
+            printf("searched element is %d", val);
+            return;
+        }
+        else
+        {
+            temp = temp->next;
+        }
+    }
+    printf("value not found");
+}
+
+void reverse()
+{
+    struct node *prev = NULL;
+    struct node *current;
+    struct node *nextnode;
+    current = nextnode = head;
+    while (nextnode != NULL)
+    {
+        nextnode = nextnode->next;
+        current->next = prev;
+        prev = current;
+        current = nextnode;
+    }
+    head = prev;
+}
+void delete_position(int pos)
+{
+    struct node *temp, *p;
+    int i;
+
+    if (head == NULL)
+    {
+        printf("List is empty");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp != NULL; i++)
+    {
+        temp = temp->next;
+    }
+
+    if (temp == NULL || temp->next == NULL)
+    {
+        printf("Invalid position");
+        return;
+    }
+
+    p = temp->next;
+    temp->next = p->next;
+    free(p);
+}
+
+int main()
+{
+    //  insert_end(20);
+
+    insert(10);
+    insert(30);
+    insert(40);
+    delete_position(2);
+   
+    display();
+   
+    return 0;
+}
+</pre><p><b>output: 10 is data<br>40 is data<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 2: IMPLEMENT THE OPERATIONS OF SINGLE CIRCULAR LINKED LIST STORING INTEGER VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+struct node *head;
+int isempty()
+{
+    if (head == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int isfull()
+{
+    struct node *p;
+    p = (struct node *)malloc(sizeof(struct node));
+    if (p == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        free(p);
+        return 0;
+    }
+}
+void insert(int val)
+{
+    struct node *newnode;
+    struct node *temp;
+    if (isfull())
+    {
+        printf("\nmemory is full!");
+    }
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    newnode->next = NULL;
+    newnode->prev = NULL;
+    if (head == NULL)
+    {
+        head = newnode;
+        temp = newnode;
+    }
+    else
+    {
+        temp->next = newnode;
+        newnode->prev = temp;
+        temp = newnode;
+    }
+    printf("\n%d is enqueued element ", val);
+}
+void insert_beg(int val)
+{
+    struct node *temp;
+    struct node *newnode;
+    if (isfull())
+    {
+        printf("\nmemory is full");
+    }
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = val;
+    newnode->next = NULL;
+    newnode->prev = NULL;
+    if (head == NULL)
+    {
+        temp = head;
+    }
+    else
+    {
+        temp->prev = newnode;
+        newnode->next = temp;
+        head = newnode;
+    }
+    printf("\n%d is first element now", val);
+}
+void insert_end(int val)
+{
+    struct node *newnode;
+    struct node *temp;
+    if (isfull())
+    {
+        printf("\nmemeory is full");
+    }
+    temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = newnode;
+    newnode->prev = temp;
+    printf("\n%d is end element ", val);
+}
+void insert_pos(int x,int pos){
+    int i;
+    if(pos<1){
+        printf("\ninvalid position");
+        return;
+    }
+    if (pos == 1 {
+            insert_beg(x);
+            return;
+
+        }
+        if(head==NULL){
+        printf("\ninvalid positon");
+        return;
+        }
+        for(i!=pos-1){
+        printf("\ninvalid position");
+        return;
+        }
+        newnode=(struct node*)malloc(sizeof(struct node));
+        newnode->data=x;
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+int main()
+{
+    insert_beg(10);
+    insert(20);
+    insert_end(30);
+    insert(50, 2);
+    return 0;
+}
+</pre><p><b>output:10 is data<br>50 is data<br>20 is dtaa<br>30 is dta<br><br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 3: IMPLEMENT THE OPERATIONS OF DOUBLY LINKED LIST STORING INTEGER VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int data;
+    struct node *prev, *next;
+};
+
+struct node *head = NULL, *temp, *newnode;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    struct node *p = malloc(sizeof(struct node));
+
+    if (p == NULL)
+        return 1;
+
+    free(p);
+    return 0;
+}
+
+void insert_begin(int val)
+{
+    newnode = malloc(sizeof(struct node));
+    if (newnode == NULL)
+        return;
+
+    newnode->data = val;
+    newnode->prev = NULL;
+    newnode->next = head;
+
+    if (head != NULL)
+        head->prev = newnode;
+
+    head = newnode;
+}
+
+void insert_end(int val)
+{
+    newnode = malloc(sizeof(struct node));
+    if (newnode == NULL)
+        return;
+
+    newnode->data = val;
+    newnode->next = NULL;
+
+    if (head == NULL)
+    {
+        newnode->prev = NULL;
+        head = newnode;
+        return;
+    }
+
+    temp = head;
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newnode;
+    newnode->prev = temp;
+}
+
+void insert_pos(int val, int pos)
+{
+    int i;
+
+    if (pos < 1)
+        return;
+
+    if (pos == 1)
+    {
+        insert_begin(val);
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp != NULL; i++)
+        temp = temp->next;
+
+    if (temp == NULL)
+        return;
+
+    newnode = malloc(sizeof(struct node));
+    if (newnode == NULL)
+        return;
+
+    newnode->data = val;
+    newnode->prev = temp;
+    newnode->next = temp->next;
+
+    if (temp->next != NULL)
+        temp->next->prev = newnode;
+
+    temp->next = newnode;
+}
+
+void delete_begin()
+{
+    if (head == NULL)
+        return;
+
+    temp = head;
+    head = head->next;
+
+    if (head != NULL)
+        head->prev = NULL;
+
+    free(temp);
+}
+
+void delete_end()
+{
+    if (head == NULL)
+        return;
+
+    temp = head;
+
+    if (temp->next == NULL)
+    {
+        head = NULL;
+        free(temp);
+        return;
+    }
+
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->prev->next = NULL;
+    free(temp);
+}
+
+void delete_pos(int pos)
+{
+    int i;
+
+    if (head == NULL || pos < 1)
+        return;
+
+    if (pos == 1)
+    {
+        delete_begin();
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos && temp != NULL; i++)
+        temp = temp->next;
+
+    if (temp == NULL)
+        return;
+
+    temp->prev->next = temp->next;
+
+    if (temp->next != NULL)
+        temp->next->prev = temp->prev;
+
+    free(temp);
+}
+
+void display()
+{
+    temp = head;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("\n");
+}
+
+void search(int val)
+{
+    temp = head;
+
+    while (temp != NULL)
+    {
+        if (temp->data == val)
+        {
+            printf("%d found\n", val);
+            return;
+        }
+
+        temp = temp->next;
+    }
+
+    printf("%d not found\n", val);
+}
+
+int main()
+{
+    insert_begin(10);
+    insert_end(20);
+    insert_end(30);
+    insert_pos(15, 2);
+
+    display();
+
+    delete_begin();
+    delete_end();
+    delete_pos(1);
+
+
+
+    return 0;
+}
+</pre><p><b>output:30</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 4: IMPLEMENT THE OPERATIONS OF DOUBLY CIRCULAR LINKED LIST STORING INTEGER VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int data;
+    struct node *prev;
+    struct node *next;
+};
+
+struct node *head = NULL;
+struct node *temp, *newnode;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    struct node *p = malloc(sizeof(struct node));
+
+    if (p == NULL)
+        return 1;
+
+    free(p);
+    return 0;
+}
+
+void insert_begin(int x)
+{
+    if (isfull())
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    newnode = malloc(sizeof(struct node));
+    newnode->data = x;
+
+    if (isempty())
+    {
+        newnode->next = newnode;
+        newnode->prev = newnode;
+        head = newnode;
+    }
+    else
+    {
+        temp = head->prev;
+
+        newnode->next = head;
+        newnode->prev = temp;
+        temp->next = newnode;
+        head->prev = newnode;
+        head = newnode;
+    }
+}
+
+void insert_end(int x)
+{
+    if (isfull())
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    newnode = malloc(sizeof(struct node));
+    newnode->data = x;
+
+    if (isempty())
+    {
+        newnode->next = newnode;
+        newnode->prev = newnode;
+        head = newnode;
+    }
+    else
+    {
+        temp = head->prev;
+
+        newnode->next = head;
+        newnode->prev = temp;
+        temp->next = newnode;
+        head->prev = newnode;
+    }
+}
+
+void insert_pos(int x, int pos)
+{
+    int i;
+
+    if (pos < 1)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        insert_begin(x);
+        return;
+    }
+
+    if (isempty())
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos - 1)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    if (isfull())
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    newnode = malloc(sizeof(struct node));
+    newnode->data = x;
+
+    newnode->next = temp->next;
+    newnode->prev = temp;
+    temp->next->prev = newnode;
+    temp->next = newnode;
+}
+
+void delete_begin()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    if (head->next == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        head->prev->next = head->next;
+        head->next->prev = head->prev;
+        head = head->next;
+    }
+
+    free(temp);
+}
+
+void delete_end()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head->prev;
+
+    if (head->next == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        temp->prev->next = head;
+        head->prev = temp->prev;
+    }
+
+    free(temp);
+}
+
+void delete_pos(int pos)
+{
+    int i;
+
+    if (isempty() || pos < 1)
+    {
+        printf("Invalid position or empty list\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        delete_begin();
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+
+    free(temp);
+}
+
+void display()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    } while (temp != head);
+
+    printf("\n");
+}
+
+void search(int x)
+{
+    int pos = 1;
+
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        if (temp->data == x)
+        {
+            printf("%d found at position %d\n", x, pos);
+            return;
+        }
+
+        temp = temp->next;
+        pos++;
+    } while (temp != head);
+
+    printf("%d not found\n", x);
+}
+
+int main()
+{
+    insert_begin(10);
+    insert_begin(20);
+    insert_end(30);
+    insert_pos(25, 3);
+
+    display();
+
+    
+
+    delete_begin();
+    delete_end();
+    delete_pos(2);
+
+    display();
+
+    return 0;
+}
+</pre><p><b>output:10 20 25 30<br>25<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 5: IMPLEMENT THE OPERATIONS OF SINGLE LINKED LIST STORING STRING VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+[WRITE CODE HERE]
+</pre><p><b>output:[WRITE YOUR OUTPUT HERE]</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 6: IMPLEMENT THE OPERATIONS OF SINGLE CIRCULAR LINKED LIST STORING STRING VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    char data[50];
+    struct node *next;
+};
+
+struct node *head = NULL;
+struct node *temp, *newnode, *p;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if (p == NULL)
+        return 1;
+
+    free(p);
+    return 0;
+}
+
+void insert_begin(char val[])
+{
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    strcpy(newnode->data, val);
+
+    if (head == NULL)
+    {
+        head = newnode;
+        newnode->next = head;
+    }
+    else
+    {
+        temp = head;
+
+        while (temp->next != head)
+            temp = temp->next;
+
+        newnode->next = head;
+        temp->next = newnode;
+        head = newnode;
+    }
+}
+
+void insert_end(char val[])
+{
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    strcpy(newnode->data, val);
+
+    if (head == NULL)
+    {
+        head = newnode;
+        newnode->next = head;
+    }
+    else
+    {
+        temp = head;
+
+        while (temp->next != head)
+            temp = temp->next;
+
+        temp->next = newnode;
+        newnode->next = head;
+    }
+}
+
+void insert_pos(char val[], int pos)
+{
+    int i;
+
+    if (pos < 1)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        insert_begin(val);
+        return;
+    }
+
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos - 1)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    strcpy(newnode->data, val);
+    newnode->next = temp->next;
+    temp->next = newnode;
+}
+
+void delete_begin()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    if (head->next == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        p = head;
+
+        while (p->next != head)
+            p = p->next;
+
+        head = head->next;
+        p->next = head;
+    }
+
+    free(temp);
+}
+
+void delete_end()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    if (head->next == head)
+    {
+        head = NULL;
+        free(temp);
+        return;
+    }
+
+    while (temp->next->next != head)
+        temp = temp->next;
+
+    p = temp->next;
+    temp->next = head;
+    free(p);
+}
+
+void delete_pos(int pos)
+{
+    int i;
+
+    if (pos < 1 || isempty())
+    {
+        printf("Invalid position or empty list\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        delete_begin();
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos - 1 || temp->next == head)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    p = temp->next;
+    temp->next = p->next;
+    free(p);
+}
+
+void display()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        printf("%s -> ", temp->data);
+        temp = temp->next;
+    } while (temp != head);
+
+    printf("(back to head)\n");
+}
+
+void search(char val[])
+{
+    int pos = 1;
+
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        if (strcmp(temp->data, val) == 0)
+        {
+            printf("%s found at position %d\n", val, pos);
+            return;
+        }
+
+        temp = temp->next;
+        pos++;
+    } while (temp != head);
+
+    printf("%s not found\n", val);
+}
+
+int main()
+{
+    insert_begin("Apple");
+    insert_end("Mango");
+    insert_end("Banana");
+    insert_pos("Orange", 2);
+
+    display();
+
+    search("Mango");
+
+    delete_begin();
+    delete_end();
+    delete_pos(2);
+
+    display();
+
+    return 0;
+}
+</pre><p><b>output:apple orange mango banana<br>mango<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 7: IMPLEMENT THE OPERATIONS OF DOUBLY LINKED LIST STORING STRING VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+#include&lt;string.h><br>
+struct node
+{
+    char data[50];
+    struct node *prev;
+    struct node *next;
+};
+
+struct node *head = NULL;
+struct node *temp, *newnode;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    newnode = malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return 1;
+
+    free(newnode);
+    return 0;
+}
+
+void insert_begin(char val[])
+{
+    newnode = malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Memory full\n");
+        return;
+    }
+
+    strcpy(newnode->data, val);
+    newnode->prev = NULL;
+    newnode->next = head;
+
+    if (head != NULL)
+        head->prev = newnode;
+
+    head = newnode;
+}
+
+void insert_end(char val[])
+{
+    newnode = malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return;
+
+    strcpy(newnode->data, val);
+    newnode->next = NULL;
+
+    if (head == NULL)
+    {
+        newnode->prev = NULL;
+        head = newnode;
+        return;
+    }
+
+    temp = head;
+
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newnode;
+    newnode->prev = temp;
+}
+
+void insert_pos(char val[], int pos)
+{
+    int i;
+
+    if (pos <= 0)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        insert_begin(val);
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp != NULL; i++)
+        temp = temp->next;
+
+    if (temp == NULL)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    newnode = malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return;
+
+    strcpy(newnode->data, val);
+    newnode->next = temp->next;
+    newnode->prev = temp;
+
+    if (temp->next != NULL)
+        temp->next->prev = newnode;
+
+    temp->next = newnode;
+}
+
+void delete_begin()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+    head = head->next;
+
+    if (head != NULL)
+        head->prev = NULL;
+
+    free(temp);
+}
+
+void delete_end()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    if (temp->next == NULL)
+    {
+        head = NULL;
+        free(temp);
+        return;
+    }
+
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->prev->next = NULL;
+    free(temp);
+}
+
+void delete_pos(int pos)
+{
+    int i;
+
+    if (pos <= 0 || isempty())
+    {
+        printf("Invalid position or empty list\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        delete_begin();
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos && temp != NULL; i++)
+        temp = temp->next;
+
+    if (temp == NULL)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    temp->prev->next = temp->next;
+
+    if (temp->next != NULL)
+        temp->next->prev = temp->prev;
+
+    free(temp);
+}
+
+void display()
+{
+    temp = head;
+
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    while (temp != NULL)
+    {
+        printf("%s <-> ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+}
+
+void search(char val[])
+{
+    int pos = 1;
+    temp = head;
+
+    while (temp != NULL)
+    {
+        if (strcmp(temp->data, val) == 0)
+        {
+            printf("%s found at position %d\n", val, pos);
+            return;
+        }
+
+        temp = temp->next;
+        pos++;
+    }
+
+    printf("Element not found\n");
+}
+
+int main()
+{
+    insert_begin("Apple");
+    insert_begin("Mango");
+    insert_end("Banana");
+    insert_pos("Orange", 2);
+
+    display();
+
+    search("Banana");
+
+    delete_begin();
+    delete_end();
+    delete_pos(2);
+
+    display();
+
+    return 0;
+}
+</pre><p><b>output:apple orange mango banana<br>mango<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 8: IMPLEMENT THE OPERATIONS OF DOUBLY CIRCULAR LINKED LIST STORING STRING VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+#include&lt;string.h><br>
+struct node
+{
+    char data[50];
+    struct node *next;
+    struct node *prev;
+};
+
+struct node *head = NULL, *temp, *newnode;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return 1;
+
+    free(newnode);
+    return 0;
+}
+
+void insert_begin(char val[])
+{
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return;
+
+    strcpy(newnode->data, val);
+
+    if (isempty())
+    {
+        head = newnode;
+        newnode->next = head;
+        newnode->prev = head;
+    }
+    else
+    {
+        temp = head->prev;
+
+        newnode->next = head;
+        newnode->prev = temp;
+        temp->next = newnode;
+        head->prev = newnode;
+        head = newnode;
+    }
+}
+
+void insert_end(char val[])
+{
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return;
+
+    strcpy(newnode->data, val);
+
+    if (isempty())
+    {
+        head = newnode;
+        newnode->next = head;
+        newnode->prev = head;
+    }
+    else
+    {
+        temp = head->prev;
+
+        newnode->next = head;
+        newnode->prev = temp;
+        temp->next = newnode;
+        head->prev = newnode;
+    }
+}
+
+void insert_pos(char val[], int pos)
+{
+    int i;
+
+    if (pos < 1)
+        return;
+
+    if (pos == 1)
+    {
+        insert_begin(val);
+        return;
+    }
+
+    if (isempty())
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos - 1 && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos - 1)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+        return;
+
+    strcpy(newnode->data, val);
+
+    newnode->next = temp->next;
+    newnode->prev = temp;
+    temp->next->prev = newnode;
+    temp->next = newnode;
+}
+
+void delete_begin()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    if (head->next == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        head->prev->next = head->next;
+        head->next->prev = head->prev;
+        head = head->next;
+    }
+
+    free(temp);
+}
+
+void delete_end()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head->prev;
+
+    if (head->next == head)
+    {
+        head = NULL;
+    }
+    else
+    {
+        temp->prev->next = head;
+        head->prev = temp->prev;
+    }
+
+    free(temp);
+}
+
+void delete_pos(int pos)
+{
+    int i;
+
+    if (pos < 1 || isempty())
+    {
+        printf("Invalid position or empty list\n");
+        return;
+    }
+
+    if (pos == 1)
+    {
+        delete_begin();
+        return;
+    }
+
+    temp = head;
+
+    for (i = 1; i < pos && temp->next != head; i++)
+        temp = temp->next;
+
+    if (i != pos)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+
+    free(temp);
+}
+
+void display()
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        printf("%s ", temp->data);
+        temp = temp->next;
+    } while (temp != head);
+
+    printf("\n");
+}
+
+void search(char val[])
+{
+    if (isempty())
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+
+    do
+    {
+        if (strcmp(temp->data, val) == 0)
+        {
+            printf("%s found\n", val);
+            return;
+        }
+
+        temp = temp->next;
+    } while (temp != head);
+
+    printf("%s not found\n", val);
+}
+
+int main()
+{
+    insert_begin("Apple");
+    insert_begin("Mango");
+    insert_end("Banana");
+    insert_pos("Orange", 2);
+
+    display();
+
+    search("Banana");
+
+    delete_begin();
+    delete_end();
+    delete_pos(2);
+
+    display();
+
+    return 0;
+}
+</pre><p><b>output:apple orange mango banana<br>mango</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 9: ENTER THE 2 POLYNOMIAL EQUATIONS DYNAMICALLY, ADD THEM AND DISPLAY THE ANSWER.
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int coeff, exp;
+    struct node *next;
+};
+
+struct node *head1 = NULL, *head2 = NULL, *head3 = NULL;
+
+void insert(struct node **head, int c, int e)
+{
+    struct node *newnode, *temp;
+
+    newnode = malloc(sizeof(struct node));
+    newnode->coeff = c;
+    newnode->exp = e;
+    newnode->next = NULL;
+
+    if (*head == NULL)
+        *head = newnode;
+    else
+    {
+        temp = *head;
+        while (temp->next != NULL)
+            temp = temp->next;
+
+        temp->next = newnode;
+    }
+}
+
+void add()
+{
+    struct node *a = head1, *b = head2;
+
+    while (a != NULL && b != NULL)
+    {
+        if (a->exp == b->exp)
+        {
+            insert(&head3, a->coeff + b->coeff, a->exp);
+            a = a->next;
+            b = b->next;
+        }
+        else if (a->exp > b->exp)
+        {
+            insert(&head3, a->coeff, a->exp);
+            a = a->next;
+        }
+        else
+        {
+            insert(&head3, b->coeff, b->exp);
+            b = b->next;
+        }
+    }
+
+    while (a != NULL)
+    {
+        insert(&head3, a->coeff, a->exp);
+        a = a->next;
+    }
+
+    while (b != NULL)
+    {
+        insert(&head3, b->coeff, b->exp);
+        b = b->next;
+    }
+}
+
+void display(struct node *temp)
+{
+    while (temp != NULL)
+    {
+        printf("%dx^%d", temp->coeff, temp->exp);
+
+        if (temp->next != NULL)
+            printf(" + ");
+
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int n, i, c, e;
+
+    printf("Enter number of terms in first polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head1, c, e);
+    }
+
+    printf("Enter number of terms in second polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head2, c, e);
+    }
+
+    printf("First polynomial: ");
+    display(head1);
+
+    printf("Second polynomial: ");
+    display(head2);
+
+    add();
+
+    printf("Addition answer: ");
+    display(head3);
+
+    return 0;
+}
+</pre><p><b>output:enter number of terms in first polynomial:2<br>enter coefficient and exponent:5 2<br>enter coefficient and exponenet: 3 1<br>enter number of terms in second polynomial:2<br>enter coeffiecient and exponent: 4 2<br>enter coeffiecent and exponenet: 2 0<br>first polynomaila:5x^2 + 3x^1<br>second polynomial: 4x^2+ 2x^<br>ddition answer:9x^2 + 3x^1+2x^0<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 10: ENTER THE 2 POLYNOMIAL EQUATIONS DYNAMICALLY, SUBTRACT THEM AND DISPLAY THE ANSWER.
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int coeff, exp;
+    struct node *next;
+};
+
+struct node *head1 = NULL;
+struct node *head2 = NULL;
+struct node *head3 = NULL;
+
+void insert(struct node **head, int c, int e)
+{
+    struct node *newnode, *temp;
+
+    newnode = malloc(sizeof(struct node));
+    newnode->coeff = c;
+    newnode->exp = e;
+    newnode->next = NULL;
+
+    if (*head == NULL)
+        *head = newnode;
+    else
+    {
+        temp = *head;
+
+        while (temp->next != NULL)
+            temp = temp->next;
+
+        temp->next = newnode;
+    }
+}
+
+void subtract()
+{
+    struct node *a = head1;
+    struct node *b = head2;
+
+    while (a != NULL && b != NULL)
+    {
+        if (a->exp == b->exp)
+        {
+            insert(&head3, a->coeff - b->coeff, a->exp);
+            a = a->next;
+            b = b->next;
+        }
+        else if (a->exp > b->exp)
+        {
+            insert(&head3, a->coeff, a->exp);
+            a = a->next;
+        }
+        else
+        {
+            insert(&head3, -b->coeff, b->exp);
+            b = b->next;
+        }
+    }
+
+    while (a != NULL)
+    {
+        insert(&head3, a->coeff, a->exp);
+        a = a->next;
+    }
+
+    while (b != NULL)
+    {
+        insert(&head3, -b->coeff, b->exp);
+        b = b->next;
+    }
+}
+
+void display(struct node *temp)
+{
+    while (temp != NULL)
+    {
+        printf("%dx^%d", temp->coeff, temp->exp);
+
+        if (temp->next != NULL)
+            printf(" + ");
+
+        temp = temp->next;
+    }
+
+    printf("\n");
+}
+
+int main()
+{
+    int n, i, c, e;
+
+    printf("Enter terms in first polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head1, c, e);
+    }
+
+    printf("Enter terms in second polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head2, c, e);
+    }
+
+    printf("First polynomial: ");
+    display(head1);
+
+    printf("Second polynomial: ");
+    display(head2);
+
+    subtract();
+
+    printf("Subtraction answer: ");
+    display(head3);
+
+    return 0;
+}
+</pre><p><b>output:enter number of terms in first polynomial:2<br>enter coefficient and exponent:5 2<br>enter coefficient and exponenet: 3 1<br>enter number of terms in second polynomial:2<br>enter coeffiecient and exponent: 4 2<br>enter coeffiecent and exponenet: 2 0<br>first polynomaila:5x^2 + 3x^1<br>second polynomial: 4x^2+ 2x^<br>subtractionanswer:9x^2 + 3x^1-2x^0</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 11: ENTER THE 2 POLYNOMIAL EQUATIONS DYNAMICALLY, MULTIPLY THEM AND DISPLAY THE ANSWER.
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;stlib.h><br>
+struct node
+{
+    int coeff, exp;
+    struct node *next;
+};
+
+struct node *head1 = NULL, *head2 = NULL, *head3 = NULL;
+
+void insert(struct node **head, int c, int e)
+{
+    struct node *newnode, *temp;
+
+    newnode = malloc(sizeof(struct node));
+    newnode->coeff = c;
+    newnode->exp = e;
+    newnode->next = NULL;
+
+    if (*head == NULL)
+        *head = newnode;
+    else
+    {
+        temp = *head;
+
+        while (temp->next != NULL)
+            temp = temp->next;
+
+        temp->next = newnode;
+    }
+}
+
+void multiply()
+{
+    struct node *a, *b, *temp;
+
+    for (a = head1; a != NULL; a = a->next)
+    {
+        for (b = head2; b != NULL; b = b->next)
+        {
+            int c = a->coeff * b->coeff;
+            int e = a->exp + b->exp;
+
+            temp = head3;
+
+            while (temp != NULL && temp->exp != e)
+                temp = temp->next;
+
+            if (temp == NULL)
+                insert(&head3, c, e);
+            else
+                temp->coeff = temp->coeff + c;
+        }
+    }
+}
+
+void display(struct node *temp)
+{
+    while (temp != NULL)
+    {
+        printf("%dx^%d", temp->coeff, temp->exp);
+
+        if (temp->next != NULL)
+            printf(" + ");
+
+        temp = temp->next;
+    }
+
+    printf("\n");
+}
+
+int main()
+{
+    int n, i, c, e;
+
+    printf("Enter terms in first polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head1, c, e);
+    }
+
+    printf("Enter terms in second polynomial: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter coefficient and exponent: ");
+        scanf("%d%d", &c, &e);
+        insert(&head2, c, e);
+    }
+
+    multiply();
+
+    printf("Answer: ");
+    display(head3);
+
+    return 0;
+}
+</pre><p><b>output:enter number of terms in first polynomial:2<br>enter coefficient and exponent:5 2<br>enter coefficient and exponenet: 3 1<br>enter number of terms in second polynomial:2<br>enter coeffiecient and exponent: 4 2<br>enter coeffiecent and exponenet: 2 0<br>first polynomaila:5x^2 + 3x^1<br>second polynomial: 4x^2+ 2x^0<br>multiplication answer:20x^4 +12x^3 + 10x^2 +6x^1</b>
+</p>
+</details><br>
+
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

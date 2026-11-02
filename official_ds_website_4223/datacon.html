@@ -1,0 +1,405 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>DATA CONVERSION</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1:C++ Program to convert String to int?</summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;stdlib.h>
+void main()
+{
+char str[20];
+int num;
+clrscr();
+cout<<"enter number in a string form:";
+cin>>str;
+num=atoi(str);
+cout<<"integer value is:"<<num;
+getch();
+}
+</pre><p><b>output:</b>enter a  number 3<br>number is positive
+</p>
+</details><br>
+
+<details>
+<summary>Question 2:C++ Program to convert int to String</summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;stdlib.h>
+void main()
+{
+int num;
+char str[20];
+clrscr();
+cout<<"enter an integer:";
+cin>>num;
+itoa(num,str,10);
+cout<<"string value is:"<<str;
+getch();
+}
+
+</pre><p><b>output:</b>enter a  number 23<br>number is even
+</p>
+</details><br>
+
+<details>
+<summary>Question 3: C++ Program to convert String to long</summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+char str[30];
+long num;
+clrscr();
+cout<<"enter number in string form:";
+cin>>str;
+num=atol(str);
+cout<<"long vlaue is:"<<num;
+getch();
+}
+</pre><p><b>output:</b> enter a  number 45<br>2 digit
+</p>
+</details><br>
+
+<details>
+<summary>Question 4:  C++ Program to convert long to String</summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;stdio.h>
+void main() {
+long num = 123456789;
+char str[20];   
+sprintf(str, "%ld", num);
+cout << "Long value: " << num << endl;
+cout << "Converted String: " << str << endl;
+ getch();
+}
+</pre><p><b>output:</b> Long value: 123456789<br>
+Converted String: 123456789<br></p>
+</details><br>
+
+<details>
+<summary>Question 5: 
+C++ Program to convert String to float </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+char str[20];
+float num;
+clrscr();
+cout<<"enter a number(string):";
+cin>>str;
+num=atof(str);
+cout<<"float value is:"<<num;
+getch();
+}
+</pre><p><b>output:</b> enter a number: 23.4<br>it is a decimal number</p>
+</details><br>
+
+<details>
+<summary>Question 6: 
+C++ Program to convert float to String
+
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;stdio.h>
+void main() {
+ float num = 123.45;
+char str[20];  
+
+Convert float to string
+sprintf(str, "%f", num);
+
+cout << "Float value: " << num << endl;
+cout << "Converted String: " << str << endl;
+
+getch();
+}</pre><p><b>output:</b> Float value: 123.45<br>
+Converted String: 123.450000</p>
+</details><br>
+
+
+<details>
+<summary>Question 7:  C++ Program to convert String to double
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+char str[30];
+double num;
+clrscr();
+cout<<"enter a number(string):";
+cin>>str;
+num=atof(str);
+cout<<"double value is:"<<num;
+getch();
+}
+</pre><p><b>output:</b> enter a character:a <br>it is an aplhabet</p>
+</details><br>
+<details>
+<summary>Question 8: C++ Program to convert double to String
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+double num;
+char str[30];
+clrscr()
+;
+cout<<"enter a double number";
+cin>>num;
+sprintf(str,"%lf",num);
+cout<<"string value is:"<<str;
+getch();
+}
+
+
+</pre><p><b>output:</b>enter a number:-8 <br>square is 64 <br></p>
+</details><br>
+
+<details>
+<summary>Question 9: C++ Program to convert char to int
+ </summary><pre>
+#include&lt;stdio.h>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+char ch;
+int num;
+clrscr();
+cout<<"enter a character:";
+cin>>ch;
+num=(int)ch;
+cout<<"integer(ascii value)="<<num;
+getch();
+}</pre><p><b>output:</b>enter a number67 <br>it is positive number <br></p>
+</details><br>
+
+<details>
+<summary>Question 10:C++ Program to convert int to char
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+int num;
+char ch;
+clrscr();
+cout<<"enter an integer(ascii value):";
+cin>>num;
+ch=(char)num;
+cout<<"character= "<<ch;
+getch();
+}
+</pre><p><b>output:</b>enter first number 56<br>enter second number 33
+ <br>a is greater <br></p>
+</details><br>
+
+<details>
+<summary>Question 11: C++ Program to convert Binary to Decimal
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+long int binary,decimal=0;
+int i=0,remainder;
+clrscr();
+cout<<"enter a binary number:";
+cin>>binary;
+while(binary!=0)
+{
+remainder=binary%10;
+decimal=decimal+remainder*pow(2,i);
+binary=binary/10;
+i++;
+}
+
+cout<<"decimal number="<<decimal;
+getch();
+}
+</pre><p><b>output:</b>enter a number 40
+ <br>it is divisible by 4 <br></p>
+</details><br>
+
+<details>
+<summary>Question 12:C++ Program to convert Decimal to Binary
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+int num,binary[20],i=0,j;
+clrscr();
+cout<<"enter a decimal number:";
+cin>>num;
+while(num>0)
+{
+binary[i]=num%2;
+num=num/2;
+i++;
+}
+cout<<"binary number=";
+for(j=i-1;j>=0;j--)
+{
+cout<<binary[j];
+}
+getch();
+</pre><p><b>output:</b>enter first character a<br>enter second character a<br>
+enter third character a<br>enter fourth character a<br>all characeter are equal<br></p>
+</details><br>
+
+
+<details>
+<summary>Question 13: C++ Program to convert Hex to Decimal
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+char hex[20];
+int i,len,decimal=0,value;
+clrscr();
+cout<<"enter a hexadecimal number:";
+cin>>hex;
+len=strlen(hex);
+for(i=0;i<len;i++)
+{
+if(hex[i]>='0' && hex[i]<='9')
+value=hex[i]-'0';
+else if(hex[i]>='A' && hex[i]<='F')
+value=hex[i]-'A'+10;
+else if(hex[i]>='a' && hex[i]<='f')
+value=hex[i]-'a'+10;
+decimal=decimal+value*pow(16,len-i-1);
+}
+cout<<"decimal number="<<decimal;
+getch();
+}
+
+
+
+</pre><p><b>output:</b> enter first number 44<br>enter second number 22<br>  >enter third number 11<br>first number is greater</p>
+</details><br>
+
+<details>
+<summary>Question 14: C++ Program to convert Decimal to Hex
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;math.h>
+void main()
+{
+int num,i=0,remainder;
+char hex[20];
+clrscr();
+cout<<"enter a decimal number:";
+cin>>num;
+while(num>0)
+{
+remainder=num%16;
+if(remainder<10)
+hex[i]=remainder+'0';
+else
+hex[i]=remainder-10+'a';
+num=num/16;
+i++;
+}
+cout<<"hexadecimal number=";
+for(int j=i-1;j>=10;j--)
+{
+cout<<hex[j];
+}
+getch();
+}
+
+
+
+</pre><p><b>output:</b>enter maximum days in a month 30<br>april<br>june<br>september<br>november </p>
+</details><br>
+
+
+<details>
+<summary>Question 15: C++ Program to convert Octal to Decimal
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;math.h>
+void main()
+{
+long int octal,decimal=0;
+int i=0,remainder;
+clrscr();
+cout<<"enter a octal number:";
+cin>>octal;
+while(octal!=0)
+{
+remainder=octal%10;
+decimal=decimal+remainder*pow(8,i);
+octal=octal/10;
+i++;
+}
+cout<<"decimal number="<<decimal;
+getch();
+}
+
+</pre><p><b>output:</b>enter any one digit number 6<br>six </p>
+</details><br>
+
+<details>
+<summary>Question 16: C++ Program to convert Decimal to Octal
+ </summary><pre>
+
+#include&lt;iostream.h>
+#include&lt;conio.h>
+void main()
+{
+int num,i=0;int octal[20];
+clrscr();
+cout<<"enter a decimal number:";
+cin>>num;
+while(num>0)
+{
+octal[i]=num%8;
+num=num/8;
+i++;
+}
+cout<<"octal number=";
+for(int j=i-1;j>=0;j--)
+{
+cout<<octal[j];
+}
+getch();
+}</pre><p><b>output:</b>enter first char:a<br>enter second character:a<br> both  character are same</p>
+</details><br>
+
+<footer><center><a href="cpp_link.html">back</a></center></footer>
+
+</body>
+</html>

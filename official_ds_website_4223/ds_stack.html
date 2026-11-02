@@ -1,0 +1,912 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1> STACK </h1>
+<p>Learn DS with simple example</p>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE DS PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+<summary>Question 1: CREATE A STACK IMPLEMENTING THE OPERATIONS ON AN INTEGER ARRAY (PUSH, POP, PEEK, ISEMPTY, ISFULL)
+</summary><pre>
+#include&lt;stdio.h>
+int top = -1;
+
+int isempty()
+{
+    if (top == -1)
+    {
+        printf("stack is empty ! cannot delete\n");
+        return 1;
+    }
+    else
+    {
+        printf("stack is not empty\n");
+        return 0;
+    }
+}
+
+int isfull()
+{
+    if (top == 4)
+    {
+        printf("stack is full ! cannot insert\n");
+        return 1;
+    }
+    else
+    {
+        printf("stack is not full\n");
+        return 0;
+    }
+}
+void push(int stack[])
+{
+    if (isfull())
+    {
+        printf("stack is full cannot push\n");
+    }
+    else
+    {
+        int val;
+        printf("enter element to push:");
+        scanf("%d", &val);
+        top++;
+        stack[top] = val;
+        printf("%d is pushed\n", stack[top]);
+    }
+}
+void peek(int stack[])
+{
+    if (isempty())
+    {
+        printf("stack is empty\n");
+    }
+    else
+    {
+        printf("%d is top element in stack\n", stack[top]);
+    }
+}
+
+void pop(int stack[])
+{
+    if (isempty())
+    {
+        printf("stack is empty cannot pop\n");
+    }
+    else
+    {
+        printf("%d is popped\n", stack[top]);
+        top--;
+    }
+}
+
+int main()
+{
+    int stack[5];
+    int choice;
+    printf("1:push \n2:pop\n3:peek\n4:isempty\n5:isfull\n6:exit\n");
+    do
+    {
+        printf("enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+
+        case 1:
+            push(stack);
+            break;
+        case 2:
+            pop(stack);
+            break;
+        case 3:
+            peek(stack);
+            break;
+        case 4:
+            isempty();
+            break;
+        case 5:
+            isfull();
+            break;
+        case 6:
+            printf("program ended\n");
+            break;
+        default:
+            printf("invalid number\n");
+        }
+    } while (choice != 6);
+    return 0;
+</pre><p><b>output:enter your choice: 1<br>
+enter element to push :20<br>
+enter your choice:1<br>
+enter element to push:20<br>
+enter your choice:2<br>
+20 is popped<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 2: CREATE A STACK IMPLEMENTING THE OPERATIONS ON THE CHARACTERS ARRAY (PUSH, POP, PEEK, ISEMPTY, ISFULL)
+</summary><pre>
+#include&lt;stdio.h>
+int top = -1;
+
+int isempty()
+{
+    if (top == -1)
+    {
+        printf("stack is empty ! cannot delete\n");
+        return 1;
+    }
+    else
+    {
+        printf("stack is not empty\n");
+        return 0;
+    }
+}
+
+int isfull()
+{
+    if (top == 4)
+    {
+        printf("stack is full ! cannot insert\n");
+        return 1;
+    }
+    else
+    {
+        printf("stack is not full\n");
+        return 0;
+    }
+}
+void push(char stack[])
+{
+    if (isfull())
+    {
+        printf("stack is full cannot push\n");
+    }
+    else
+    {
+        char val;
+        printf("enter char to push:");
+        scanf(" %c", &val);
+        top++;
+        stack[top] = val;
+        printf("%c is pushed\n", stack[top]);
+    }
+}
+void peek(char stack[])
+{
+    if (isempty())
+    {
+        printf("stack is empty\n");
+    }
+    else
+    {
+        printf("%c is top element in stack\n", stack[top]);
+    }
+}
+
+void pop(char stack[])
+{
+    if (isempty())
+    {
+        printf("stack is empty cannot pop\n");
+    }
+    else
+    {
+        printf("%c is popped\n", stack[top]);
+        top--;
+    }
+}
+
+int main()
+{
+    char stack[5];
+    int choice;
+    printf("1:push \n2:pop\n3:peek\n4:isempty\n5:isfull\n6:exit\n");
+    do
+    {
+        printf("enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+
+        case 1:
+            push(stack);
+            break;
+        case 2:
+            pop(stack);
+            break;
+        case 3:
+            peek(stack);
+            break;
+        case 4:
+            isempty();
+            break;
+        case 5:
+            isfull();
+            break;
+        case 6:
+            printf("program ended\n");
+            break;
+        default:
+            printf("invalid number\n");
+        }
+    } while (choice != 6);
+    return 0;
+}
+</pre><p><b>output:enter your choice: 1<br>
+enter element to push :a<br>
+enter your choice:1<br>
+enter element to push:b<br>
+enter your choice:2<br>
+b is popped<br> </b>
+</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 3: CREATE A STACK IMPLEMENTING THE OPERATIONS ON AN INTEGER NODES (DYNAMICALLY) (PUSH, POP, PEEK, ISEMPTY, ISFULL)
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *top = NULL;
+int isfull()
+{
+    struct node *p;
+    p = (struct node *)malloc(sizeof(struct node));
+    if (p == NULL)
+    {
+        // printf("stack is full\n");
+        return 1;
+    }
+    else
+    {
+        // printf("stack is not full\n");
+        free(p);
+        return 0;
+    }
+}
+int isempty()
+{
+    if (top == NULL)
+    {
+        // printf("stack is empty\n");
+        return 1;
+    }
+    else
+    {
+        // printf("stack is not empty\n");
+        return 0;
+    }
+}
+void push(int val)
+{
+    struct node *newnode;
+    if (isfull())
+    {
+        printf("stack is full cannot push\n");
+    }
+    else
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        newnode->data = val;
+        newnode->next = top;
+        top = newnode;
+    }
+    printf("%d is pushed\n", val);
+}
+void pop()
+{
+    struct node *temp;
+    if (isempty())
+    {
+        printf("stack is empty cannot pop\n");
+    }
+    else
+    {
+        temp = top;
+        top = top->next;
+        printf("popped element is :%d\n", temp->data);
+        free(temp);
+    }
+}
+void peek()
+{
+    if (isempty())
+    {
+        printf("stack is empty cannot peek\n");
+    }
+    else
+    {
+        printf("%d is top element\n", top->data);
+    }
+}
+
+void display()
+{
+    struct node *temp;
+    if (isempty())
+    {
+        printf("stack  is empty cannot display\n");
+    }
+    else
+    {
+        temp = top;
+        while (temp != NULL)
+        {
+            printf("elements in stack are: %d  ", temp->data);
+            temp = temp->next;
+        }
+    }
+}
+int main()
+{
+    push(10);
+    push(20);
+    pop();
+    peek();
+
+    display();
+    return 0;
+</pre><p><b>output:element in stack are:10<br>element in stack are 20<br>poppwd element is 20<br>top element is 10<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 4: CREATE A STACK IMPLEMENTING THE OPERATIONS ON THE CHARACTERS NODES (DYNAMICALLY) (PUSH, POP, PEEK, ISEMPTY, ISFULL)
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+struct node
+{
+    char data;
+    struct node *next;
+};
+struct node *top = NULL;
+int isfull()
+{
+    struct node *p;
+    p = (struct node *)malloc(sizeof(struct node));
+    if (p == NULL)
+    {
+        // printf("stack is full\n");
+        return 1;
+    }
+    else
+    {
+        // printf("stack is not full\n");
+        free(p);
+        return 0;
+    }
+}
+int isempty()
+{
+    if (top == NULL)
+    {
+        // printf("stack is empty\n");
+        return 1;
+    }
+    else
+    {
+        // printf("stack is not empty\n");
+        return 0;
+    }
+}
+void push(char val)
+{
+    struct node *newnode;
+    if (isfull())
+    {
+        printf("stack is full cannot push\n");
+    }
+    else
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        newnode->data = val;
+        newnode->next = top;
+        top = newnode;
+    }
+    printf(" %c is pushed\n", val);
+}
+void pop()
+{
+    struct node *temp;
+    if (isempty())
+    {
+        printf("stack is empty cannot pop\n");
+    }
+    else
+    {
+        temp = top;
+        top = top->next;
+        printf("popped character is :%c\n", temp->data);
+        free(temp);
+    }
+}
+void peek()
+{
+    if (isempty())
+    {
+        printf("stack is empty cannot peek\n");
+    }
+    else
+    {
+        printf(" %c is top element\n", top->data);
+    }
+}
+
+void display()
+{
+    struct node *temp;
+    if (isempty())
+    {
+        printf("stack  is empty cannot display\n");
+    }
+    else
+    {
+        temp = top;
+        while (temp != NULL)
+        {
+            printf("characters in stack are: %c  ", temp->data);
+            temp = temp->next;
+        }
+    }
+}
+int main()
+{
+    push('a');
+    push('b');
+    pop();
+    peek();
+
+    display();
+    return 0
+}
+</pre><p><b>output:character in stack are:a<br>character in stack are b<br>popped character is b<br>top character is a<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 5: ENTER THE STRING FROM THE USER AND REVERSE THE STRING USING STACKS.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+int main()
+{
+    char str[50];
+    char stack[50];
+    int top = -1;
+    int i;
+    printf("enter string:");
+    scanf("%s", str);
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        top++;
+        stack[top] = str[i];
+    }
+    printf("reverse string is\n");
+    while (top != -1)
+    {
+        printf(" %c", stack[top]);
+        top--;
+    }
+    return 0;
+}
+</pre><p><b>output:enter string:apple<br>reversed string:elppa<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 6: CREATE THE PROGRAM TO MATCH THE SINGLE BRACKET USING STACKS.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+char stack[20];
+int top = -1;
+char exp[20];
+int i;
+
+int main()
+{
+    printf("Enter expression: ");
+    scanf("%s", exp);
+
+    for (i = 0; exp[i] != '\0'; i++)
+    {
+        if (exp[i] == '(')
+        {
+            top++;
+            stack[top] = exp[i];
+        }
+        else if (exp[i] == ')')
+        {
+            if (top == -1)
+            {
+                printf("Brackets not matched");
+                return 0;
+            }
+            else
+            {
+                top--;
+            }
+        }
+    }
+
+    if (top == -1)
+        printf("Brackets matched");
+    else
+        printf("Brackets not matched");
+
+    return 0;
+}
+</pre><p><b>output:enter expression:a+b(a*b)<br>bracket matched</b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 7: CREATE TWO INTEGER STACKS IN A SINGLE ARRAY.
+</summary><pre>
+#include&lt;stdio.h>
+int stack[10];
+int top1 = -1, top2 = 10;
+int i;
+
+void push1(int x)
+{
+    if (top1 + 1 == top2)
+        printf("Stack Overflow\n");
+    else
+        stack[++top1] = x;
+}
+
+void push2(int x)
+{
+    if (top1 + 1 == top2)
+        printf("Stack Overflow\n");
+    else
+        stack[--top2] = x;
+}
+
+void display()
+{
+    printf("Stack 1: ");
+    for (i = 0; i <= top1; i++)
+        printf("%d ", stack[i]);
+
+    printf("\nStack 2: ");
+    for (i = 9; i >= top2; i--)
+        printf("%d ", stack[i]);
+}
+
+int main()
+{
+    push1(10);
+    push1(20);
+    push1(30);
+
+    push2(100);
+    push2(200);
+    push2(300);
+
+    display();
+
+    return 0;
+}
+</pre><p><b>output:stack 1:10 20 30<br>stack 2: 100 200 300<br></b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 8: SORT THE STACK IN ASCENDING ORDER USING INTEGER ARRAY.
+</summary><pre>
+#include&lt;stdio.h>
+int stack[5], top = -1;
+int i, j, temp;
+
+int main()
+{
+    printf("Enter 5 elements:\n");
+
+    for (i = 0; i < 5; i++)
+    {
+        scanf("%d", &stack[i]);
+        top++;
+    }
+
+    for (i = 0; i < 5; i++)
+    {
+        for (j = i + 1; j < 5; j++)
+        {
+            if (stack[i] > stack[j])
+            {
+                temp = stack[i];
+                stack[i] = stack[j];
+                stack[j] = temp;
+            }
+        }
+    }
+
+    printf("Stack in ascending order:\n");
+
+    for (i = 4; i >= 0; i--)
+    {
+        printf("%d\n", stack[i]);
+    }
+
+    return 0;
+}
+</pre><p><b>output:enter 5 elements: 10 5 20 25 1<br>stack in ascending order: 1 5 10 20 25</b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 9: ENTER THE INFIX EXPRESSION FROM USER AND CONVERT INTO PREFIX EXPRESSION?
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;string.h>
+#include&lt;ctype.h>
+char stack[50], infix[50], prefix[50];
+int top = -1;
+
+void push(char x)
+{
+    stack[++top] = x;
+}
+
+char pop()
+{
+    return stack[top--];
+}
+
+int priority(char x)
+{
+    if (x == '^')
+        return 3;
+    if (x == '*' || x == '/')
+        return 2;
+    if (x == '+' || x == '-')
+        return 1;
+    return 0;
+}
+
+int main()
+{
+    int i, j = 0;
+    char temp, x;
+
+    printf("Enter infix expression: ");
+    scanf("%s", infix);
+
+    strrev(infix);
+
+    for (i = 0; infix[i] != '\0'; i++)
+    {
+        if (infix[i] == '(')
+            infix[i] = ')';
+        else if (infix[i] == ')')
+            infix[i] = '(';
+    }
+
+    for (i = 0; infix[i] != '\0'; i++)
+    {
+        if (isalnum(infix[i]))
+        {
+            prefix[j++] = infix[i];
+        }
+        else if (infix[i] == '(')
+        {
+            push(infix[i]);
+        }
+        else if (infix[i] == ')')
+        {
+            while (top != -1 && stack[top] != '(')
+                prefix[j++] = pop();
+
+            pop();
+        }
+        else
+        {
+            while (top != -1 && priority(stack[top]) > priority(infix[i]))
+                prefix[j++] = pop();
+
+            push(infix[i]);
+        }
+    }
+
+    while (top != -1)
+        prefix[j++] = pop();
+
+    prefix[j] = '\0';
+
+    strrev(prefix);
+
+    printf("Prefix expression: %s", prefix);
+
+    return 0;
+}
+</pre><p><b>output:enter expression:a+b*c<br>prefix expression : +a*bc</b>
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 10: ENTER THE INFIX EXPRESSION FROM USER AND CONVERT INTO POSTFIX EXPRESSION.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;ctype.h>
+char stack[50];
+int top = -1;
+
+void push(char x)
+{
+    stack[++top] = x;
+}
+
+char pop()
+{
+    return stack[top--];
+}
+
+int priority(char x)
+{
+    if (x == '+' || x == '-')
+        return 1;
+    if (x == '*' || x == '/')
+        return 2;
+    return 0;
+}
+
+void convert(char infix[])
+{
+    char x;
+    int i;
+
+    for (i = 0; infix[i] != '\0'; i++)
+    {
+        x = infix[i];
+
+        if ((x >= 'A' && x <= 'Z') ||
+            (x >= 'a' && x <= 'z') ||
+            (x >= '0' && x <= '9'))
+            printf("%c", x);
+
+        else if (x == '(')
+            push(x);
+
+        else if (x == ')')
+        {
+            while (top != -1 && stack[top] != '(')
+                printf("%c", pop());
+
+            if (top != -1)
+                pop();
+        }
+
+        else
+        {
+            while (top != -1 && priority(stack[top]) >= priority(x))
+                printf("%c", pop());
+
+            push(x);
+        }
+    }
+
+    while (top != -1)
+        printf("%c", pop());
+}
+
+int main()
+{
+    char infix[50];
+
+    printf("Enter infix expression: ");
+    scanf("%s", infix);
+
+    printf("Postfix expression: ");
+    convert(infix);
+
+    return 0;
+}
+</pre><p><b>output:enter infix expression: a+b*c<br>postfix expression: abc*+</b>
+</p>
+</details><br>
+
+<details>
+<summary>Question 11: CREATE A PROGRAM TO EVALUATE THE PREFIX EXPRESSION
+</summary><pre>
+#include&lt;stdio.h><br>
+#include&lt;sstring.h><br>
+#include&lt;ctype.h><br>
+int stack[50];
+int top = -1;
+
+void push(int x)
+{
+    stack[++top] = x;
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+int evaluate(char prefix[])
+{
+    int i, a, b;
+    int result;
+
+    for (i = strlen(prefix) - 1; i >= 0; i--)
+    {
+        if (isdigit(prefix[i]))
+            push(prefix[i] - '0');
+
+        else
+        {
+            a = pop();
+            b = pop();
+
+            switch (prefix[i])
+            {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                result = a / b;
+                break;
+            }
+
+            push(result);
+        }
+    }
+
+    return pop();
+}
+
+int main()
+{
+    char prefix[50];
+
+    printf("Enter prefix expression: ");
+    scanf("%s", prefix);
+
+    printf("Result = %d", evaluate(prefix));
+
+    return 0;
+}
+</pre><p><b>output:enter prefix expression:  a+b*c<br>result=+a*bc<br></b>
+</p>
+</details><br>
+
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

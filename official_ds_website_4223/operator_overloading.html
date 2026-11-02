@@ -1,0 +1,428 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>OPERATOR OVERLOADING</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1:define a class  complex to represent complex number.overload the + operator to add complex numbers.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+class complex{
+int real,imag;
+public:
+void input()
+{
+cout<<"enter real and imaginary:";
+cin>>real>>imag;
+}
+complex operator+(complex c) {
+complex temp;
+temp.real=real+c.real;
+temp.imag=imag+c.imag;
+return temp;
+}
+void display()
+{
+cout<<real<<"+"<<imag<<"i";
+}
+};
+void main()
+{
+clrscr();
+complex c1,c2,c3;
+c1.input();
+c2.input();
+c3=c1+c2;
+cout<<"\nresult:";
+c3.display();
+getch() ;
+}
+</pre><p><b>output:enter real and imaginary 2 3<br>4 5<br>6+8i.</b>
+
+
+</p>
+</details><br>
+
+<details>
+<summary>Question 2: create a class fraction to represent fraction.overload the + opeartor to add two fractions.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+class fraction{
+int num,den;
+public:
+void input()
+{
+cout<<"enter numerator and denominator:";
+cin>>num>>den;
+}
+fraction operator+(fraction f)
+{
+fraction temp;
+temp.num=num*f.den+f.num*den;
+temp.den=den*f.den;
+return temp;
+}
+void display()
+{
+cout<<num<<"/"<<den;
+}
+};
+void main()
+{
+clrscr();
+fraction f1,f2,f3;
+f1.input();
+f2.input();
+f3=f1+f2;
+cout<<"\nresult:";
+f3.display();
+getch();
+}
+</pre><p><b>output:enter numerator and denominator: 2<br>4
+2</b>
+
+
+</p>
+</details><br>
+
+<details>
+<summary>Question 3: Define a class Matrix to represent matrices.
+Overload the * operator to multiply two matrices.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+class Matrix {
+private:
+    int a[2][2];
+
+public:
+    void input() {
+        cout << "Enter 4 elements:\n";
+        for(int i=0;i<2;i++)
+            for(int j=0;j<2;j++)
+                cin >> a[i][j];
+    }
+
+    Matrix operator*(Matrix m) {
+        Matrix temp;
+
+        for(int i=0;i<2;i++) {
+            for(int j=0;j<2;j++) {
+                temp.a[i][j] = 0;
+                for(int k=0;k<2;k++) {
+                    temp.a[i][j] += a[i][k] * m.a[k][j];
+                }
+            }
+        }
+
+        return temp;
+    }
+
+    void display() {
+        for(int i=0;i<2;i++) {
+            for(int j=0;j<2;j++) {
+                cout << a[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+void main() {
+    Matrix m1, m2, m3;
+
+    cout << "Enter first matrix\n";
+    m1.input();
+
+    cout << "Enter second matrix\n";
+    m2.input();
+
+    m3 = m1 * m2;
+
+    cout << "Result Matrix\n";
+    m3.display();
+
+    getch();
+}
+
+</pre><p><b>output:Enter first matrix<br>
+1 2<br>
+3 4<br>
+Enter second matrix<br>
+2 0<br>
+1 2<br>
+Result Matrix<br>
+4 4<br>
+10 8</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 4: Implement a class String to represent strings.
+Overload the + operator to concatenate two strings. </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;cstream.h>
+
+class String {
+private:
+    char str[50];
+
+public:
+    void input() {
+        cout << "Enter string: ";
+        cin >> str;
+    }
+
+    String operator+(String s) {
+        String temp;
+        strcpy(temp.str, str);
+        strcat(temp.str, s.str);
+        return temp;
+    }
+
+    void display() {
+        cout << str << endl;
+    }
+};
+
+void main() {
+    String s1, s2, s3;
+
+    s1.input();
+    s2.input();
+
+    s3 = s1 + s2;
+
+    cout << "Concatenated String: ";
+    s3.display();
+
+    getch();
+}
+
+
+
+</pre><p><b>output:Enter string: Hello<br>
+Enter string: World<br>
+Concatenated String: HelloWorld</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 5:Define a class Date to represent dates.
+Overload the < operator to compare two dates.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+
+class Date {
+private:
+    int d, m, y;
+
+public:
+    void input() {
+        cout << "Enter day month year: ";
+        cin >> d >> m >> y;
+    }
+
+    bool operator<(Date dt) {
+        if (y < dt.y) return true;
+        if (y == dt.y && m < dt.m) return true;
+        if (y == dt.y && m == dt.m && d < dt.d) return true;
+        return false;
+    }
+};
+
+void main() {
+    Date d1, d2;
+
+    d1.input();
+    d2.input();
+
+    if(d1 < d2)
+        cout << "First date is earlier";
+    else
+        cout << "Second date is earlier";
+
+    getch();
+}
+
+</pre><p><b>output:Enter day month year: 10 5 2024<br>
+Enter day month year: 12 5 2024<br>
+First date is earlier</b>
+
+
+</p>
+</details><br>
+
+
+
+<details>
+<summary>Question 6:Implement a class Money to represent money.
+Overload the + operator to add two amounts of money. </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+class Money {
+private:
+    int rupees, paise;
+
+public:
+    void input() {
+        cout << "Enter rupees and paise: ";
+        cin >> rupees >> paise;
+    }
+
+    Money operator+(Money m) {
+        Money temp;
+
+        temp.rupees = rupees + m.rupees;
+        temp.paise = paise + m.paise;
+
+        if(temp.paise >= 100) {
+            temp.rupees += temp.paise / 100;
+            temp.paise = temp.paise % 100;
+        }
+
+        return temp;
+    }
+
+    void display() {
+        cout << "Rs " << rupees << "." << paise << endl;
+    }
+};
+
+void main() {
+    Money m1, m2, m3;
+
+    m1.input();
+    m2.input();
+
+    m3 = m1 + m2;
+
+    cout << "Total Money: ";
+    m3.display();
+
+    getch();
+}
+
+
+</pre><p><b>output:Enter rupees and paise: 50 75<br>
+Enter rupees and paise: 20 50<br>
+Total Money: Rs 71.25.</b>
+
+
+</p>
+</details><br>
+
+
+
+
+
+<details>
+<summary>Question 7:Create a class Rectangle to represent rectangles.
+Overload the == operator to check if two rectangles are equal.  </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+class Rectangle {
+private:
+    int length, width;
+
+public:
+    void input() {
+        cout << "Enter length and width: ";
+        cin >> length >> width;
+    }
+
+    bool operator==(Rectangle r) {
+        return (length == r.length && width == r.width);
+    }
+};
+
+void main() {
+    Rectangle r1, r2;
+
+    r1.input();
+    r2.input();
+
+    if(r1 == r2)
+        cout << "Rectangles are equal";
+    else
+        cout << "Rectangles are not equal";
+
+    getch();
+}
+
+
+
+
+</pre><p><b>output:Enter length and width: 5 10<br>
+Enter length and width: 5 10<br>
+Rectangles are equal.</b>
+
+
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 8: Define a class Time to represent time.
+Overload the << operator to display the time in HH:MM format.   </summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+class Time {
+private:
+    int hour, minute;
+
+public:
+    void input() {
+        cout << "Enter hour and minute: ";
+        cin >> hour >> minute;
+    }
+
+    friend ostream& operator<<(ostream &out, Time t) {
+        out << t.hour << ":" << t.minute;
+        return out;
+    }
+};
+
+void main() {
+    Time t;
+
+    t.input();
+
+    cout << "Time = " << t;
+
+    getch();
+}
+
+
+</pre><p><b>output:Enter hour and minute: 10 45<br>
+Time = 10:45</b>
+
+
+</p>
+</details><br>
+
+
+
+
+<br>
+
+
+
+
+<footer><center><a href="cpp_link.html">back</a></center></footer>
+</body>
+</html>
+

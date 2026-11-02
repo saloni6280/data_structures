@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>RECURSION </h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question 1: CALCULATE FACTORIAL OF A NUMBER USING RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+int factorial(int n)
+{
+
+    if (n == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return n * factorial(n - 1);
+    }
+}
+int main()
+{
+    int res;
+    res = factorial(3);
+    printf(" factorial is %d", res);
+    return 0;
+}
+</pre><p><b>output:factorial is 6<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 2: CALCULATE FIBONACCI OF A NUMBER USING RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+int fab(int n){
+    if(n==0){
+        return 0;
+    }
+    if(n==1){
+        return 1;
+    }
+    return fib(n - 1) + (n - 2);
+}
+int main(){
+    int i;
+    for (i=1;i<7;i++){
+        printf("%d ", fib(i));
+    }
+
+    return 0; 
+}
+</pre><p><b>output:0 1 1 2 3 5 8</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 3: CALCULATE THE SUM OF NATURAL NUMBERS TILL 10 USING RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int sum(int n){
+if(n==0){
+    return 0;
+}
+else{
+    return n + sum(n - 1);
+}
+}
+int main(){
+    printf(" sum= %d", sum(10));
+    return 0;
+}
+</pre><p><b>output:sum=55<br></b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 4: CONVERT A NUMBER INTO BINARY USING RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+int binary(int n){
+    if(n>1){
+        binary(n / 2);
+    }
+        printf("binary is %d", n % 2);
+    
+}
+int main(){
+    binary(10);
+    return 0;
+}
+</pre><p><b>output:binary is 1010</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 5: FIND THE LARGEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int largest(int a[],int n)
+{
+    int x;
+
+if(n==1){
+    return a[0];
+}
+    x = largest(a, n - 1);
+    if(a[n-1]>x){
+        return a[n - 1];
+    }
+        else{
+            return x;
+        }
+}
+
+
+int main(){
+    int a[] = {10, 25, 5, 40, 15};
+    printf("largest is %d", largest(a, 5));
+    return 0;
+}
+</pre><p><b>output:largest element is 40</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 6: FIND THE SMALLEST ELEMENT IN THE INTEGER ARRAY USING RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+int smallest(int a[], int n)
+{
+    int x;
+
+    if (n == 1)
+    {
+        return a[0];
+    }
+    x = smallest(a, n - 1);
+    if (a[n - 1] < x)
+    {
+        return a[n - 1];
+    }
+    else
+    {
+        return x;
+    }
+}
+
+int main()
+{
+    int a[] = {10, 25, 5, 40, 15};
+    printf("smallest is %d", smallest(a, 5));
+    return 0;
+}
+</pre><p><b>output:smallest is 5</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 7: ENTER THE NUMBER FROM THE USER AND ADD ALL DIGITS OF THE NUMBER USING RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int sum(long int n)
+{
+    if (n == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return n % 10 + sum(n / 10);
+    }
+}
+int main()
+{
+    long int res;
+    res = sum(23);
+    printf("sum of all digits is %d", res);
+    return 0;
+}
+</pre><p><b>output:sum of all digits is 5</b>
+</p>
+</details><br>
+<details>
+
+<summary>Question 8: FIND THE ARITHMETIC MEAN OF AN INTEGER ARRAY USING RECURSION
+</summary><pre>
+#include&lt;stdio.h>
+int sum(int a[],int n){
+    if(n==0){
+        return 0;
+    }
+    else{
+        return a[n - 1] + sum(a, n - 1);
+    }
+
+}
+int main(){
+    int a[] = {10, 20, 30, 40, 50};
+    int n = 5;
+    float mean;
+    mean = (float)sum(a, n) / n;
+    printf("mean=%.2f", mean);
+    return 0;
+}
+</pre><p><b>output:mean=30<br></b>
+</p>
+</details><br>
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

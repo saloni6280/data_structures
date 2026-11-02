@@ -1,0 +1,516 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>SEARCHING ALGORITHM</h1>
+<p>Learn DS with simple example</p>
+</header>
+
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE  PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+
+<summary>Question1: ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM LINEAR SEARCH ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+int main()
+{
+    int size;
+    int arr[20];
+    int i;
+    int x;
+    int found = 0;
+    printf("enter size of the array:");
+    scanf("%d", &size);
+    printf("enter elements of the array:");
+    for (i = 0; i <= (size - 1); i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    printf("enter element to search:");
+    scanf("%d", &x);
+    for (i = 0; i <= (size - 1); i++)
+    {
+        if (arr[i] == x)
+        {
+            printf("element is found\n");
+            printf("element is found at  %d\n", i + 1);
+            found == 1;
+            break;
+        }
+    }
+    if (found == 0)
+    {
+        printf("element not found\n");
+    }
+
+    return 0;
+</pre><p><b>output:enter element of the array: 2 3 4 5 6<br>enter element to search:4<br>elemenet si found at:2<br></b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 2: ENTER A STRING FROM THE USER, ENTER A CHARACTER AND PERFORM LINEAR SEARCH ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int linear(char str[], char key, int i)
+{
+    if (str[i] == '\0')
+        return -1;
+
+    if (str[i] == key)
+        return i;
+
+    return linear(str, key, i + 1);
+}
+
+int main()
+{
+    char str[100], key;
+    int result;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    printf("Enter character to search: ");
+    scanf(" %c", &key);
+
+    result = linear(str, key, 0);
+
+    if (result == -1)
+        printf("Character not found");
+    else
+        printf("Character found at position %d", result + 1);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter a string: HELLO
+Enter character to search: L
+Character found at position 3</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 3: ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM LINEAR SEARCH ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int linear(int a[], int n, int key, int i)
+{
+    if (i == n)
+        return -1;
+
+    if (a[i] == key)
+        return i;
+
+    return linear(a, n, key, i + 1);
+}
+
+int main()
+{
+    int a[100], n, i, key, result;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    result = linear(a, n, key, 0);
+
+    if (result == -1)
+        printf("Element not found");
+    else
+        printf("Element found at position %d", result + 1);
+
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter array elements:<br>
+10 20 30 40 50<br>
+Enter value to search: 40<br>
+Element found at position 4</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 4: ENTER A STRING FROM THE USER, ENTER A CHARACTER AND PERFORM LINEAR SEARCH ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+int linear(char str[], char key)
+{
+    int i;
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == key)
+            return i;
+    }
+
+    return -1;
+}
+
+int main()
+{
+    char str[100], key;
+    int result;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    printf("Enter character to search: ");
+    scanf(" %c", &key);
+
+    result = linear(str, key);
+
+    if (result == -1)
+        printf("Character not found");
+    else
+        printf("Character found at position %d", result + 1);
+
+    return 0;
+}
+</pre><p><b>output:Enter a string: COMPUTER<br>
+Enter character to search: P<br>
+Character found at position 4<br></b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 5: ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM BINARY SEARCH ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+int binary(int a[], int n, int key)
+{
+    int low = 0, high = n - 1, mid;
+
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+
+        if (a[mid] == key)
+            return mid;
+
+        else if (key > a[mid])
+            low = mid + 1;
+
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int a[100], n, i, key, result;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter sorted array elements:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    result = binary(a, n, key);
+
+    if (result == -1)
+        printf("Element not found");
+    else
+        printf("Element found at position %d", result + 1);
+
+    return 0;
+}
+
+</pre><p><b>output:[WRITE YOUR OUTPUT HERE]</b>
+</p>
+</details><br>
+
+
+
+
+<details>
+
+<summary>Question 6: ENTER A STRING FROM THE USER, ENTER A CHARACTER AND PERFORM BINARY SEARCH ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int binary(char str[], char key, int low, int high)
+{
+    int mid;
+
+    if (low > high)
+        return -1;
+
+    mid = (low + high) / 2;
+
+    if (str[mid] == key)
+        return mid;
+
+    else if (key > str[mid])
+        return binary(str, key, mid + 1, high);
+
+    else
+        return binary(str, key, low, mid - 1);
+}
+
+int main()
+{
+    char str[100], key;
+    int i, n = 0, result;
+
+    printf("Enter sorted string: ");
+    scanf("%s", str);
+
+    while (str[n] != '\0')
+        n++;
+
+    printf("Enter character to search: ");
+    scanf(" %c", &key);
+
+    result = binary(str, key, 0, n - 1);
+
+    if (result == -1)
+        printf("Character not found");
+    else
+        printf("Character found at position %d", result + 1);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter sorted string: ABCDEFG<br>
+Enter character to search: D<br>
+Character found at position 4</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 7: ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM BINARY SEARCH ALGORITHM THROUGH RECURSION.
+</summary><pre>
+#include&lt;stdio.h>
+int binary(int a[], int low, int high, int key)
+{
+    int mid;
+
+    if (low > high)
+        return -1;
+
+    mid = (low + high) / 2;
+
+    if (a[mid] == key)
+        return mid;
+
+    else if (key > a[mid])
+        return binary(a, mid + 1, high, key);
+
+    else
+        return binary(a, low, mid - 1, key);
+}
+
+int main()
+{
+    int a[100], n, i, key, result;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter sorted array elements:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    result = binary(a, 0, n - 1, key);
+
+    if (result == -1)
+        printf("Element not found");
+    else
+        printf("Element found at position %d", result + 1);
+
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter sorted array elements:<br>
+10 20 30 40 50<br>
+Enter value to search: 50<br>
+Element found at position 5</b>
+</p>
+</details><br>
+
+
+<details>
+
+<summary>Question 8: ENTER A STRING FROM THE USER, ENTER A CHARACTER AND PERFORM BINARY SEARCH ALGORITHM THROUGH ITERATION.
+</summary><pre>
+#include&lt;stdio.h>
+int binary(char str[], char key, int n)
+{
+    int low = 0, high = n - 1, mid;
+
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+
+        if (str[mid] == key)
+            return mid;
+
+        else if (key > str[mid])
+            low = mid + 1;
+
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main()
+{
+    char str[100], key;
+    int n = 0, result;
+
+    printf("Enter sorted string: ");
+    scanf("%s", str);
+
+    while (str[n] != '\0')
+        n++;
+
+    printf("Enter character to search: ");
+    scanf(" %c", &key);
+
+    result = binary(str, key, n);
+
+    if (result == -1)
+        printf("Character not found");
+    else
+        printf("Character found at position %d", result + 1);
+
+    return 0;
+}
+
+</pre><p><b>output:Enter sorted string: ABCDEFG<br>
+Enter character to search: F<br>
+Character found at position 6</b>
+</p>
+</details><br>
+
+<details>
+
+<summary>Question 9: CALCULATE THE BEST AND WORST COMPLEXITY OF THE BINARY SEARCHING ALGORITHM WITH EXACT TIME TAKEN BY THE ALGORITHM ON INTEGER ARRAY.
+</summary><pre>
+#include&lt;stdio.h>
+#include&lt;time.h>
+int binary(int a[], int n, int key, int *count)
+{
+    int low = 0, high = n - 1, mid;
+
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+
+        (*count)++;
+
+        if (a[mid] == key)
+            return mid;
+
+        else if (key > a[mid])
+            low = mid + 1;
+
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int a[100], n, i, key, result;
+    int count = 0;
+
+    clock_t start, end;
+    double time_taken;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter sorted array elements:\n");
+
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    start = clock();
+
+    result = binary(a, n, key, &count);
+
+    end = clock();
+
+    time_taken = (double)(end - start) / CLOCKS_PER_SEC;
+
+    if (result == -1)
+        printf("Element not found\n");
+    else
+        printf("Element found at position %d\n", result + 1);
+
+    printf("Number of comparisons = %d\n", count);
+    printf("Time taken = %f seconds\n", time_taken);
+
+    printf("Best Complexity = O(1)\n");
+    printf("Worst Complexity = O(log n)\n");
+
+    return 0;
+}
+</pre><p><b>output:Enter size of array: 5<br>
+Enter sorted array elements:<br>
+10 20 30 40 50<br>
+Enter value to search: 30<br>
+
+Element found at position 3<br>
+Number of comparisons = 1<br>
+Time taken = 0.000002 seconds<br>
+Best Complexity = O(1)<br>
+Worst Complexity = O(log n)</b>
+</p>
+</details><br>
+
+
+
+
+
+</h3>
+<center><a href="ds_link.html">back</a></center>
+<footer>
+<h1></h2>
+</footer>
+</body>
+</html>

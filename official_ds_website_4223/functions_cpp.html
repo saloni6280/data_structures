@@ -1,0 +1,261 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+
+<header>
+<h1>FUNCTIONS</h1>
+
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C++ PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><br><h3>
+<details>
+<summary>Question 1:   write a c++ prog to find the smallest number between three numbers</summary><pre>
+#include&lt;iostream.h>
+#Include&lt;conio.h>
+int smallest(int a,int b,int c)
+{
+//int small;
+if(a<=b && a<=c)
+return a;
+else if(b<=a && b<=c)
+ return b;
+else if(c<=a && c<=b)
+ return  c;
+}
+
+void main()
+{
+int x,y,z,res;
+clrscr();
+cout<<"enter first number";
+cin>>x;
+cout<<"enter second number";
+cin>>y;
+cout<<"enter third number";
+cin>>z;
+res=smallest(x,y,z);
+cout<<"smallest number is "<<res;
+getch();
+}
+</pre><p><b>output:</b>enter first number:1<br>
+enter first number:9 <br>
+enter first number:8 <br>
+smallest number is:1
+</p>
+</details><br>
+
+
+<details>
+<summary>Question 2:  Write a C++ method to compute the average of three numbers</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+float average(int a,int b,int c)
+{
+float avg;
+avg=(a+b+c)/3.0;
+return avg;
+}
+void main()
+{
+int x,y,z;
+float res;
+clrscr();
+cout<<"enter first number: ";
+cin>>x;
+cout<<"enter second number: ";
+cin>>y;
+cout<<"enter third number: ";
+cin>>z;
+res=average(x,y,z);
+cout<<"average: "<<res;
+getch();
+}</p><b>output:</b>enter first number:99<br>
+enter first number:99 <br>
+enter first number:99<br>
+average:99
+
+</details><br>
+
+
+<details>
+<summary>Question 3: Write a C++ method to display the middle character of a string</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;string.h>
+void middle(char str[])
+{
+int len,mid;
+len=strlen(str);
+mid=len/2;
+cout<<"middle chararater is:"<<str[mid];
+}
+void main()
+{
+char str[50];
+clrscr();
+cout<<"enter a string: ";
+cin>>str;
+middle(str);
+getch();
+}</p>output:</b>enter a string:apple<br>
+middle chararater is:p
+
+</details>
+<br>
+
+<details>
+<summary>Question 4:Write a C++ method to find all twin prime numbers less than 100</summary><pre>#include&lt;iostream.h>
+#include&lt;conio.h>
+int prime(int n)
+{
+int i;
+for(i=2;i<n;i++)
+{
+if(n%i==0)
+return 0;
+}
+return 1;
+}
+void main()
+{
+int i;
+clrscr();
+cout<<"twin prime number less than 100 are:\n ";
+for(i=2;i<100;i++)
+{
+if(prime(i)&&prime(i+2)&& i+2<100)
+{
+cout<<i<<"and"<<i+2<<"\n";
+}
+}
+getch();
+}
+</p>output:</b>twin prime number less than 100 are:3,5<br>5,7<br>11,13<br>17,19<br>29,31<br>41,43<br>59,61<br>71,73
+
+
+</details><br>
+
+
+<details>
+<summary>Question 5: Write a C++ method to count the number of digits in an integer with the value 2. The integer may be assumed to be non-negative</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+int counttwo(int n)
+{
+int digit, count=0;
+while(n>0)
+{
+digit=n%10;
+if(digit==2)
+{
+count++;
+}
+n=n/10;
+}
+return count;
+}
+
+void main()
+ {
+int num,result;
+clrscr();
+cout<<"enter a number:";
+cin>>num;
+result=counttwo(num);
+cout<<"number of digit with value 2="<<result;
+getch();
+}
+</pre><p><b>output:</b>enter a number:2<br>number of digit with value 2=2
+ 
+</p>
+</details><br>
+
+<details>
+<summary>Question 6: Write a C++ method that accepts three integers and checks whether they are consecutive or not. Returns true or false.</summary><pre>#include&lt;iostream.h>
+#include&lt;conio.h>
+#include<dos.h>
+int consecutive(int a,int b,int c)
+{
+if(b==a+1 && c==b+1)
+return 1;
+else
+return 0;
+}
+void main()
+{
+int x,y,z;
+clrscr();
+cout<<"enter three integers:";
+cin>>x>>y>>z;
+if(consecutive(x,y,z)==1)
+cout<<"numbers are consecutive";
+else
+cout<<"numbers are not consecutive";
+getch();
+}</pre><p><b>output:</b>enter three integers: 2 3 4   <br>numbers are consecutive
+</p>
+</details><br>
+
+<details>
+<summary>Question 7: Write a C++ method that checks whether all the characters in a given string are vowels (a,e,i,o,u) or not. Return true if each character in the string is a vowel, otherwise return false</summary><pre>
+#include&lt;iostream.h>
+#include&lt;conio.h>
+#include&lt;string.h>
+int allvowel(char str[])
+{
+int i;
+for(i=0;str[i]!='\0';i++)
+{
+if(str[i]!='a' && str[i]!='e' && str[i]!='i' && str[i]!='o' && str[i]!='u' &&
+str[i]!='A' && str[i]!='E' && str[i]!='O' && str[i]!='U' && str[i]!='I')
+{
+return 0;
+}
+}
+return 1;
+}
+void main()
+{
+char str[50];
+clrscr();
+cout<<"enter a string:";
+cin>>str;
+if(allvowel(str))
+{
+cout<<"all char are vowel";
+}
+else
+{
+cout<<"all char are not vowel";
+}
+
+getch();
+}
+</p><b>output:</b>enter a string:apple<br>all char are not vowel
+ 
+
+</details><br>
+<details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+<center><a href="cpp_link.html">back</a></center>
+</footer>
+</body>
+</html>

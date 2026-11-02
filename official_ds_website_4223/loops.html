@@ -1,0 +1,584 @@
+<html>
+<head>
+<title>main</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<h1>ITERATIVE CONTROL STRUCTURE</h1>
+</header>
+<marquee><h2>CLICK ON THE QUESTION TO SEE THE C PROGRAM AND OUTPUT</h2></marquee>
+<br><br><br><br><b><h3>
+<details>
+<summary>Question 1: Enter a number from the user and find out the binary of that number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,i,a[10];
+clrscr();
+printf("enter a number");
+scanf("%d",&n);
+for(i=0;n>0;i++)
+{
+a[i]=n%2;
+n=n/2;
+}
+printf("binary is ");
+for(i=i-1;i>=0;i--)
+printf("%d",a[i]);
+getch();
+
+}
+
+</pre><p><b>output:</b>enter a number 10<br>1010</p>
+</details><br>
+
+<details>
+<summary>Question 2: Enter a number from the user and check that the number is divisible by any prime number or not ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int num;
+clrscr();
+printf("enter a number");
+scanf("%d",&num);
+if(num%2==0||num%3==0||num%5==0||num%7==0)
+{
+printf("divisible by prime number");
+}
+else
+{
+printf("not divisible by prime number");
+}
+getch();
+}
+
+</pre><p><b>output:</b>enter a number 2<br>divisible by prime number</p>
+</details><br>
+<details>
+<summary>Question 3: Enter a number from the user and check it is a prime number or not ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int num,i,count=0;
+clrscr();
+printf("enter a number");
+scanf("%d",&num);
+for(i=1;i<=num;i++)
+{
+if(num%i==0)
+count++;
+}
+if(count==2)
+printf("prime number");
+else
+printf("not a prime number");
+getch();
+}
+</pre><p><b>output:</b>enter a number 44<br>not a prime number</p>
+</details><br>
+
+<details>
+<summary>Question 4: Enter a number from the user and print all digit of the number in separate line ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,r;
+clrscr();
+printf("enter a number");
+scanf("%d",&n);
+while(n>0)
+{
+r=n%10;
+printf("%d\n",r);
+n=n/10;
+}
+getch();
+}
+</pre><p><b>output:</b>enter a number 454<br>4<br>5<br>4</p>
+</details><br>
+
+<details>
+<summary>Question 5: Write a program to print your name 1 lakh times ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+long int i;
+for(i=1;i<=100000;i++)
+printf("saloni\n");
+getch();
+}
+</pre><p><b>output:</b>saloni<br>saloni......</p>
+</details><br>
+
+<details>
+<summary>Question 6: Write a program to print a series 1 to 1 lakh ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,i;
+printf("enter a number");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+printf("%d\n",i);
+getch();
+}
+
+</pre><p><b>output:</b>1<br>2<br>3.......<br>100000</p>
+</details><br>
+
+<details>
+<summary>Question 7: Enter a number from the user and print the series from 1 to that number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n, i;
+printf("Enter a number: ");
+scanf("%d", &n);
+for(i = 1; i <= n; i++)
+ {
+     printf("%d ", i);
+}
+getch();
+}
+
+</pre><p><b>output:</b>enter a number 11<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</p>
+</details><br>
+
+
+<details>
+<summary>Question 8: Enter a number from the user and print that number 100 time ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,i;
+clrscr();
+printf("enter a number");
+scanf("%d",&n);
+for(i=1;i<=100;i++)
+printf("%d\n",n);
+getch();
+}
+
+
+</pre><p><b>output:</b>enter a number 2<br>2<br>2<br>2.....<br>100th time 2</p>
+</details><br>
+
+<details>
+<summary>Question 9:  Write a program print all the odd number between 1 to 100 ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int i;
+clrscr();
+for(i=1;i<=100;i++);
+{
+if(i%2!=0)
+printf("%d\n",i);
+}
+getch();
+}
+
+</pre><p><b>output:</b>1<br>3<br>5<br>7<br>9....<br>99</p>
+</details><br>
+
+<details>
+<summary>Question 10: Write a program print the table of 4 in the format given as below (till 20)? 4*1=4 and so on</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int i;
+clrscr();
+   for(i=1;i<=10;i++)
+printf("4x%d=%d\n",i,4*i);
+getch();
+}
+
+</pre><p><b>output:</b><br>4x1=4<br>4x2=8<br>4x3=12<br>4x4=16<br>4x5=20<br>4x6=24<br>4x7=28<br>4x8=32<br>4x9=36<br>4x10=40</p>
+</details><br>
+
+<details>
+<summary>Question 11: Enter the number from user and reverse the number?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,r,rev=0;
+clrscr();
+printf("enter a number");
+scanf("%d",&n);
+while(n>0)
+{
+r=n%10;
+rev=rev*10+r;
+n=n/10;
+}
+printf("reversed number is %d",rev);
+getch();
+}
+</pre><p><b>output:</b><br>enter a number 234<br>reversed numbner is 432</p>
+</details><br>
+
+<details>
+<summary>Question 12: Enter a number from the user if the user enter 1
+ then you will perform addition operation by entering 2 number from user add it and display answer. if user enter 2 then subtract or if user enter 3 then multiply or if user enter 4 then divide or if user enter 5 then modulo or if any other number then print invalid .if user want to quitthe program then user will enter Q. ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int ch,a,b;
+char op;
+while(1)
+{
+printf("enter choice \n 1-addition\n2-subraction\n3-multiplication\n4-division\n5-modulus\nQ-quit\n");
+scanf("%c",&op);
+if(op=='Q'||op=='q')
+break;
+printf("enter first number");
+scanf("%d",&a);
+printf("enter second number");
+scanf("%d",&b);
+if(op=='1')
+printf("sum is %d",a+b);
+else if(op=='2')
+printf("subtraction  is %d",a-b);
+ else if(op=='3')
+printf("multiplication  is %d",a*b);
+ else if(op=='4')
+printf("division  is %d",a/b);
+ else if(op=='5')
+printf("modulus  is %d",a%b);
+else
+printf("invalid choice");
+ }
+getch();
+}
+</pre><p><b>output:</b><br>enter choice<br>1 addition<br>2 subtraction<br>3 multiplication<br>4 division<br>5 modulus<br>6 quit <br>1<br>enter first number 33<br>enter second number 2<br>sum is 35<br>quit </p>
+</details><br>
+
+
+<details>
+<summary>Question 13:  Enter the number from user and check its palindrome or not?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,r,rev=0,temp;
+clrscr();
+printf("enter a number");
+scanf("%d",&n);
+temp=n;
+while(n>0)
+{
+r=n%10;
+rev=rev*10+r;
+n=n/10;
+}
+if(temp==rev)
+print("palindrome number");
+else
+printf("not palindrome");
+getch();
+}
+</pre><p><b>output:</b><br>enter a number 11<br>palindrome  number</p>
+</details><br>
+
+<details>
+<summary>Question 14:  Enter two numbers from users, one is base and second is power. Write the result ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int base,power,res=1,i;
+clrscr();
+printf("enter base number");
+scanf("%d",&base);
+printf("enter power number");
+scanf("%d",&power);
+for(i=1;i<=power;i++)
+{
+res=res*base;
+}
+printf("result=%d",res);
+getch();
+}
+</pre><p><b>output:</b><br>enter base number 2<br>enter power number 2<br>result 4  </p>
+</details><br>
+
+<details>
+<summary>Question 15: Enter a number from user and print first digit of number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n;
+printf("enter a number");
+scanf("%d",&n);
+while(n>=10)
+{
+n=n/10;
+}
+printf("first digit is %d",n);
+getch();
+}
+
+
+</pre><p><b>output:</b><br>enter a  number 234<br>first digit is 2  </p>
+</details><br>
+
+
+<details>
+<summary>Question 16: Enter a number from user and print total from 0 to that number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,i,sum=0;
+clrscr();
+printf("enter a number:");
+scanf("%d",&n);
+for(i=0;i<=n;i++)
+sum=sum+i;
+printf("total is %d",sum);
+getch();
+}
+
+</pre><p><b>output:</b><br>enter a  number 12<br>total is 78 </p>
+</details><br>
+
+
+<details>
+<summary>Question 17: Enter a number from user and find out factorial of that number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,i,f=1;
+clrscr();
+printf("enter number");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+f=f*i;
+printf("factorial is %d",f);
+getch();
+}
+</pre><p><b>output:</b><br>enter a  number 3<br>factorial is 6 </p>
+</details><br>
+
+
+<details>
+<summary>Question 18: Enter two numbers from user and print range from first number to second number ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int a,b,i;
+clrscr();
+printf("enter first number");
+scanf("%d",&a);
+printf("enter second number");
+scanf("%d",&b);
+for(i=a;i<=b;i++)
+printf("%d\n",i);
+getch();
+}
+</pre><p><b>output:</b>enter first number 5<br>enter second number 10<br>5<br>6<br>7<br>8<br>9<br>10</p>
+</details><br>
+
+<details>
+<summary>Question 19: Enter password from user maximum 20 digits / character press enter key if you want to exit ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+char pass[20];
+clrscr();
+while(1)
+{
+printf("enter password(type exit to quit)");
+scanf("%s",&pass);
+if(strcmp(pass,"exit")==0)
+break;
+else
+printf("you enter %s\n",pass);
+}
+getch();
+}
+</pre><p><b>output:</b>enter password(type exit to quit) 23456<br>you enter 23456</p>
+</details><br>
+
+<details>
+<summary>Question 20: Write a program to print the counting 1 to 100 with one second delay ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int i;
+for(i=1;i<=100;i++)
+
+{
+printf("%d\n",i);
+delay(1000);
+}
+getch();
+}
+</pre><p><b>output:</b>1<br>2<br>3<br>4<br>5.....<br>100</p>
+</details><br>
+
+<details>
+<summary>Question 21: Write a program to find out the Fibonacci series/ 1 to 100 (like 0 1 1 2 3 5 8 13………..) ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int a=0,b=1,c;
+printf("fibonacci series:\n");
+printf("%d  %d",a,b);
+while(1)
+{
+c=a+b;
+if(c>100)
+break;
+printf("%d\n",c);
+a=b;
+b=c;
+}
+getch();
+}
+</pre><p><b>output:</b>0 1 1 2 3 5 8 13 21 34 55 89</p>
+</details><br>
+
+<details>
+<summary>Question 22: Enter a character from user and that character should be alphabet ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+    char ch;
+
+    clrscr();
+
+    printf("Enter a character: ");
+    ch = getche();
+ 
+    while(!(ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')) {
+        printf("\nNot an alphabet. Please enter again: ");
+        ch = getche();
+    }
+    printf("\nYou entered a valid alphabet: %c", ch);
+
+    getch();
+}
+</pre><p><b>output:</b>enter a character:A<br> You entered a valid alphabet: A</p>
+</details><br>
+
+<details>
+<summary>Question 23: Check numbers from user is palindrome or not ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int n,rev=0,r,temp;
+clrscr();
+printf("enter a  number");
+scanf("%d",&n);
+temp=n;
+while(n>0)
+{
+r=n%10;
+rev=rev*10+r;
+n=n/10;
+}
+if(temp==rev)
+printf("palindrome number");
+else
+printf("not palindrome");
+getch();
+}
+</pre><p><b>output:</b>enter a number 9<br>palindrome number</p>
+</details><br>
+
+
+<details>
+<summary>Question 24:  Enter a number from user and check it is Armstrong number or not ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int num,ori,rem,sum=0;
+clrscr();
+printf("enter a  number");
+scanf("%d",&num);
+ori=num;
+while(num>0)
+{
+rem=num%10;
+sum=sum+(rem*rem*rem);
+num=num/10;
+}
+if(sum==ori)
+printf("%d is an armstrong number",ori);
+else
+printf("%d is not an armstrong number",ori);
+getch();
+}
+</pre><p><b>output:</b>enter a number 153<br>153 is an armstrong number</p>
+</details><br>
+
+<details>
+<summary>Question 25: Enter a number from user and check it is Armstrong number or not ?</summary><pre>
+#include&lt;stdio.h>
+#Include&lt;conio.h>
+void main()
+{
+int num,ori,rem,sum=0;
+clrscr();
+printf("enter a  number");
+scanf("%d",&num);
+ori=num;
+while(num>0)
+{
+rem=num%10;
+sum=sum+(rem*rem*rem);
+num=num/10;
+}
+if(sum==ori)
+printf("%d is an armstrong number",ori);
+else
+printf("%d is not an armstrong number",ori);
+getch();
+}
+</pre><p><b>output:</b>enter a number 153<br>153 is an armstrong number</p>
+</details><br>
+
+</h3>
+
+
+
+
+<footer><center><a href="c_link.html">back</a></center></footer>
+
+
+</body>
+</html>
